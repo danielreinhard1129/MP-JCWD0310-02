@@ -10,9 +10,16 @@
     "test": "npx cypress verify & cypress run --component"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.2.3",
+    "@types/react-redux": "^7.1.33",
+    "@types/yup": "^0.32.0",
+    "formik": "^2.4.5",
     "next": "14.0.4",
+    "nodemon": "^3.1.0",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "use-debounce": "^10.0.0",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@types/node": "^20",
