@@ -1,8 +1,8 @@
 'use client';
 
+import { useAppSelector } from '@/redux/hooks';
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useAppSelector } from '../redux/hook';
 
 export const LoginPage = () => {
   const dispatch = useDispatch();
