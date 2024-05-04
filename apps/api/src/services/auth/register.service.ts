@@ -15,11 +15,11 @@ export const registerService = async (body: any) => {
       throw new Error('Your email is registered to another account');
 
     const passwordHash = await hashPassword(password);
-
+    
     const user = await prisma.user.create({
       data: {
         email,
-        name: userName,
+        userName,
         passwordHash,
         userType: userType || userType == 'organizer' ? 'organizer' : 'client',
       },
