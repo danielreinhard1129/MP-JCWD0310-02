@@ -1,11 +1,5 @@
-export interface User {
-  userName: string;
+export interface User{
+  id: number;
+  fullName: string;
   email: string;
-  password: string;
-  token: string;
-  role: string;
-  detail: {
-    dateOfBirth: Date;
-    bio: string;
-  };
 }
