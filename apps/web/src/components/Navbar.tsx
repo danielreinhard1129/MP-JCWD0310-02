@@ -1,7 +1,7 @@
 'use client';
 
-import { useAppDispatch, useAppSelector } from '@/redux/hooks';
-import { logoutAction } from '@/redux/slices/userSlice';
+import { useAppDispatch, useAppSelector } from '@/app/redux/hook';
+import { logoutAction } from '@/app/redux/slices/userSlice';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { Input } from './ui/input';
