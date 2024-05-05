@@ -1,49 +1,30 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { User } from '@/app/types/user.type';
+import type { PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState: User = {
-  userName: '',
+  id: 0,
+  fullName: '',
   email: '',
-  password: '',
-  token: '',
-  role: '',
-  detail: {
-    bio: '',
-    dateOfBirth: new Date(),
-  },
 };
 
-export const userSlicer = createSlice({
+export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
     loginAction: (state, action: PayloadAction<User>) => {
-      state.userName = action.payload.userName;
-      state.password = action.payload.password;
-      state.token = action.payload.token;
+      state.id = action.payload.id;
+      state.fullName = action.payload.fullName;
+      state.email = action.payload.email;
     },
     logoutAction: (state) => {
-      state.userName = '';
-      state.password = '';
-      state.token = '';
-    },
-    addDetailAction: (state, action: PayloadAction<User>) => {
-      state.role = action.payload.role;
-      state.detail = action.payload.detail;
-    },
-    deleteDetailAction: (state) => {
-      state.role = '';
-      state.detail.dateOfBirth = new Date();
-      state.detail.bio = '';
+      state.id = 0;
+      state.fullName = '';
+      state.email = '';
     },
   },
 });
 
-export const {
-  loginAction,
-  logoutAction,
-  addDetailAction,
-  deleteDetailAction,
-} = userSlicer.actions;
+export const { loginAction, logoutAction } = userSlice.actions;
 
-export default userSlicer.reducer;
+export default userSlice.reducer;
