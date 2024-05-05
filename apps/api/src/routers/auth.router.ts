@@ -18,7 +18,7 @@ export class AuthRouter {
         });
         this.router.post('/login' , this.authController.loginController);
         this.router.post('/register' , this.authController.registerController);
-        // this.router.post('/keep-login' , verifyToken );
+        this.router.post('/keep-login' , verifyToken , this.authController.keepLoginController );
         // this.router.post('/forgot-password' , verifyToken );
     }
 

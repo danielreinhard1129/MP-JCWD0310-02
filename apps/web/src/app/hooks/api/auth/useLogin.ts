@@ -1,20 +1,41 @@
+'use client';
+import { axiosInstance } from '@/app/lib/axios';
+import { useAppDispatch } from '@/app/redux/hook';
+import { loginAction } from '@/app/redux/slices/userSlice';
 import { User } from '@/app/types/user.type';
-import { NEXT_PUBLIC_BASE_API_URL } from '@/app/utils/config';
-import axios from 'axios';
+import { AxiosError } from 'axios';
+import { useRouter } from 'next/navigation';
 
-export const useLogin = async (body: Pick<User, 'password' | 'email'>) => {
-  try {
-    const { password, email } = body;
+interface LoginArgs extends Pick<User, 'email' | 'password'> {}
 
-    const result = axios.post(NEXT_PUBLIC_BASE_API_URL + '/auth/login', {
-      password,
-      email,
-    });
+interface LoginResponse {
+  message: string;
+  token: string;
+  data: User;
+}
 
-    return {
-      result,
-    };
-  } catch (err) {
-    throw err;
-  }
+export const useLogin = () => {
+  const dispatch = useAppDispatch();
+  const router = useRouter();
+
+  const login = async (payload: LoginArgs) => {
+    try {
+      const { data } = await axiosInstance.post<LoginResponse>('/auth/login', {
+        payload,
+      });
+
+      dispatch(loginAction(data.data));
+      console.log("redux data");
+      console.log(data.data);
+      
+      localStorage.setItem('token', data.token);
+      router.replace('/');
+    } catch (err) {
+      if (err instanceof AxiosError) {
+        alert(err?.response?.data);
+      }
+    }
+  };
+
+  return { login };
 };

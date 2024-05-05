@@ -1,20 +1,24 @@
-import { User } from "@/app/types/user.type";
-import { NEXT_PUBLIC_BASE_API_URL } from "@/app/utils/config";
-import axios from "axios";
+import { axiosInstance } from '@/app/lib/axios';
+import { User } from '@/app/types/user.type';
+import { AxiosError } from 'axios';
+import { useRouter } from 'next/navigation';
 
-export const useRegister = async ( user : Pick<User , "email" | "password" | "userName"> ) => {
+interface RegisterArg extends Pick<User, 'email' | 'password' | 'userName'> {}
+
+const useRegister = () => {
+  const router = useRouter();
+
+  const register = async (payload: RegisterArg) => {
     try {
-        const { email , password , userName } = user;
-
-        const result = await axios.post(NEXT_PUBLIC_BASE_API_URL + "/auth/register" , {
-            email,
-            password,
-            userName,
-        });
-        
-        return result
-
+      await axiosInstance.post('/auth/register', payload);
+      router.push('/login');
     } catch (err) {
-        throw err;
+      if (err instanceof AxiosError) {
+        alert(JSON.stringify(err?.response?.data));
+      }
     }
+  };
+  return { register };
 };
+
+export default useRegister;

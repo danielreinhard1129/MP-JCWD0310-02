@@ -2,14 +2,16 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { User } from '@/app/types/user.type';
 
 const initialState: User = {
+  id : null,
   userName: '',
   email: '',
+  passwordHash: '',
   password: '',
   token: '',
   role: '',
   detail: {
     bio: '',
-    dateOfBirth: new Date(),
+    // dateOfBirth: new Date(),
   },
 };
 
@@ -17,13 +19,17 @@ export const userSlicer = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    loginAction: (state, action: PayloadAction<User>) => {
+    loginAction: (state, action: PayloadAction<Pick<User , "userName" | "password" | "token" | "id" | "passwordHash">>) => {
+      state.id = action.payload.id;
       state.userName = action.payload.userName;
+      state.passwordHash = action.payload.passwordHash;
       state.password = action.payload.password;
       state.token = action.payload.token;
     },
     logoutAction: (state) => {
+      state.id = null;
       state.userName = '';
+      state.passwordHash = '';
       state.password = '';
       state.token = '';
     },
@@ -33,7 +39,7 @@ export const userSlicer = createSlice({
     },
     deleteDetailAction: (state) => {
       state.role = '';
-      state.detail.dateOfBirth = new Date();
+      // state.detail.dateOfBirth = new Date();
       state.detail.bio = '';
     },
   },
