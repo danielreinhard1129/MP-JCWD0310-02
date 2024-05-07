@@ -1,9 +1,17 @@
 import prisma from '@/prisma';
 import { hashPassword } from '@/utils/bcrypt';
+import { Prisma, User } from '@prisma/client';
 
-export const registerService = async (body: any) => {
+interface RegisterServiceParams {
+  firstName : string;
+  lastName : string;
+  email : string;
+  password : string;
+}
+
+export const registerService = async (body: User) => {
   try {
-    const { userName, email, password, userType } = body;
+    const { firstName , lastName , email, password } = body;
 
     const userIsExist = await prisma.user.findFirst({
       where: {
@@ -15,13 +23,15 @@ export const registerService = async (body: any) => {
       throw new Error('Your email is registered to another account');
 
     const passwordHash = await hashPassword(password);
-
+    const refferralCode = (await hashPassword(email)).toLowerCase();
+    
     const user = await prisma.user.create({
       data: {
         email,
-        name: userName,
-        passwordHash,
-        userType: userType || userType == 'organizer' ? 'organizer' : 'client',
+        firstName,
+        lastName,
+        password: passwordHash,
+        referralCode : refferralCode.slice(15,25),
       },
     });
 
