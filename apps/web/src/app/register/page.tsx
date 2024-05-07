@@ -1,5 +1,4 @@
 'use client';
-<<<<<<< HEAD
 
 import Forminput from '@/components/Forminput';
 import { Button } from '@/components/ui/button';
@@ -80,18 +79,7 @@ const Register = () => {
         </Card>
       </div>
     </main>
-=======
-const Register = () => {
-  return (
-    <div className="flex w-full border-red-100">
-      <div className="flex w-full bg-green-500"></div>
-    </div>
->>>>>>> testing
   );
 };
 
 export default Register;
-<<<<<<< HEAD
-
-=======
->>>>>>> testing

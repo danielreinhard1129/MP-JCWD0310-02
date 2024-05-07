@@ -14,18 +14,19 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 
 const SearchByLocation = () => {
   return (
     <div>
-      <h1 className="m-10 justify-start font-bold">Explore events in</h1>
+      <h1 className="m-10 justify-start font-bold">Explore event in</h1>
 
       <div className="m-10 gap-10">
         <Carousel>
