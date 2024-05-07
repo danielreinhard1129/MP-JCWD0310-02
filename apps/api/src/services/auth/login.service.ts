@@ -1,9 +1,10 @@
 import { JWT_SECRET_KEY } from '@/config';
 import prisma from '@/prisma';
 import { comparePassword } from '@/utils/bcrypt';
+import { User } from '@prisma/client';
 import { sign } from 'jsonwebtoken';
 
-export const loginService = async (body: any) => {
+export const loginService = async (body: User) => {
   try {
     const { email, password } = body;
 
@@ -15,7 +16,7 @@ export const loginService = async (body: any) => {
 
     if (!user) throw new Error('Your email is Invalid');
 
-    const isValidPassword = comparePassword(password, user.passwordHash);
+    const isValidPassword = comparePassword(password, user.password);
 
     if (!isValidPassword) throw new Error('Your password is Incorrect');
 
@@ -24,7 +25,6 @@ export const loginService = async (body: any) => {
     return {
       message: 'Success login into your account',
       data: user,
-      token,
     };
   } catch (error) {
     throw error;
