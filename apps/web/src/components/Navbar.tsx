@@ -8,6 +8,7 @@ import { Input } from './ui/input';
 import { SearchIcon } from 'lucide-react';
 
 const Navbar = () => {
+  const token = localStorage.getItem("token");
   const router = useRouter();
   const dispatch = useAppDispatch();
   const { id } = useAppSelector((state) => state.user);
@@ -36,7 +37,7 @@ const Navbar = () => {
             />
             <SearchIcon className="w-5 h-5 text-gray-800 dark:text-white" />
           </div>
-          {Boolean(id) ? (
+          {Boolean(token) ? (
             <div className="flex items-center gap-8">
               <h3 onClick={() => router.push('/')}>Home</h3>
               <h3 onClick={() => router.push('/event')}>Event</h3>

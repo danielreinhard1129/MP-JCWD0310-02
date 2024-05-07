@@ -15,9 +15,10 @@ const useKeepLogin = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
 
-  const keepLogin = async () => {
+  const keepLogin = async (id: number) => {
     try {
-      const { data } = await axiosInstance.post<KeepLoginResponse>('/auth/keep-login');
+      const { data } =
+        await axiosInstance.post<KeepLoginResponse>('/auth/keep-login');
       dispatch(loginAction(data.data));
       router.push('/');
     } catch (err) {

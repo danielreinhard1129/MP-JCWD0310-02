@@ -4,7 +4,7 @@ import { User } from "@prisma/client";
 export const organizerRegisterService = async (body : User) => {
     try {
         
-        const { firstName , lastName , email , password } = body;
+        const { firstName , lastName , email , password , role } = body;
 
         const isExistUser = await prisma.user.findFirst({
             where : {

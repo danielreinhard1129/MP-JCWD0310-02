@@ -3,15 +3,18 @@ import { User } from '@/app/types/user.type';
 import { AxiosError } from 'axios';
 import { useRouter } from 'next/navigation';
 
-interface RegisterArg
-  extends Pick<User, 'firstName' | 'lastName' | 'email' | 'referralCode'> {}
+interface RegisterOrganizerArg
+  extends Pick<
+    User,
+    'firstName' | 'lastName' | 'email' | 'referralCode' | 'role'
+  > {}
 
-const useRegister = () => {
+const useRegisterOrganizer = () => {
   const router = useRouter();
 
-  const register = async (payload: RegisterArg) => {
+  const register = async (payload: RegisterOrganizerArg) => {
     try {
-      await axiosInstance.post('/auth/register', payload);
+      await axiosInstance.post('/auth/register-organizer', payload);
       router.push('/login');
     } catch (err) {
       if (err instanceof AxiosError) {
@@ -22,4 +25,4 @@ const useRegister = () => {
   return { register };
 };
 
-export default useRegister;
+export default useRegisterOrganizer;

@@ -8,24 +8,24 @@ datasource db {
 }
 
 model User {
-  id            Int      @id @default(autoincrement())
+  id            Int       @id @default(autoincrement())
   firstName     String
   lastName      String
-  email         String   @unique
+  email         String    @unique
   password      String
-  points        Int @default(0)
+  points        Int       @default(0)
   pointsExpired DateTime?
-  referralCode  String   @unique
-  role          String  @default("client")
-  isDeleted     Boolean? @default(false)
-  isVerified    Boolean? @default(false)
-  createdAt     DateTime @default(now())
+  referralCode  String    @unique
+  role          String    @default("client")
+  isDeleted     Boolean?  @default(false)
+  isVerified    Boolean?  @default(false)
+  createdAt     DateTime  @default(now())
   updateAt      DateTime? @updatedAt
 
   pictureId String?
 
   userReward   UserReward[]
-  userReferral ReferralHistory?  @relation("Referral_toUser")
+  userReferral ReferralHistory[]  @relation("Referral_toUser")
   userReferred ReferralHistory[] @relation("Referred_toUser")
   voucher      Voucher[]
   userVoucher  UserVoucher[]
@@ -39,7 +39,6 @@ model User {
 model UserReward {
   id        Int      @id @default(autoincrement())
   isUsed    Boolean
-  expiredAt DateTime
   createdAt DateTime @default(now())
   updateAt  DateTime @updatedAt
 
@@ -74,8 +73,8 @@ model ReferralHistory {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
 
-  referralId Int? @unique
-  referredId Int? @unique
+  referralId Int?
+  referredId Int?
 
   userReferralId User? @relation("Referral_toUser", references: [id], fields: [referralId])
   userReferredId User? @relation("Referred_toUser", references: [id], fields: [referredId])
