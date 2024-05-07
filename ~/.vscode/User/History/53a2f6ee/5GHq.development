@@ -1,0 +1,7 @@
+NODE_ENV=development
+PORT=8000
+DATABASE_URL="mysql://root:s4d4mH4CK@localhost:3306/blog-nextjs14"
+JWT_SECRET_KEY=kimchaewon
+NEXT_BASE_URL=http://localhost:3000
+GMAIL_EMAIL=testpwdk23@gmail.com
+GMAIL_APP_PASSWORD=vjnp dysg thhp ibuz

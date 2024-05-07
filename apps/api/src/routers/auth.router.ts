@@ -1,6 +1,4 @@
 import { AuthController } from "@/controllers/auth.controller";
-import { loginService } from "@/services/auth/login.service";
-import { registerService } from "@/services/auth/register.service";
 import { verifyToken } from "@/utils/jwt";
 import { Router } from "express";
 
@@ -11,12 +9,16 @@ export class AuthRouter {
     constructor () {
         this.router = Router();
         this.authController = new AuthController();
+        this.initializeRoutes();
     }
 
     private initializeRoutes():void {
-        this.router.post('/login' , loginService);
-        this.router.post('/register' , registerService);
-        // this.router.post('/keep-login' , verifyToken );
+        this.router.get("/" , (req , res , next)=>{
+            res.send({message :"oke"}).status(200);
+        });
+        this.router.post('/login' , this.authController.loginController);
+        this.router.post('/register' , this.authController.registerController);
+        this.router.post('/keep-login' , verifyToken , this.authController.keepLoginController );
         // this.router.post('/forgot-password' , verifyToken );
     }
 

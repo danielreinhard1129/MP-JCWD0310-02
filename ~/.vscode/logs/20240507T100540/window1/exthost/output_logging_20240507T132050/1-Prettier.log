@@ -1,0 +1,945 @@
+["INFO" - 1:20:51 PM] Extension Name: esbenp.prettier-vscode.
+["INFO" - 1:20:51 PM] Extension Version: 10.4.0.
+["INFO" - 1:21:25 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 1:21:30 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 1:21:32 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 1:21:33 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 1:21:35 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 1:21:36 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 1:22:07 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 1:33:07 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 1:34:35 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 1:36:53 PM] Formatting file:///home/sdhz/Desktop/Purwadhika/blog-next14/apps/api/src/services/blog/create-blog.service.ts
+["INFO" - 1:36:53 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 1:36:53 PM] PrettierInstance:
+{
+  "modulePath": "/home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/index.cjs",
+  "importResolver": {},
+  "callMethodResolvers": {},
+  "currentCallMethodId": 8,
+  "version": "3.2.5"
+}
+["INFO" - 1:36:53 PM] Using ignore file (if present) at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierignore
+["INFO" - 1:36:53 PM] File Info:
+{
+  "ignored": false,
+  "inferredParser": "typescript"
+}
+["INFO" - 1:36:53 PM] Detected local configuration (i.e. .prettierrc or .editorconfig), VS Code configuration will not be used
+["INFO" - 1:36:53 PM] Prettier Options:
+{
+  "filepath": "/home/sdhz/Desktop/Purwadhika/blog-next14/apps/api/src/services/blog/create-blog.service.ts",
+  "parser": "typescript",
+  "singleQuote": true,
+  "trailingComma": "all"
+}
+["INFO" - 1:36:53 PM] Formatting completed in 139ms.
+["INFO" - 1:37:10 PM] Formatting file:///home/sdhz/Desktop/Purwadhika/blog-next14/apps/api/src/services/blog/create-blog.service.ts
+["INFO" - 1:37:10 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 1:37:10 PM] PrettierInstance:
+{
+  "modulePath": "/home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/index.cjs",
+  "importResolver": {},
+  "callMethodResolvers": {},
+  "currentCallMethodId": 12,
+  "version": "3.2.5"
+}
+["INFO" - 1:37:10 PM] Using ignore file (if present) at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierignore
+["INFO" - 1:37:10 PM] File Info:
+{
+  "ignored": false,
+  "inferredParser": "typescript"
+}
+["INFO" - 1:37:10 PM] Detected local configuration (i.e. .prettierrc or .editorconfig), VS Code configuration will not be used
+["INFO" - 1:37:10 PM] Prettier Options:
+{
+  "filepath": "/home/sdhz/Desktop/Purwadhika/blog-next14/apps/api/src/services/blog/create-blog.service.ts",
+  "parser": "typescript",
+  "singleQuote": true,
+  "trailingComma": "all"
+}
+["INFO" - 1:37:10 PM] Formatting completed in 8ms.
+["INFO" - 1:40:21 PM] Formatting file:///home/sdhz/Desktop/Purwadhika/blog-next14/apps/api/src/services/blog/create-blog.service.ts
+["INFO" - 1:40:21 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 1:40:21 PM] PrettierInstance:
+{
+  "modulePath": "/home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/index.cjs",
+  "importResolver": {},
+  "callMethodResolvers": {},
+  "currentCallMethodId": 16,
+  "version": "3.2.5"
+}
+["INFO" - 1:40:21 PM] Using ignore file (if present) at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierignore
+["INFO" - 1:40:21 PM] File Info:
+{
+  "ignored": false,
+  "inferredParser": "typescript"
+}
+["INFO" - 1:40:21 PM] Detected local configuration (i.e. .prettierrc or .editorconfig), VS Code configuration will not be used
+["INFO" - 1:40:21 PM] Prettier Options:
+{
+  "filepath": "/home/sdhz/Desktop/Purwadhika/blog-next14/apps/api/src/services/blog/create-blog.service.ts",
+  "parser": "typescript",
+  "singleQuote": true,
+  "trailingComma": "all"
+}
+["INFO" - 1:40:21 PM] Formatting completed in 24ms.
+["INFO" - 1:42:27 PM] Formatting file:///home/sdhz/Desktop/Purwadhika/blog-next14/apps/api/src/services/blog/create-blog.service.ts
+["INFO" - 1:42:27 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 1:42:27 PM] PrettierInstance:
+{
+  "modulePath": "/home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/index.cjs",
+  "importResolver": {},
+  "callMethodResolvers": {},
+  "currentCallMethodId": 20,
+  "version": "3.2.5"
+}
+["INFO" - 1:42:27 PM] Using ignore file (if present) at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierignore
+["INFO" - 1:42:27 PM] File Info:
+{
+  "ignored": false,
+  "inferredParser": "typescript"
+}
+["INFO" - 1:42:27 PM] Detected local configuration (i.e. .prettierrc or .editorconfig), VS Code configuration will not be used
+["INFO" - 1:42:27 PM] Prettier Options:
+{
+  "filepath": "/home/sdhz/Desktop/Purwadhika/blog-next14/apps/api/src/services/blog/create-blog.service.ts",
+  "parser": "typescript",
+  "singleQuote": true,
+  "trailingComma": "all"
+}
+["INFO" - 1:42:27 PM] Formatting completed in 15ms.
+["INFO" - 1:44:47 PM] Formatting file:///home/sdhz/Desktop/Purwadhika/blog-next14/apps/api/src/services/blog/create-blog.service.ts
+["INFO" - 1:44:47 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 1:44:47 PM] PrettierInstance:
+{
+  "modulePath": "/home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/index.cjs",
+  "importResolver": {},
+  "callMethodResolvers": {},
+  "currentCallMethodId": 24,
+  "version": "3.2.5"
+}
+["INFO" - 1:44:47 PM] Using ignore file (if present) at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierignore
+["INFO" - 1:44:47 PM] File Info:
+{
+  "ignored": false,
+  "inferredParser": "typescript"
+}
+["INFO" - 1:44:47 PM] Detected local configuration (i.e. .prettierrc or .editorconfig), VS Code configuration will not be used
+["INFO" - 1:44:47 PM] Prettier Options:
+{
+  "filepath": "/home/sdhz/Desktop/Purwadhika/blog-next14/apps/api/src/services/blog/create-blog.service.ts",
+  "parser": "typescript",
+  "singleQuote": true,
+  "trailingComma": "all"
+}
+["INFO" - 1:44:47 PM] Formatting completed in 12ms.
+["INFO" - 1:45:41 PM] Formatting file:///home/sdhz/Desktop/Purwadhika/blog-next14/apps/api/src/services/blog/create-blog.service.ts
+["INFO" - 1:45:41 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 1:45:41 PM] PrettierInstance:
+{
+  "modulePath": "/home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/index.cjs",
+  "importResolver": {},
+  "callMethodResolvers": {},
+  "currentCallMethodId": 28,
+  "version": "3.2.5"
+}
+["INFO" - 1:45:41 PM] Using ignore file (if present) at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierignore
+["INFO" - 1:45:41 PM] File Info:
+{
+  "ignored": false,
+  "inferredParser": "typescript"
+}
+["INFO" - 1:45:41 PM] Detected local configuration (i.e. .prettierrc or .editorconfig), VS Code configuration will not be used
+["INFO" - 1:45:41 PM] Prettier Options:
+{
+  "filepath": "/home/sdhz/Desktop/Purwadhika/blog-next14/apps/api/src/services/blog/create-blog.service.ts",
+  "parser": "typescript",
+  "singleQuote": true,
+  "trailingComma": "all"
+}
+["INFO" - 1:45:41 PM] Formatting completed in 18ms.
+["INFO" - 1:46:10 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 1:46:19 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 1:46:51 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 1:46:53 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 1:50:35 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 1:53:59 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 1:54:01 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 1:54:12 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 1:54:14 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 1:56:21 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 1:56:24 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 1:56:43 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 1:56:48 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 1:56:49 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 1:56:52 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 1:57:40 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 1:57:45 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 1:57:46 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 1:59:20 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 1:59:24 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 2:01:07 PM] Formatting file:///home/sdhz/Desktop/Purwadhika/blog-next14/apps/api/src/controllers/blog.controller.ts
+["INFO" - 2:01:07 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 2:01:07 PM] PrettierInstance:
+{
+  "modulePath": "/home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/index.cjs",
+  "importResolver": {},
+  "callMethodResolvers": {},
+  "currentCallMethodId": 92,
+  "version": "3.2.5"
+}
+["INFO" - 2:01:07 PM] Using ignore file (if present) at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierignore
+["INFO" - 2:01:07 PM] File Info:
+{
+  "ignored": false,
+  "inferredParser": "typescript"
+}
+["INFO" - 2:01:07 PM] Detected local configuration (i.e. .prettierrc or .editorconfig), VS Code configuration will not be used
+["INFO" - 2:01:07 PM] Prettier Options:
+{
+  "filepath": "/home/sdhz/Desktop/Purwadhika/blog-next14/apps/api/src/controllers/blog.controller.ts",
+  "parser": "typescript",
+  "singleQuote": true,
+  "trailingComma": "all"
+}
+["INFO" - 2:01:07 PM] Formatting completed in 23ms.
+["INFO" - 2:01:45 PM] Formatting file:///home/sdhz/Desktop/Purwadhika/blog-next14/apps/api/src/controllers/blog.controller.ts
+["INFO" - 2:01:45 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 2:01:45 PM] PrettierInstance:
+{
+  "modulePath": "/home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/index.cjs",
+  "importResolver": {},
+  "callMethodResolvers": {},
+  "currentCallMethodId": 96,
+  "version": "3.2.5"
+}
+["INFO" - 2:01:45 PM] Using ignore file (if present) at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierignore
+["INFO" - 2:01:45 PM] File Info:
+{
+  "ignored": false,
+  "inferredParser": "typescript"
+}
+["INFO" - 2:01:45 PM] Detected local configuration (i.e. .prettierrc or .editorconfig), VS Code configuration will not be used
+["INFO" - 2:01:45 PM] Prettier Options:
+{
+  "filepath": "/home/sdhz/Desktop/Purwadhika/blog-next14/apps/api/src/controllers/blog.controller.ts",
+  "parser": "typescript",
+  "singleQuote": true,
+  "trailingComma": "all"
+}
+["INFO" - 2:01:45 PM] Formatting completed in 9ms.
+["INFO" - 2:02:59 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 2:03:01 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 2:03:03 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 2:04:07 PM] Formatting file:///home/sdhz/Desktop/Purwadhika/blog-next14/apps/api/src/routers/blog.router.ts
+["INFO" - 2:04:07 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 2:04:07 PM] PrettierInstance:
+{
+  "modulePath": "/home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/index.cjs",
+  "importResolver": {},
+  "callMethodResolvers": {},
+  "currentCallMethodId": 109,
+  "version": "3.2.5"
+}
+["INFO" - 2:04:07 PM] Using ignore file (if present) at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierignore
+["INFO" - 2:04:07 PM] File Info:
+{
+  "ignored": false,
+  "inferredParser": "typescript"
+}
+["INFO" - 2:04:07 PM] Detected local configuration (i.e. .prettierrc or .editorconfig), VS Code configuration will not be used
+["INFO" - 2:04:07 PM] Prettier Options:
+{
+  "filepath": "/home/sdhz/Desktop/Purwadhika/blog-next14/apps/api/src/routers/blog.router.ts",
+  "parser": "typescript",
+  "singleQuote": true,
+  "trailingComma": "all"
+}
+["INFO" - 2:04:07 PM] Formatting completed in 11ms.
+["INFO" - 2:59:00 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 3:04:03 PM] Formatting file:///home/sdhz/Desktop/Purwadhika/blog-next14/apps/web/src/components/ui/RichTextEditor.tsx
+["INFO" - 3:04:03 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 3:04:03 PM] PrettierInstance:
+{
+  "modulePath": "/home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/index.cjs",
+  "importResolver": {},
+  "callMethodResolvers": {},
+  "currentCallMethodId": 116,
+  "version": "3.2.5"
+}
+["INFO" - 3:04:03 PM] Using ignore file (if present) at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierignore
+["INFO" - 3:04:03 PM] File Info:
+{
+  "ignored": false,
+  "inferredParser": "typescript"
+}
+["INFO" - 3:04:03 PM] Detected local configuration (i.e. .prettierrc or .editorconfig), VS Code configuration will not be used
+["INFO" - 3:04:03 PM] Prettier Options:
+{
+  "filepath": "/home/sdhz/Desktop/Purwadhika/blog-next14/apps/web/src/components/ui/RichTextEditor.tsx",
+  "parser": "typescript",
+  "singleQuote": true,
+  "trailingComma": "all"
+}
+["ERROR" - 3:04:03 PM] Error formatting document.
+["ERROR" - 3:04:03 PM] Unterminated string literal. (44:3)
+  42 |         </div>
+  43 |       )
+> 44 | };
+     |   ^
+SyntaxError: Unterminated string literal. (44:3)
+  42 |         </div>
+  43 |       )
+> 44 | };
+     |   ^
+    at Kq (file:///home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/plugins/typescript.mjs:23:498)
+    at xz (file:///home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/plugins/typescript.mjs:25:794)
+    at Object.Cz [as parse] (file:///home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/plugins/typescript.mjs:25:1194)
+    at parse4 (file:///home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/index.mjs:22117:24)
+    at async coreFormat (file:///home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/index.mjs:22607:7)
+    at async formatWithCursor (file:///home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/index.mjs:22809:14)
+    at async Module.format2 (file:///home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/index.mjs:24194:25)
+["INFO" - 3:04:03 PM] Formatting completed in 12ms.
+["INFO" - 3:04:05 PM] Formatting file:///home/sdhz/Desktop/Purwadhika/blog-next14/apps/web/src/components/ui/RichTextEditor.tsx
+["INFO" - 3:04:05 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 3:04:05 PM] PrettierInstance:
+{
+  "modulePath": "/home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/index.cjs",
+  "importResolver": {},
+  "callMethodResolvers": {},
+  "currentCallMethodId": 120,
+  "version": "3.2.5"
+}
+["INFO" - 3:04:05 PM] Using ignore file (if present) at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierignore
+["INFO" - 3:04:05 PM] File Info:
+{
+  "ignored": false,
+  "inferredParser": "typescript"
+}
+["INFO" - 3:04:05 PM] Detected local configuration (i.e. .prettierrc or .editorconfig), VS Code configuration will not be used
+["INFO" - 3:04:05 PM] Prettier Options:
+{
+  "filepath": "/home/sdhz/Desktop/Purwadhika/blog-next14/apps/web/src/components/ui/RichTextEditor.tsx",
+  "parser": "typescript",
+  "singleQuote": true,
+  "trailingComma": "all"
+}
+["ERROR" - 3:04:05 PM] Error formatting document.
+["ERROR" - 3:04:05 PM] Unterminated string literal. (44:3)
+  42 |         </div>
+  43 |       )
+> 44 | };
+     |   ^
+SyntaxError: Unterminated string literal. (44:3)
+  42 |         </div>
+  43 |       )
+> 44 | };
+     |   ^
+    at Kq (file:///home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/plugins/typescript.mjs:23:498)
+    at xz (file:///home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/plugins/typescript.mjs:25:794)
+    at Object.Cz [as parse] (file:///home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/plugins/typescript.mjs:25:1194)
+    at parse4 (file:///home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/index.mjs:22117:24)
+    at async coreFormat (file:///home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/index.mjs:22607:7)
+    at async formatWithCursor (file:///home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/index.mjs:22809:14)
+    at async Module.format2 (file:///home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/index.mjs:24194:25)
+["INFO" - 3:04:05 PM] Formatting completed in 16ms.
+["INFO" - 3:04:12 PM] Formatting file:///home/sdhz/Desktop/Purwadhika/blog-next14/apps/web/src/components/ui/RichTextEditor.tsx
+["INFO" - 3:04:12 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 3:04:12 PM] PrettierInstance:
+{
+  "modulePath": "/home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/index.cjs",
+  "importResolver": {},
+  "callMethodResolvers": {},
+  "currentCallMethodId": 124,
+  "version": "3.2.5"
+}
+["INFO" - 3:04:12 PM] Using ignore file (if present) at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierignore
+["INFO" - 3:04:12 PM] File Info:
+{
+  "ignored": false,
+  "inferredParser": "typescript"
+}
+["INFO" - 3:04:12 PM] Detected local configuration (i.e. .prettierrc or .editorconfig), VS Code configuration will not be used
+["INFO" - 3:04:12 PM] Prettier Options:
+{
+  "filepath": "/home/sdhz/Desktop/Purwadhika/blog-next14/apps/web/src/components/ui/RichTextEditor.tsx",
+  "parser": "typescript",
+  "singleQuote": true,
+  "trailingComma": "all"
+}
+["INFO" - 3:04:12 PM] Formatting completed in 17ms.
+["INFO" - 3:06:19 PM] Formatting file:///home/sdhz/Desktop/Purwadhika/blog-next14/apps/web/src/components/ui/RichTextEditor.tsx
+["INFO" - 3:06:19 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 3:06:19 PM] PrettierInstance:
+{
+  "modulePath": "/home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/index.cjs",
+  "importResolver": {},
+  "callMethodResolvers": {},
+  "currentCallMethodId": 128,
+  "version": "3.2.5"
+}
+["INFO" - 3:06:19 PM] Using ignore file (if present) at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierignore
+["INFO" - 3:06:19 PM] File Info:
+{
+  "ignored": false,
+  "inferredParser": "typescript"
+}
+["INFO" - 3:06:19 PM] Detected local configuration (i.e. .prettierrc or .editorconfig), VS Code configuration will not be used
+["INFO" - 3:06:19 PM] Prettier Options:
+{
+  "filepath": "/home/sdhz/Desktop/Purwadhika/blog-next14/apps/web/src/components/ui/RichTextEditor.tsx",
+  "parser": "typescript",
+  "singleQuote": true,
+  "trailingComma": "all"
+}
+["INFO" - 3:06:19 PM] Formatting completed in 10ms.
+["INFO" - 3:06:34 PM] Formatting file:///home/sdhz/Desktop/Purwadhika/blog-next14/apps/web/src/components/ui/RichTextEditor.tsx
+["INFO" - 3:06:34 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 3:06:34 PM] PrettierInstance:
+{
+  "modulePath": "/home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/index.cjs",
+  "importResolver": {},
+  "callMethodResolvers": {},
+  "currentCallMethodId": 132,
+  "version": "3.2.5"
+}
+["INFO" - 3:06:34 PM] Using ignore file (if present) at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierignore
+["INFO" - 3:06:34 PM] File Info:
+{
+  "ignored": false,
+  "inferredParser": "typescript"
+}
+["INFO" - 3:06:34 PM] Detected local configuration (i.e. .prettierrc or .editorconfig), VS Code configuration will not be used
+["INFO" - 3:06:34 PM] Prettier Options:
+{
+  "filepath": "/home/sdhz/Desktop/Purwadhika/blog-next14/apps/web/src/components/ui/RichTextEditor.tsx",
+  "parser": "typescript",
+  "singleQuote": true,
+  "trailingComma": "all"
+}
+["INFO" - 3:06:34 PM] Formatting completed in 18ms.
+["INFO" - 3:09:37 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 3:09:38 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 3:09:39 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 3:10:29 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 3:13:02 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 3:13:05 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 3:13:16 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 3:13:18 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 3:13:19 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 3:13:28 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 3:13:32 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 3:13:49 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 3:16:37 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 3:16:55 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 3:17:17 PM] Formatting file:///home/sdhz/Desktop/Purwadhika/blog-next14/apps/web/src/app/write/page.tsx
+["INFO" - 3:17:17 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 3:17:17 PM] PrettierInstance:
+{
+  "modulePath": "/home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/index.cjs",
+  "importResolver": {},
+  "callMethodResolvers": {},
+  "currentCallMethodId": 41,
+  "version": "3.2.5"
+}
+["INFO" - 3:17:17 PM] Using ignore file (if present) at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierignore
+["INFO" - 3:17:17 PM] File Info:
+{
+  "ignored": false,
+  "inferredParser": "typescript"
+}
+["INFO" - 3:17:17 PM] Detected local configuration (i.e. .prettierrc or .editorconfig), VS Code configuration will not be used
+["INFO" - 3:17:17 PM] Prettier Options:
+{
+  "filepath": "/home/sdhz/Desktop/Purwadhika/blog-next14/apps/web/src/app/write/page.tsx",
+  "parser": "typescript",
+  "singleQuote": true,
+  "trailingComma": "all"
+}
+["INFO" - 3:17:17 PM] Formatting completed in 9ms.
+["INFO" - 3:17:33 PM] Formatting file:///home/sdhz/Desktop/Purwadhika/blog-next14/apps/web/src/app/write/page.tsx
+["INFO" - 3:17:33 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 3:17:33 PM] PrettierInstance:
+{
+  "modulePath": "/home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/index.cjs",
+  "importResolver": {},
+  "callMethodResolvers": {},
+  "currentCallMethodId": 45,
+  "version": "3.2.5"
+}
+["INFO" - 3:17:33 PM] Using ignore file (if present) at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierignore
+["INFO" - 3:17:33 PM] File Info:
+{
+  "ignored": false,
+  "inferredParser": "typescript"
+}
+["INFO" - 3:17:33 PM] Detected local configuration (i.e. .prettierrc or .editorconfig), VS Code configuration will not be used
+["INFO" - 3:17:33 PM] Prettier Options:
+{
+  "filepath": "/home/sdhz/Desktop/Purwadhika/blog-next14/apps/web/src/app/write/page.tsx",
+  "parser": "typescript",
+  "singleQuote": true,
+  "trailingComma": "all"
+}
+["INFO" - 3:17:33 PM] Formatting completed in 16ms.
+["INFO" - 3:19:57 PM] Formatting file:///home/sdhz/Desktop/Purwadhika/blog-next14/apps/web/src/app/write/page.tsx
+["INFO" - 3:19:57 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 3:19:57 PM] PrettierInstance:
+{
+  "modulePath": "/home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/index.cjs",
+  "importResolver": {},
+  "callMethodResolvers": {},
+  "currentCallMethodId": 49,
+  "version": "3.2.5"
+}
+["INFO" - 3:19:57 PM] Using ignore file (if present) at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierignore
+["INFO" - 3:19:57 PM] File Info:
+{
+  "ignored": false,
+  "inferredParser": "typescript"
+}
+["INFO" - 3:19:57 PM] Detected local configuration (i.e. .prettierrc or .editorconfig), VS Code configuration will not be used
+["INFO" - 3:19:57 PM] Prettier Options:
+{
+  "filepath": "/home/sdhz/Desktop/Purwadhika/blog-next14/apps/web/src/app/write/page.tsx",
+  "parser": "typescript",
+  "singleQuote": true,
+  "trailingComma": "all"
+}
+["INFO" - 3:19:57 PM] Formatting completed in 8ms.
+["INFO" - 3:20:34 PM] Formatting file:///home/sdhz/Desktop/Purwadhika/blog-next14/apps/web/src/app/write/page.tsx
+["INFO" - 3:20:34 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 3:20:34 PM] PrettierInstance:
+{
+  "modulePath": "/home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/index.cjs",
+  "importResolver": {},
+  "callMethodResolvers": {},
+  "currentCallMethodId": 53,
+  "version": "3.2.5"
+}
+["INFO" - 3:20:34 PM] Using ignore file (if present) at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierignore
+["INFO" - 3:20:34 PM] File Info:
+{
+  "ignored": false,
+  "inferredParser": "typescript"
+}
+["INFO" - 3:20:34 PM] Detected local configuration (i.e. .prettierrc or .editorconfig), VS Code configuration will not be used
+["INFO" - 3:20:34 PM] Prettier Options:
+{
+  "filepath": "/home/sdhz/Desktop/Purwadhika/blog-next14/apps/web/src/app/write/page.tsx",
+  "parser": "typescript",
+  "singleQuote": true,
+  "trailingComma": "all"
+}
+["INFO" - 3:20:34 PM] Formatting completed in 6ms.
+["INFO" - 3:21:08 PM] Formatting file:///home/sdhz/Desktop/Purwadhika/blog-next14/apps/web/src/app/write/page.tsx
+["INFO" - 3:21:08 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 3:21:08 PM] PrettierInstance:
+{
+  "modulePath": "/home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/index.cjs",
+  "importResolver": {},
+  "callMethodResolvers": {},
+  "currentCallMethodId": 57,
+  "version": "3.2.5"
+}
+["INFO" - 3:21:08 PM] Using ignore file (if present) at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierignore
+["INFO" - 3:21:08 PM] File Info:
+{
+  "ignored": false,
+  "inferredParser": "typescript"
+}
+["INFO" - 3:21:08 PM] Detected local configuration (i.e. .prettierrc or .editorconfig), VS Code configuration will not be used
+["INFO" - 3:21:08 PM] Prettier Options:
+{
+  "filepath": "/home/sdhz/Desktop/Purwadhika/blog-next14/apps/web/src/app/write/page.tsx",
+  "parser": "typescript",
+  "singleQuote": true,
+  "trailingComma": "all"
+}
+["INFO" - 3:21:08 PM] Formatting completed in 9ms.
+["INFO" - 3:23:23 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 3:29:53 PM] Formatting file:///home/sdhz/Desktop/Purwadhika/blog-next14/apps/web/src/components/ui/DropZone.tsx
+["INFO" - 3:29:53 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 3:29:53 PM] PrettierInstance:
+{
+  "modulePath": "/home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/index.cjs",
+  "importResolver": {},
+  "callMethodResolvers": {},
+  "currentCallMethodId": 64,
+  "version": "3.2.5"
+}
+["INFO" - 3:29:53 PM] Using ignore file (if present) at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierignore
+["INFO" - 3:29:53 PM] File Info:
+{
+  "ignored": false,
+  "inferredParser": "typescript"
+}
+["INFO" - 3:29:53 PM] Detected local configuration (i.e. .prettierrc or .editorconfig), VS Code configuration will not be used
+["INFO" - 3:29:53 PM] Prettier Options:
+{
+  "filepath": "/home/sdhz/Desktop/Purwadhika/blog-next14/apps/web/src/components/ui/DropZone.tsx",
+  "parser": "typescript",
+  "singleQuote": true,
+  "trailingComma": "all"
+}
+["INFO" - 3:29:53 PM] Formatting completed in 15ms.
+["INFO" - 3:31:05 PM] Formatting file:///home/sdhz/Desktop/Purwadhika/blog-next14/apps/web/src/components/ui/DropZone.tsx
+["INFO" - 3:31:05 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 3:31:05 PM] PrettierInstance:
+{
+  "modulePath": "/home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/index.cjs",
+  "importResolver": {},
+  "callMethodResolvers": {},
+  "currentCallMethodId": 68,
+  "version": "3.2.5"
+}
+["INFO" - 3:31:05 PM] Using ignore file (if present) at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierignore
+["INFO" - 3:31:05 PM] File Info:
+{
+  "ignored": false,
+  "inferredParser": "typescript"
+}
+["INFO" - 3:31:05 PM] Detected local configuration (i.e. .prettierrc or .editorconfig), VS Code configuration will not be used
+["INFO" - 3:31:05 PM] Prettier Options:
+{
+  "filepath": "/home/sdhz/Desktop/Purwadhika/blog-next14/apps/web/src/components/ui/DropZone.tsx",
+  "parser": "typescript",
+  "singleQuote": true,
+  "trailingComma": "all"
+}
+["INFO" - 3:31:05 PM] Formatting completed in 15ms.
+["INFO" - 3:32:19 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 3:32:35 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 3:32:38 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 3:33:01 PM] Formatting file:///home/sdhz/Desktop/Purwadhika/blog-next14/apps/web/src/app/write/page.tsx
+["INFO" - 3:33:01 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 3:33:01 PM] PrettierInstance:
+{
+  "modulePath": "/home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/index.cjs",
+  "importResolver": {},
+  "callMethodResolvers": {},
+  "currentCallMethodId": 8,
+  "version": "3.2.5"
+}
+["INFO" - 3:33:01 PM] Using ignore file (if present) at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierignore
+["INFO" - 3:33:01 PM] File Info:
+{
+  "ignored": false,
+  "inferredParser": "typescript"
+}
+["INFO" - 3:33:01 PM] Detected local configuration (i.e. .prettierrc or .editorconfig), VS Code configuration will not be used
+["INFO" - 3:33:01 PM] Prettier Options:
+{
+  "filepath": "/home/sdhz/Desktop/Purwadhika/blog-next14/apps/web/src/app/write/page.tsx",
+  "parser": "typescript",
+  "singleQuote": true,
+  "trailingComma": "all"
+}
+["INFO" - 3:33:01 PM] Formatting completed in 15ms.
+["INFO" - 3:33:52 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 3:34:36 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 3:34:37 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 3:34:38 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 3:34:42 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 3:34:59 PM] Formatting file:///home/sdhz/Desktop/Purwadhika/blog-next14/apps/web/src/app/write/page.tsx
+["INFO" - 3:34:59 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 3:34:59 PM] PrettierInstance:
+{
+  "modulePath": "/home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/index.cjs",
+  "importResolver": {},
+  "callMethodResolvers": {},
+  "currentCallMethodId": 27,
+  "version": "3.2.5"
+}
+["INFO" - 3:34:59 PM] Using ignore file (if present) at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierignore
+["INFO" - 3:34:59 PM] File Info:
+{
+  "ignored": false,
+  "inferredParser": "typescript"
+}
+["INFO" - 3:34:59 PM] Detected local configuration (i.e. .prettierrc or .editorconfig), VS Code configuration will not be used
+["INFO" - 3:34:59 PM] Prettier Options:
+{
+  "filepath": "/home/sdhz/Desktop/Purwadhika/blog-next14/apps/web/src/app/write/page.tsx",
+  "parser": "typescript",
+  "singleQuote": true,
+  "trailingComma": "all"
+}
+["INFO" - 3:34:59 PM] Formatting completed in 16ms.
+["INFO" - 3:40:00 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 3:43:51 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 3:47:06 PM] Formatting file:///home/sdhz/Desktop/Purwadhika/blog-next14/apps/web/src/components/ui/PreviewImage.tsx
+["INFO" - 3:47:06 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 3:47:06 PM] PrettierInstance:
+{
+  "modulePath": "/home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/index.cjs",
+  "importResolver": {},
+  "callMethodResolvers": {},
+  "currentCallMethodId": 37,
+  "version": "3.2.5"
+}
+["INFO" - 3:47:06 PM] Using ignore file (if present) at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierignore
+["INFO" - 3:47:06 PM] File Info:
+{
+  "ignored": false,
+  "inferredParser": "typescript"
+}
+["INFO" - 3:47:06 PM] Detected local configuration (i.e. .prettierrc or .editorconfig), VS Code configuration will not be used
+["INFO" - 3:47:06 PM] Prettier Options:
+{
+  "filepath": "/home/sdhz/Desktop/Purwadhika/blog-next14/apps/web/src/components/ui/PreviewImage.tsx",
+  "parser": "typescript",
+  "singleQuote": true,
+  "trailingComma": "all"
+}
+["INFO" - 3:47:06 PM] Formatting completed in 8ms.
+["INFO" - 3:47:51 PM] Formatting file:///home/sdhz/Desktop/Purwadhika/blog-next14/apps/web/src/components/ui/PreviewImage.tsx
+["INFO" - 3:47:51 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 3:47:51 PM] PrettierInstance:
+{
+  "modulePath": "/home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/index.cjs",
+  "importResolver": {},
+  "callMethodResolvers": {},
+  "currentCallMethodId": 41,
+  "version": "3.2.5"
+}
+["INFO" - 3:47:51 PM] Using ignore file (if present) at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierignore
+["INFO" - 3:47:51 PM] File Info:
+{
+  "ignored": false,
+  "inferredParser": "typescript"
+}
+["INFO" - 3:47:51 PM] Detected local configuration (i.e. .prettierrc or .editorconfig), VS Code configuration will not be used
+["INFO" - 3:47:51 PM] Prettier Options:
+{
+  "filepath": "/home/sdhz/Desktop/Purwadhika/blog-next14/apps/web/src/components/ui/PreviewImage.tsx",
+  "parser": "typescript",
+  "singleQuote": true,
+  "trailingComma": "all"
+}
+["INFO" - 3:47:51 PM] Formatting completed in 13ms.
+["INFO" - 3:47:57 PM] Formatting file:///home/sdhz/Desktop/Purwadhika/blog-next14/apps/web/src/components/ui/PreviewImage.tsx
+["INFO" - 3:47:57 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 3:47:57 PM] PrettierInstance:
+{
+  "modulePath": "/home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/index.cjs",
+  "importResolver": {},
+  "callMethodResolvers": {},
+  "currentCallMethodId": 45,
+  "version": "3.2.5"
+}
+["INFO" - 3:47:57 PM] Using ignore file (if present) at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierignore
+["INFO" - 3:47:57 PM] File Info:
+{
+  "ignored": false,
+  "inferredParser": "typescript"
+}
+["INFO" - 3:47:57 PM] Detected local configuration (i.e. .prettierrc or .editorconfig), VS Code configuration will not be used
+["INFO" - 3:47:57 PM] Prettier Options:
+{
+  "filepath": "/home/sdhz/Desktop/Purwadhika/blog-next14/apps/web/src/components/ui/PreviewImage.tsx",
+  "parser": "typescript",
+  "singleQuote": true,
+  "trailingComma": "all"
+}
+["INFO" - 3:47:57 PM] Formatting completed in 12ms.
+["INFO" - 3:53:21 PM] Formatting file:///home/sdhz/Desktop/Purwadhika/blog-next14/apps/web/src/components/ui/PreviewImage.tsx
+["INFO" - 3:53:21 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 3:53:21 PM] PrettierInstance:
+{
+  "modulePath": "/home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/index.cjs",
+  "importResolver": {},
+  "callMethodResolvers": {},
+  "currentCallMethodId": 49,
+  "version": "3.2.5"
+}
+["INFO" - 3:53:21 PM] Using ignore file (if present) at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierignore
+["INFO" - 3:53:21 PM] File Info:
+{
+  "ignored": false,
+  "inferredParser": "typescript"
+}
+["INFO" - 3:53:21 PM] Detected local configuration (i.e. .prettierrc or .editorconfig), VS Code configuration will not be used
+["INFO" - 3:53:21 PM] Prettier Options:
+{
+  "filepath": "/home/sdhz/Desktop/Purwadhika/blog-next14/apps/web/src/components/ui/PreviewImage.tsx",
+  "parser": "typescript",
+  "singleQuote": true,
+  "trailingComma": "all"
+}
+["INFO" - 3:53:21 PM] Formatting completed in 17ms.
+["INFO" - 3:54:59 PM] Formatting file:///home/sdhz/Desktop/Purwadhika/blog-next14/apps/web/src/components/ui/PreviewImage.tsx
+["INFO" - 3:54:59 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 3:54:59 PM] PrettierInstance:
+{
+  "modulePath": "/home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/index.cjs",
+  "importResolver": {},
+  "callMethodResolvers": {},
+  "currentCallMethodId": 53,
+  "version": "3.2.5"
+}
+["INFO" - 3:54:59 PM] Using ignore file (if present) at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierignore
+["INFO" - 3:54:59 PM] File Info:
+{
+  "ignored": false,
+  "inferredParser": "typescript"
+}
+["INFO" - 3:54:59 PM] Detected local configuration (i.e. .prettierrc or .editorconfig), VS Code configuration will not be used
+["INFO" - 3:54:59 PM] Prettier Options:
+{
+  "filepath": "/home/sdhz/Desktop/Purwadhika/blog-next14/apps/web/src/components/ui/PreviewImage.tsx",
+  "parser": "typescript",
+  "singleQuote": true,
+  "trailingComma": "all"
+}
+["ERROR" - 3:54:59 PM] Error formatting document.
+["ERROR" - 3:54:59 PM] '}' expected. (40:77)
+  38 |             />
+  39 |             <Button variant="ghost" size="icon" className='absolute'
+> 40 |             onClick={()=>onRemoveImages(index)><Trash2 className='h-6 w-6'/></Button>
+     |                                                                             ^
+  41 |           </div>
+  42 |         );
+  43 |       })}
+SyntaxError: '}' expected. (40:77)
+  38 |             />
+  39 |             <Button variant="ghost" size="icon" className='absolute'
+> 40 |             onClick={()=>onRemoveImages(index)><Trash2 className='h-6 w-6'/></Button>
+     |                                                                             ^
+  41 |           </div>
+  42 |         );
+  43 |       })}
+    at Kq (file:///home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/plugins/typescript.mjs:23:498)
+    at xz (file:///home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/plugins/typescript.mjs:25:794)
+    at Object.Cz [as parse] (file:///home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/plugins/typescript.mjs:25:1194)
+    at parse4 (file:///home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/index.mjs:22117:24)
+    at async coreFormat (file:///home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/index.mjs:22607:7)
+    at async formatWithCursor (file:///home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/index.mjs:22809:14)
+    at async Module.format2 (file:///home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/index.mjs:24194:25)
+["INFO" - 3:54:59 PM] Formatting completed in 17ms.
+["INFO" - 3:55:39 PM] Formatting file:///home/sdhz/Desktop/Purwadhika/blog-next14/apps/web/src/components/ui/PreviewImage.tsx
+["INFO" - 3:55:39 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 3:55:39 PM] PrettierInstance:
+{
+  "modulePath": "/home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/index.cjs",
+  "importResolver": {},
+  "callMethodResolvers": {},
+  "currentCallMethodId": 57,
+  "version": "3.2.5"
+}
+["INFO" - 3:55:39 PM] Using ignore file (if present) at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierignore
+["INFO" - 3:55:39 PM] File Info:
+{
+  "ignored": false,
+  "inferredParser": "typescript"
+}
+["INFO" - 3:55:39 PM] Detected local configuration (i.e. .prettierrc or .editorconfig), VS Code configuration will not be used
+["INFO" - 3:55:39 PM] Prettier Options:
+{
+  "filepath": "/home/sdhz/Desktop/Purwadhika/blog-next14/apps/web/src/components/ui/PreviewImage.tsx",
+  "parser": "typescript",
+  "singleQuote": true,
+  "trailingComma": "all"
+}
+["ERROR" - 3:55:39 PM] Error formatting document.
+["ERROR" - 3:55:39 PM] '}' expected. (40:77)
+  38 |             />
+  39 |             <Button variant="ghost" size="icon" className='absolute'
+> 40 |             onClick={()=>onRemoveImages(index)><Trash2 className='h-6 w-6'/></Button>
+     |                                                                             ^
+  41 |           </div>
+  42 |         );
+  43 |       })}
+SyntaxError: '}' expected. (40:77)
+  38 |             />
+  39 |             <Button variant="ghost" size="icon" className='absolute'
+> 40 |             onClick={()=>onRemoveImages(index)><Trash2 className='h-6 w-6'/></Button>
+     |                                                                             ^
+  41 |           </div>
+  42 |         );
+  43 |       })}
+    at Kq (file:///home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/plugins/typescript.mjs:23:498)
+    at xz (file:///home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/plugins/typescript.mjs:25:794)
+    at Object.Cz [as parse] (file:///home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/plugins/typescript.mjs:25:1194)
+    at parse4 (file:///home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/index.mjs:22117:24)
+    at async coreFormat (file:///home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/index.mjs:22607:7)
+    at async formatWithCursor (file:///home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/index.mjs:22809:14)
+    at async Module.format2 (file:///home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/index.mjs:24194:25)
+["INFO" - 3:55:39 PM] Formatting completed in 10ms.
+["INFO" - 3:55:55 PM] Formatting file:///home/sdhz/Desktop/Purwadhika/blog-next14/apps/web/src/components/ui/PreviewImage.tsx
+["INFO" - 3:55:55 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 3:55:55 PM] PrettierInstance:
+{
+  "modulePath": "/home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/index.cjs",
+  "importResolver": {},
+  "callMethodResolvers": {},
+  "currentCallMethodId": 61,
+  "version": "3.2.5"
+}
+["INFO" - 3:55:55 PM] Using ignore file (if present) at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierignore
+["INFO" - 3:55:55 PM] File Info:
+{
+  "ignored": false,
+  "inferredParser": "typescript"
+}
+["INFO" - 3:55:55 PM] Detected local configuration (i.e. .prettierrc or .editorconfig), VS Code configuration will not be used
+["INFO" - 3:55:55 PM] Prettier Options:
+{
+  "filepath": "/home/sdhz/Desktop/Purwadhika/blog-next14/apps/web/src/components/ui/PreviewImage.tsx",
+  "parser": "typescript",
+  "singleQuote": true,
+  "trailingComma": "all"
+}
+["INFO" - 3:55:55 PM] Formatting completed in 14ms.
+["INFO" - 3:56:38 PM] Formatting file:///home/sdhz/Desktop/Purwadhika/blog-next14/apps/web/src/components/ui/PreviewImage.tsx
+["INFO" - 3:56:38 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 3:56:38 PM] PrettierInstance:
+{
+  "modulePath": "/home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/index.cjs",
+  "importResolver": {},
+  "callMethodResolvers": {},
+  "currentCallMethodId": 65,
+  "version": "3.2.5"
+}
+["INFO" - 3:56:38 PM] Using ignore file (if present) at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierignore
+["INFO" - 3:56:38 PM] File Info:
+{
+  "ignored": false,
+  "inferredParser": "typescript"
+}
+["INFO" - 3:56:38 PM] Detected local configuration (i.e. .prettierrc or .editorconfig), VS Code configuration will not be used
+["INFO" - 3:56:38 PM] Prettier Options:
+{
+  "filepath": "/home/sdhz/Desktop/Purwadhika/blog-next14/apps/web/src/components/ui/PreviewImage.tsx",
+  "parser": "typescript",
+  "singleQuote": true,
+  "trailingComma": "all"
+}
+["INFO" - 3:56:38 PM] Formatting completed in 8ms.
+["INFO" - 3:57:54 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 3:59:13 PM] Formatting file:///home/sdhz/Desktop/Purwadhika/blog-next14/apps/web/src/app/write/page.tsx
+["INFO" - 3:59:13 PM] Using config file at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierrc
+["INFO" - 3:59:13 PM] PrettierInstance:
+{
+  "modulePath": "/home/sdhz/Desktop/Purwadhika/blog-next14/node_modules/prettier/index.cjs",
+  "importResolver": {},
+  "callMethodResolvers": {},
+  "currentCallMethodId": 72,
+  "version": "3.2.5"
+}
+["INFO" - 3:59:13 PM] Using ignore file (if present) at /home/sdhz/Desktop/Purwadhika/blog-next14/.prettierignore
+["INFO" - 3:59:13 PM] File Info:
+{
+  "ignored": false,
+  "inferredParser": "typescript"
+}
+["INFO" - 3:59:13 PM] Detected local configuration (i.e. .prettierrc or .editorconfig), VS Code configuration will not be used
+["INFO" - 3:59:13 PM] Prettier Options:
+{
+  "filepath": "/home/sdhz/Desktop/Purwadhika/blog-next14/apps/web/src/app/write/page.tsx",
+  "parser": "typescript",
+  "singleQuote": true,
+  "trailingComma": "all"
+}
+["INFO" - 3:59:13 PM] Formatting completed in 18ms.
