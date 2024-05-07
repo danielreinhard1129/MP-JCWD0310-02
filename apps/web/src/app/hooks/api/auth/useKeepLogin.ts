@@ -12,15 +12,13 @@ interface KeepLoginResponse {
 }
 
 const useKeepLogin = () => {
-  const router = useRouter();
   const dispatch = useAppDispatch();
 
-  const keepLogin = async (id: number) => {
+  const keepLogin = async () => {
     try {
       const { data } =
         await axiosInstance.post<KeepLoginResponse>('/auth/keep-login');
       dispatch(loginAction(data.data));
-      router.push('/');
     } catch (err) {
       throw err;
     }

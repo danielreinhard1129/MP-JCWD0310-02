@@ -8,17 +8,10 @@ import validationSchema from './validationSchema';
 import useLogin from '../hooks/api/auth/useLogin';
 import { useEffect } from 'react';
 import useKeepLogin from '../hooks/api/auth/useKeepLogin';
+import AuthGuard from '../hoc/AuthGuard';
 
 const Login = () => {
   const { login } = useLogin();
-  const { keepLogin } = useKeepLogin();
-  useEffect(() => {
-    const userId = localStorage.getItem('userId');
-    const token = localStorage.getItem('token');
-    if (token) {
-      keepLogin(Number(userId));
-    }
-  }, []);
   const { values, errors, touched, handleChange, handleBlur, handleSubmit } =
     useFormik({
       initialValues: {
@@ -77,4 +70,4 @@ const Login = () => {
     </main>
   );
 };
-export default Login;
+export default AuthGuard(Login);

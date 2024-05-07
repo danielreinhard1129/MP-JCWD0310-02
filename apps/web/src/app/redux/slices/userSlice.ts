@@ -5,13 +5,14 @@ import { profile } from 'console';
 
 const initialState: Pick<
   User,
-  'id' | 'firstName' | 'profile' | 'lastName' | 'email' | 'detail' | 'role'
+  'id' | "token" | 'firstName' | 'profile' | 'lastName' | 'email' | 'detail' | 'role'
 > = {
-  id: 0,
+  id: null,
   firstName: '',
   lastName: '',
   email: '',
   role: '',
+  token :"",
   profile: '',
   detail: {
     bio: '',
@@ -31,7 +32,8 @@ export const userSlice = createSlice({
       state.profile = action.payload.profile;
     },
     logoutAction: (state) => {
-      state.id = 0;
+      state.id = null;
+      state.role = "";
       state.firstName = '';
       state.lastName = '';
       state.email = '';
