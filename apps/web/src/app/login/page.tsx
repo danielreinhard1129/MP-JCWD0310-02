@@ -6,9 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useFormik } from 'formik';
 import validationSchema from './validationSchema';
 import useLogin from '../hooks/api/auth/useLogin';
-import { useEffect } from 'react';
-import useKeepLogin from '../hooks/api/auth/useKeepLogin';
-import AuthGuard from '../hoc/AuthGuard';
+import {AuthorizationGuard} from '../hoc/AuthGuard';
 
 const Login = () => {
   const { login } = useLogin();
@@ -70,4 +68,4 @@ const Login = () => {
     </main>
   );
 };
-export default AuthGuard(Login);
+export default AuthorizationGuard(Login);

@@ -4,7 +4,7 @@ import RoleGuard from '../hoc/RoleGuard';
 
 const organizerDashboard = () => {
   return (
-    <div>OrganizerDashboard</div>
+    <div></div>
   )
 }
 

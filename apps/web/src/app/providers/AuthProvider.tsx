@@ -1,7 +1,7 @@
 'use client';
 
 import useKeepLogin from '@/app/hooks/api/auth/useKeepLogin';
-import { PropsWithChildren, useEffect, useState } from 'react';
+import { PropsWithChildren, useEffect } from 'react';
 
 export const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const { keepLogin } = useKeepLogin();

@@ -1,20 +1,34 @@
 'use client';
 
 import { useAppSelector } from '@/app/redux/hook';
-import { useRouter } from 'next/navigation';
+import { redirect, useRouter } from 'next/navigation';
 import { useEffect } from 'react';
+import useKeepLogin from '../hooks/api/auth/useKeepLogin';
 
-export default function AuthGuard(Component: any) {
-  return function IsAuthenticated(props: any) {
-    const router = useRouter()
-    const { id } = useAppSelector((state) => state.user);
-    
+export const AuthorizationGuard = (Component: any) => {
+  return function IsAuthorized(props: any) {
+    const router = useRouter();
+    const user = useAppSelector((state) => state.user);
+
     useEffect(() => {
-      if (Boolean(!id)) {
-        router.push('/')
+      if (new Boolean(user.id)) {
+        // router.push('/');
       }
     }, []);
-    return <Component {...props}/>
-
+    return <Component {...props} />;
   };
-}
+};
+
+export const AuthenticationGuard = (Component: any) => {
+  return function IsAuthenticated(props: any) {
+    const router = useRouter();
+    const user = useAppSelector((state) => state.user);
+
+    useEffect(() => {
+      if (new Boolean(user.id)) {
+        // router.push('/');
+      }
+    }, []);
+    return <Component {...props} />;
+  };
+};
