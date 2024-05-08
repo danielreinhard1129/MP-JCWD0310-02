@@ -25,13 +25,13 @@ model User {
   pictureId String?
 
   userReward   UserReward[]
-  userReferral ReferralHistory[]  @relation("Referral_toUser")
+  userReferral ReferralHistory[] @relation("Referral_toUser")
   userReferred ReferralHistory[] @relation("Referred_toUser")
   voucher      Voucher[]
   userVoucher  UserVoucher[]
   review       Review[]
   transaction  Transaction[]
-  event        Event[]
+  Event        Event[]
 
   @@map("user")
 }
@@ -222,18 +222,19 @@ model Discount {
 }
 
 model Event {
-  id          Int      @id @default(autoincrement())
+  id          Int       @id @default(autoincrement())
   title       String
   description String
   price       Int
   limit       Int
   booked      Int
   thumbnail   String
-  startDate   DateTime @default(now())
+  startDate   DateTime  @default(now())
   endDate     DateTime
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime
+  createdAt   DateTime? @default(now())
+  updatedAt   DateTime  @updatedAt
 
+  userId     Int
   locationId Int
 
   review        Review[]
@@ -241,7 +242,7 @@ model Event {
   eventCategory EventCategory[]
   voucher       Voucher[]
   discount      Discount[]
-  user          User[]
+  user          User?           @relation(fields: [userId], references: [id])
 
   location Location @relation(references: [id], fields: [locationId])
 
