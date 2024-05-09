@@ -1,8 +1,11 @@
+import Sidenav from '@/components/Sidenav'
 import React from 'react'
 
 const organizerDashboard = () => {
   return (
-    <div>OrganizerDashboard</div>
+    <main>
+      <Sidenav/>
+    </main>
   )
 }
 
