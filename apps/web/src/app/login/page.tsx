@@ -4,20 +4,21 @@ import Forminput from '@/components/Forminput';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useFormik } from 'formik';
-// import { validationSchema } from './validationSchema';
-// import useLogin from '@/hooks/api/auth/useLogin';
+import validationSchema from './validationSchema';
+import useLogin from '../hooks/api/auth/useLogin';
+import {AuthorizationGuard} from '../hoc/AuthGuard';
 
 const Login = () => {
-    // const { login } = useLogin()
+  const { login } = useLogin();
   const { values, errors, touched, handleChange, handleBlur, handleSubmit } =
     useFormik({
       initialValues: {
         email: '',
         password: '',
       },
-      // validationSchema,
+      validationSchema,
       onSubmit: (values) => {
-        // login(values);
+        login(values);
       },
     });
 
@@ -57,7 +58,9 @@ const Login = () => {
                   handleBlur={handleBlur}
                 />
               </div>
-              <Button className="mt-6 w-full">Login</Button>
+              <Button type="submit" className="mt-6 w-full">
+                Login
+              </Button>
             </form>
           </CardContent>
         </Card>
@@ -65,4 +68,4 @@ const Login = () => {
     </main>
   );
 };
-export default Login;
+export default AuthorizationGuard(Login);

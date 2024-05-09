@@ -25,6 +25,7 @@ export const loginService = async (body: User) => {
     return {
       message: 'Success login into your account',
       data: user,
+      token,
     };
   } catch (error) {
     throw error;

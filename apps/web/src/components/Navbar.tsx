@@ -8,9 +8,9 @@ import { Input } from './ui/input';
 import { SearchIcon } from 'lucide-react';
 
 const Navbar = () => {
-  const router = useRouter();
   const dispatch = useAppDispatch();
-  const { id } = useAppSelector((state) => state.user);
+  const router = useRouter();
+  const { id, role } = useAppSelector((state) => state.user);
 
   const logout = () => {
     localStorage.removeItem('token');
@@ -39,7 +39,13 @@ const Navbar = () => {
           {Boolean(id) ? (
             <div className="flex items-center gap-8">
               <h3 onClick={() => router.push('/')}>Home</h3>
-              <h3 onClick={() => router.push('/event')}>Event</h3>
+              {role == 'organizer' ? (
+                <h3 onClick={() => router.push('/organizer-dashboard')}>
+                  Dashboard
+                </h3>
+              ) : (
+                <h3 onClick={() => router.push('/event')}>Event</h3>
+              )}
               <h3 onClick={() => router.push('/profile')}>Profile</h3>
               <h3 onClick={logout}>Logout</h3>
             </div>

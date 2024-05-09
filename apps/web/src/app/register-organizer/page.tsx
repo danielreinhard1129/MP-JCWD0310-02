@@ -4,11 +4,12 @@ import Forminput from '@/components/Forminput';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useFormik } from 'formik';
-import validationSchema from "./validationSchema"
-import useRegister from '@/app/hooks/api/auth/useRegister';
+import validationSchema from './validationSchema';
+import useRegisterOrganizer from '@/app/hooks/api/auth/useRegister-Organizer';
+import {AuthenticationGuard} from '../hoc/AuthGuard'
 
-const Register = () => {
-  const { register } = useRegister();
+const OrganizerRegister = () => {
+  const { register } = useRegisterOrganizer();
   const formik = useFormik({
     initialValues: {
       firstName: '',
@@ -19,7 +20,7 @@ const Register = () => {
     },
     validationSchema,
     onSubmit: (values) => {
-      register(values);
+      register({ ...values, role: 'organizer' });
     },
   });
 
@@ -29,7 +30,7 @@ const Register = () => {
         <Card className="w-[450px]">
           <CardHeader>
             <CardTitle className="text-center text-3xl text-primary">
-              Welcome to TuneTix
+              Welcome to TuneTix Organizer Registration
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -97,7 +98,8 @@ const Register = () => {
                   value={formik.values.referralCode}
                   error={formik.errors.referralCode}
                   isError={
-                    !!formik.touched.referralCode && !!formik.errors.referralCode
+                    !!formik.touched.referralCode &&
+                    !!formik.errors.referralCode
                   }
                   handleChange={formik.handleChange}
                   handleBlur={formik.handleBlur}
@@ -112,4 +114,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default AuthenticationGuard(OrganizerRegister);
