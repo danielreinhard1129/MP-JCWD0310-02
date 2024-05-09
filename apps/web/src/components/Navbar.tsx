@@ -18,9 +18,9 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="sticky top-0 z-50 bg-indigo-950">
-      <div className="container mx-auto px-10">
-        <div className="flex items-center justify-between py-2 text-yellow-300">
+    <nav className="w-full top-0 z-50 bg-indigo-950">
+      <div className="w-full mx-auto">
+        <div className="flex w-full items-center justify-between px-10 py-2 text-yellow-300">
           <Image
             src="https://drive.google.com/uc?export=view&id=1X-_e7ldgFh1UrI3r6l5GiBQ0hblrM4os"
             alt=""
