@@ -4,6 +4,7 @@ import Forminput from '@/components/Forminput';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useFormik } from 'formik';
+import Link from 'next/link';
 // import { validationSchema } from './validationSchema';
 // import useRegister from '@/hooks/api/auth/useRegister';
 
@@ -28,7 +29,7 @@ const Register = () => {
         <Card className="w-[450px]">
           <CardHeader>
             <CardTitle className="text-center text-3xl text-primary">
-              Welcome to TuneTix
+              Register as Organizer
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -89,6 +90,12 @@ const Register = () => {
                 />
               </div>
               <Button className="mt-6 w-full">Register</Button>
+              <p className="text-xs text-center my-4">
+                Already have an account?{' '}
+                <Link className="text-blue-600" href="/organizer-login">
+                  Login here!
+                </Link>
+              </p>
             </form>
           </CardContent>
         </Card>
