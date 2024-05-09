@@ -1,35 +1,34 @@
 'use client';
 
 import { useAppSelector } from '@/app/redux/hook';
-import { redirect } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { redirect, useRouter } from 'next/navigation';
+import { useEffect } from 'react';
+import useKeepLogin from '../hooks/api/auth/useKeepLogin';
 
-export default function AuthGuard(Component: any) {
-  return function IsAuth(props: any) {
-    const [isLoading, setIsLoading] = useState(true);
-    const { id } = useAppSelector((state) => state.user);
+export const AuthorizationGuard = (Component: any) => {
+  return function IsAuthorized(props: any) {
+    const router = useRouter();
+    const user = useAppSelector((state) => state.user);
 
     useEffect(() => {
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 500);
-    }, []);
-    
-    useEffect(() => {
-      if (!id && !false) {
-        redirect("/login");
+      if (new Boolean(user.id)) {
+        // router.push('/');
       }
-    }, [id,isLoading]);
-
-    if(isLoading|| !id) {
-        return (
-            <h1 className='container flex h-screen justify-center px-4 text-4xl pt-24 font-extrabold'>
-                Loading...
-            </h1>
-        );
-    };
-
-    return <Component {...props}/>
-
+    }, []);
+    return <Component {...props} />;
   };
-}
+};
+
+export const AuthenticationGuard = (Component: any) => {
+  return function IsAuthenticated(props: any) {
+    const router = useRouter();
+    const user = useAppSelector((state) => state.user);
+
+    useEffect(() => {
+      if (new Boolean(user.id)) {
+        // router.push('/');
+      }
+    }, []);
+    return <Component {...props} />;
+  };
+};

@@ -3,7 +3,8 @@ import { User } from '@/app/types/user.type';
 import { AxiosError } from 'axios';
 import { useRouter } from 'next/navigation';
 
-interface RegisterArg extends Pick<User, 'email' | 'password' | 'userName'> {}
+interface RegisterArg
+  extends Pick<User, 'firstName' | 'lastName' | 'email' | 'referralCode'> {}
 
 const useRegister = () => {
   const router = useRouter();

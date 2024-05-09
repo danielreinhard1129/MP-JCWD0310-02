@@ -4,20 +4,22 @@ import Forminput from '@/components/Forminput';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useFormik } from 'formik';
-// import { validationSchema } from './validationSchema';
-// import useRegister from '@/hooks/api/auth/useRegister';
+import validationSchema from "./validationSchema"
+import useRegister from '@/app/hooks/api/auth/useRegister';
 
 const Register = () => {
-//   const { register } = useRegister();
+  const { register } = useRegister();
   const formik = useFormik({
     initialValues: {
-      fullName: '',
+      firstName: '',
+      lastName: '',
       email: '',
       password: '',
+      referralCode: '',
     },
-    // validationSchema,
+    validationSchema,
     onSubmit: (values) => {
-    //   register(values);
+      register(values);
     },
   });
 
@@ -34,14 +36,28 @@ const Register = () => {
             <form onSubmit={formik.handleSubmit}>
               <div className="grid w-full items-center gap-4">
                 <Forminput
-                  name="fullName"
+                  name="firstName"
                   type="text"
-                  label="Full Name"
-                  placeholder="Full Name"
-                  value={formik.values.fullName}
-                  error={formik.errors.fullName}
+                  label="First Name"
+                  placeholder="First Name"
+                  value={formik.values.firstName}
+                  error={formik.errors.firstName}
                   isError={
-                    !!formik.touched.fullName && !!formik.errors.fullName
+                    !!formik.touched.firstName && !!formik.errors.firstName
+                  }
+                  handleChange={formik.handleChange}
+                  handleBlur={formik.handleBlur}
+                />
+
+                <Forminput
+                  name="lastName"
+                  type="text"
+                  label="Last Name"
+                  placeholder="Last Name"
+                  value={formik.values.lastName}
+                  error={formik.errors.lastName}
+                  isError={
+                    !!formik.touched.lastName && !!formik.errors.lastName
                   }
                   handleChange={formik.handleChange}
                   handleBlur={formik.handleBlur}
@@ -68,6 +84,20 @@ const Register = () => {
                   error={formik.errors.password}
                   isError={
                     !!formik.touched.password && !!formik.errors.password
+                  }
+                  handleChange={formik.handleChange}
+                  handleBlur={formik.handleBlur}
+                />
+
+                <Forminput
+                  name="referralCode"
+                  type="text"
+                  label="Referral Code"
+                  placeholder="Referral Code"
+                  value={formik.values.referralCode}
+                  error={formik.errors.referralCode}
+                  isError={
+                    !!formik.touched.referralCode && !!formik.errors.referralCode
                   }
                   handleChange={formik.handleChange}
                   handleBlur={formik.handleBlur}

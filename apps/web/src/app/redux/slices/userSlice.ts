@@ -1,11 +1,22 @@
 import { User } from '@/app/types/user.type';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
+import { profile } from 'console';
 
-const initialState: User = {
-  id: 0,
-  fullName: '',
+const initialState: Pick<
+  User,
+  'id' | "token" | 'firstName' | 'profile' | 'lastName' | 'email' | 'detail' | 'role'
+> = {
+  id: null,
+  firstName: '',
+  lastName: '',
   email: '',
+  role: '',
+  token :"",
+  profile: '',
+  detail: {
+    bio: '',
+  },
 };
 
 export const userSlice = createSlice({
@@ -14,17 +25,26 @@ export const userSlice = createSlice({
   reducers: {
     loginAction: (state, action: PayloadAction<User>) => {
       state.id = action.payload.id;
-      state.fullName = action.payload.fullName;
+      state.role = action.payload.role;
+      state.firstName = action.payload.firstName;
+      state.lastName = action.payload.lastName;
       state.email = action.payload.email;
+      state.profile = action.payload.profile;
     },
     logoutAction: (state) => {
-      state.id = 0;
-      state.fullName = '';
+      state.id = null;
+      state.role = "";
+      state.firstName = '';
+      state.lastName = '';
       state.email = '';
+      state.profile = '';
+    },
+    getUserDetail: (state, action: PayloadAction<User>) => {
+      state.detail = action.payload.detail;
     },
   },
 });
 
-export const { loginAction, logoutAction } = userSlice.actions;
+export const { loginAction, logoutAction, getUserDetail } = userSlice.actions;
 
 export default userSlice.reducer;
