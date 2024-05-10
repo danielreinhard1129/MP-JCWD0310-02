@@ -54,79 +54,136 @@ const organizerDashboard = () => {
       },
     });
   return (
-    <>
-      <div id="sideBar" className="flex h-[100vh]">
-        <Sidebar
-          backgroundColor="#1e1b4b"
-          collapsed={collapes}
-          className="h-[100vh] w-[300px]"
-        >
-          <Menu>
-            <MenuItem
-              icon={<MenuOutlinedIcon />}
-              onClick={() => {
-                setCollapes(!collapes);
-              }}
-              className="text-[#f9fb01] hover:bg-red-500"
-            >
-              {' '}
-              <h2>Admin</h2>
-            </MenuItem>
+    <main className="flex items-center justify-center">
+        <Card className="w-[450px]">
+          <CardHeader>
+            <CardTitle className="text-center text-3xl text-primary">
+              Login
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={handleSubmit}>
+              <div className="grid w-full items-center gap-4">
+                <Forminput
+                  name="userId"
+                  type="text"
+                  label="userId"
+                  placeholder="userId"
+                  value={values.userId}
+                  error={errors.userId}
+                  isError={!!touched.userId && !!errors.userId}
+                  handleChange={handleChange}
+                  handleBlur={handleBlur}
+                />
+                <Forminput
+                  name="title"
+                  type="text"
+                  label="title"
+                  placeholder="title"
+                  value={values.title}
+                  error={errors.title}
+                  isError={!!touched.title && !!errors.title}
+                  handleChange={handleChange}
+                  handleBlur={handleBlur}
+                />
+                <Forminput
+                  name="price"
+                  type="text"
+                  label="price"
+                  placeholder="price"
+                  value={values.price}
+                  error={errors.price}
+                  isError={!!touched.price && !!errors.price}
+                  handleChange={handleChange}
+                  handleBlur={handleBlur}
+                />
+                <Forminput
+                  name="description"
+                  type="text"
+                  label="description"
+                  placeholder="description"
+                  value={values.description}
+                  error={errors.description}
+                  isError={!!touched.description && !!errors.description}
+                  handleChange={handleChange}
+                  handleBlur={handleBlur}
+                />
+                <Forminput
+                  name="booked"
+                  type="text"
+                  label="booked"
+                  placeholder="booked"
+                  value={values.booked}
+                  error={errors.booked}
+                  isError={!!touched.booked && !!errors.booked}
+                  handleChange={handleChange}
+                  handleBlur={handleBlur}
+                />
+                <Forminput
+                  name="limit"
+                  type="text"
+                  label="limit"
+                  placeholder="limit"
+                  value={values.limit}
+                  error={errors.limit}
+                  isError={!!touched.limit && !!errors.limit}
+                  handleChange={handleChange}
+                  handleBlur={handleBlur}
+                />
+                <Forminput
+                  name="thumbnail"
+                  type="text"
+                  label="thumbnail"
+                  placeholder="thumbnail"
+                  value={values.thumbnail}
+                  error={errors.thumbnail}
+                  isError={!!touched.thumbnail && !!errors.thumbnail}
+                  handleChange={handleChange}
+                  handleBlur={handleBlur}
+                />
+                <DatePickerWithRange className="" startDate={setStartDate} endDate={setEndDate}/>
+                <Forminput
+                  name="city"
+                  type="text"
+                  label="city"
+                  placeholder="city"
+                  value={values.city}
+                  error={errors.city}
+                  isError={!!touched.city && !!errors.city}
+                  handleChange={handleChange}
+                  handleBlur={handleBlur}
+                />
+                <Forminput
+                  name="country"
+                  type="text"
+                  label="country"
+                  placeholder="country"
+                  value={values.country}
+                  error={errors.country}
+                  isError={!!touched.country && !!errors.country}
+                  handleChange={handleChange}
+                  handleBlur={handleBlur}
+                />
+                <Forminput
+                  name="category"
+                  type="text"
+                  label="category"
+                  placeholder="category"
+                  value={values.category}
+                  error={errors.category}
+                  isError={!!touched.category && !!errors.category}
+                  handleChange={handleChange}
+                  handleBlur={handleBlur}
+                />
 
-            <MenuItem
-              icon={<HomeOutlinedIcon />}
-              className="text-[#f9fb01] hover:bg-red-500"
-            >
-              Home
-            </MenuItem>
-            <MenuItem
-              className="text-[#f9fb01]"
-              rootStyles={{
-                ":hover":{
-                  backgroundColor : 'red',
-                  color : "red",
-                  borderBlockColor : 'red',
-                  borderColor : 'red',
-
-                },
-                "::selection":{
-                  backgroundColor : 'red',
-                }
-              }}
-              icon={<PeopleOutlinedIcon />}
-            >
-              Team
-            </MenuItem>
-            <MenuItem
-              className="text-[#f9fb01] hover:bg-red-500"
-              icon={<ContactsOutlinedIcon />}
-            >
-              Contacts
-            </MenuItem>
-            <MenuItem className="text-[#f9fb01]" icon={<ReceiptOutlinedIcon />}>
-              Profile
-            </MenuItem>
-            <MenuItem
-              className="text-[#f9fb01]"
-              icon={<HelpOutlineOutlinedIcon />}
-            >
-              FAQ
-            </MenuItem>
-            <MenuItem
-              className="text-[#f9fb01]"
-              icon={<CalendarTodayOutlinedIcon />}
-            >
-              Calendar
-            </MenuItem>
-          </Menu>
-        </Sidebar>
-        <main>
-          <h1 style={{ color: 'white', marginLeft: '5rem' }}>
-            React-Pro-Sidebar
-          </h1>
-        </main>
-      </div>
-    </>
+              </div>
+              <Button type="submit" className="mt-6 w-full">
+                Login
+              </Button>
+            </form>
+          </CardContent>
+        </Card>
+    </main>
   );
 };
 

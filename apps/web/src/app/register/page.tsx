@@ -24,8 +24,7 @@ const Register = () => {
   });
 
   return (
-    <main className="h-[90vh]">
-      <div className="flex justify-center">
+    <main className="flex items-center justify-center">
         <Card className="w-[450px]">
           <CardHeader>
             <CardTitle className="text-center text-3xl text-primary">
@@ -107,7 +106,6 @@ const Register = () => {
             </form>
           </CardContent>
         </Card>
-      </div>
     </main>
   );
 };
