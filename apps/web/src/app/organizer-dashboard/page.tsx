@@ -26,7 +26,7 @@ import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 
 const organizerDashboard = () => {
   const { createEvent } = createEventOrganizer();
-  const [ collapes,setCollapes ] = useState(false);
+  const [collapes, setCollapes] = useState(false);
   const [startDate, setStartDate] = useState(Date);
   const [endDate, setEndDate] = useState(Date);
   const { values, errors, touched, handleChange, handleBlur, handleSubmit } =
@@ -55,26 +55,69 @@ const organizerDashboard = () => {
     });
   return (
     <>
-      <div id="sideBar" className='flex h-[100vh]'>
-        <Sidebar collapsed={collapes} className='h-[100vh]'>
-          <Menu  className='bg-indigo-950 h-full'>
+      <div id="sideBar" className="flex h-[100vh]">
+        <Sidebar
+          backgroundColor="#1e1b4b"
+          collapsed={collapes}
+          className="h-[100vh] w-[300px]"
+        >
+          <Menu>
             <MenuItem
               icon={<MenuOutlinedIcon />}
-              onClick={()=>{
+              onClick={() => {
                 setCollapes(!collapes);
               }}
-              className='text-center text-[#f9fb01]'
+              className="text-[#f9fb01] hover:bg-red-500"
             >
               {' '}
               <h2>Admin</h2>
             </MenuItem>
 
-            <MenuItem className='text-[#f9fb01] hover:text-red-500' icon={<HomeOutlinedIcon />}>Home</MenuItem>
-            <MenuItem className='text-[#f9fb01]' icon={<PeopleOutlinedIcon />}>Team</MenuItem>
-            <MenuItem className='text-[#f9fb01]' icon={<ContactsOutlinedIcon />}>Contacts</MenuItem>
-            <MenuItem className='text-[#f9fb01]' icon={<ReceiptOutlinedIcon />}>Profile</MenuItem>
-            <MenuItem className='text-[#f9fb01]' icon={<HelpOutlineOutlinedIcon />}>FAQ</MenuItem>
-            <MenuItem className='text-[#f9fb01]' icon={<CalendarTodayOutlinedIcon />}>Calendar</MenuItem>
+            <MenuItem
+              icon={<HomeOutlinedIcon />}
+              className="text-[#f9fb01] hover:bg-red-500"
+            >
+              Home
+            </MenuItem>
+            <MenuItem
+              className="text-[#f9fb01]"
+              rootStyles={{
+                ":hover":{
+                  backgroundColor : 'red',
+                  color : "red",
+                  borderBlockColor : 'red',
+                  borderColor : 'red',
+
+                },
+                "::selection":{
+                  backgroundColor : 'red',
+                }
+              }}
+              icon={<PeopleOutlinedIcon />}
+            >
+              Team
+            </MenuItem>
+            <MenuItem
+              className="text-[#f9fb01] hover:bg-red-500"
+              icon={<ContactsOutlinedIcon />}
+            >
+              Contacts
+            </MenuItem>
+            <MenuItem className="text-[#f9fb01]" icon={<ReceiptOutlinedIcon />}>
+              Profile
+            </MenuItem>
+            <MenuItem
+              className="text-[#f9fb01]"
+              icon={<HelpOutlineOutlinedIcon />}
+            >
+              FAQ
+            </MenuItem>
+            <MenuItem
+              className="text-[#f9fb01]"
+              icon={<CalendarTodayOutlinedIcon />}
+            >
+              Calendar
+            </MenuItem>
           </Menu>
         </Sidebar>
         <main>
