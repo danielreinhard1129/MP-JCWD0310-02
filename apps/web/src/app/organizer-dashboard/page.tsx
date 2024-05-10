@@ -23,6 +23,7 @@ import ReceiptOutlinedIcon from '@mui/icons-material/ReceiptOutlined';
 import CalendarTodayOutlinedIcon from '@mui/icons-material/CalendarTodayOutlined';
 import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined';
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
+import { DatePickerWithRange } from '../components/DateRange';
 
 const organizerDashboard = () => {
   const { createEvent } = createEventOrganizer();
@@ -142,6 +143,7 @@ const organizerDashboard = () => {
                   handleBlur={handleBlur}
                 />
                 <DatePickerWithRange className="" startDate={setStartDate} endDate={setEndDate}/>
+                
                 <Forminput
                   name="city"
                   type="text"
