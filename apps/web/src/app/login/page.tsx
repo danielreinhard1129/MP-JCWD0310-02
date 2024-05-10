@@ -23,8 +23,7 @@ const Login = () => {
     });
 
   return (
-    <main className="container mx-auto h-[90vh] px-4">
-      <div className="mt-40 flex justify-center">
+      <main className="flex items-center justify-center">
         <Card className="w-[450px]">
           <CardHeader>
             <CardTitle className="text-center text-3xl text-primary">
@@ -64,8 +63,7 @@ const Login = () => {
             </form>
           </CardContent>
         </Card>
-      </div>
-    </main>
+      </main>
   );
 };
 export default AuthorizationGuard(Login);

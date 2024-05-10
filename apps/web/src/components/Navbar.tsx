@@ -18,9 +18,9 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="sticky top-0 z-50 bg-indigo-950">
-      <div className="container mx-auto px-10">
-        <div className="flex items-center justify-between py-2 text-yellow-300">
+    <nav className="top-0 z-50 bg-indigo-950">
+      <div className="px-10 py-4">
+        <div className="flex flex-row justify-between text-[#f9fd00]">
           <Image
             src="https://drive.google.com/uc?export=view&id=1X-_e7ldgFh1UrI3r6l5GiBQ0hblrM4os"
             alt=""
@@ -28,7 +28,7 @@ const Navbar = () => {
             height={100}
             objectFit="cover"
           />
-          <div className="flex items-center rounded-full bg-white dark:bg-gray-800 p-2 shadow-md">
+          <div className="flex items-center rounded-full bg-white dark:bg-indigo-950 shadow-md gap-4">
             <Input
               className="flex-1 rounded-full py-2 px-4 leading-none text-gray-800 dark:text-white bg-transparent focus:outline-none"
               placeholder="Search..."
