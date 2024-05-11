@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <div className="border border-t-4 border-indigo-800 px-10 py-4 bg-indigo-950">
+    <div className="md:px-20 gap-4 px-10 md:pt-10 pt-10 md:pb-8 pb-4 w-full bg-indigo-950 flex md:flex-row-reverse flex-col md:justify-between items-center">
       <h1 className="text-white text-xs text-center">
         © 2024 TuneTix. All Rights Reserved. Use of this website signifies
         your agreement to our User Agreement, Privacy Notice and Cookie Notice.

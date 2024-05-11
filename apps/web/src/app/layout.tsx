@@ -23,9 +23,9 @@ export default function RootLayout({
       <body className="flex flex-col justify-between h-full min-h-[100vh]">
         <StoreProvider>
           <AuthProvider>
-            <Navbar />
-            {children}
-            <Footer />
+              <Navbar />
+              {children}
+              <Footer />
           </AuthProvider>
         </StoreProvider>
       </body>
