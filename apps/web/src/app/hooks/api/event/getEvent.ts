@@ -1,27 +1,31 @@
-import { axiosInstance } from '@/app/lib/axios';
-import { useAppDispatch } from '@/app/redux/hook';
-import { loginAction } from '@/app/redux/slices/userSlice';
-import { User } from '@/app/types/user.type';
+import { Event } from '@/app/types/event.type';
+import { axiosInstance } from '@/lib/axios';
 import { AxiosError } from 'axios';
-import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
-interface getEventArg {
-  message: string;
-  data: any;
-}
+const getEventAll = (id: number) => {
+  const [data, setData] = useState<Event| null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-const getEventAll = () => {
   const getEvent = async () => {
     try {
-      const data = await axiosInstance.get<getEventArg>('/event');
-      return data;
-    } catch (err) {
-      if (err instanceof AxiosError) {
-        alert(JSON.stringify(err?.response?.data));
+      const { data } = await axiosInstance.get(`/events/${id}`);
+      setData(data);
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        // TODO: replace console.log with toast
+        console.log(error);
       }
+    } finally {
+      setIsLoading(false);
     }
   };
-  return { getEvent };
+
+  useEffect(() => {
+    getEvent();
+  }, []);
+
+  return { event: data, isLoading, refetch: getEvent };
 };
 
 export default getEventAll;

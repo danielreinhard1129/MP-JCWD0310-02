@@ -24,8 +24,9 @@ const Register = () => {
   });
 
   return (
-    <main className="flex items-center justify-center">
-        <Card className="w-[450px]">
+    <main>
+      <div>
+        <Card className="w-[450px] mx-auto my-10">
           <CardHeader>
             <CardTitle className="text-center text-3xl text-primary">
               Welcome to TuneTix
