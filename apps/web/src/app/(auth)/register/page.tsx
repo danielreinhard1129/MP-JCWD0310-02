@@ -4,12 +4,11 @@ import Forminput from '@/components/Forminput';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useFormik } from 'formik';
-import validationSchema from './validationSchema';
-import useRegisterOrganizer from '@/app/hooks/api/auth/useRegister-Organizer';
-import {AuthenticationGuard} from '../hoc/AuthGuard'
+import validationSchema from "./validationSchema"
+import useRegister from '@/app/hooks/api/auth/useRegister';
 
-const OrganizerRegister = () => {
-  const { register } = useRegisterOrganizer();
+const Register = () => {
+  const { register } = useRegister();
   const formik = useFormik({
     initialValues: {
       firstName: '',
@@ -20,17 +19,17 @@ const OrganizerRegister = () => {
     },
     validationSchema,
     onSubmit: (values) => {
-      register({ ...values, role: 'organizer' });
+      register(values);
     },
   });
 
   return (
-    <main className="container mx-auto h-[90vh] px-4">
-      <div className="mt-40 flex justify-center">
-        <Card className="w-[450px]">
+    <main>
+      <div>
+        <Card className="w-[450px] mx-auto my-10">
           <CardHeader>
             <CardTitle className="text-center text-3xl text-primary">
-              Welcome to TuneTix Organizer Registration
+              Welcome to TuneTix
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -98,8 +97,7 @@ const OrganizerRegister = () => {
                   value={formik.values.referralCode}
                   error={formik.errors.referralCode}
                   isError={
-                    !!formik.touched.referralCode &&
-                    !!formik.errors.referralCode
+                    !!formik.touched.referralCode && !!formik.errors.referralCode
                   }
                   handleChange={formik.handleChange}
                   handleBlur={formik.handleBlur}
@@ -109,9 +107,8 @@ const OrganizerRegister = () => {
             </form>
           </CardContent>
         </Card>
-      </div>
     </main>
   );
 };
 
-export default AuthenticationGuard(OrganizerRegister);
+export default Register;

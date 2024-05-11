@@ -12,7 +12,7 @@ const RegisterAsOrganizer = () => {
         </h1>
         <br />
         <Button className="mx-auto">
-          <Link href="/organizer-register">Join us as Organizer</Link>
+          <Link href="/register-organizer">Join us as Organizer</Link>
         </Button>
       </div>
     </main>

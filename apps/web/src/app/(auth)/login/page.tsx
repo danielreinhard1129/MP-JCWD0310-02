@@ -5,8 +5,8 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useFormik } from 'formik';
 import validationSchema from './validationSchema';
-import useLogin from '../hooks/api/auth/useLogin';
-import {AuthorizationGuard} from '../hoc/AuthGuard';
+import useLogin from '../../hooks/api/auth/useLogin';
+import {AuthorizationGuard} from '../../hoc/AuthGuard';
 
 const Login = () => {
   const { login } = useLogin();
