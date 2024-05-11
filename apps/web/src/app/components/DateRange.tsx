@@ -22,7 +22,7 @@ interface DatePickerWithRangeProps {
 export function DatePickerWithRange({className,startDate,endDate} : DatePickerWithRangeProps) {
   const [date, setDate] = React.useState<DateRange | undefined>({
     from: new Date(),
-    to: addDays(new Date(2022, 0, 20), 10),
+    to: addDays(new Date(), 10),
   })
 
   React.useEffect(()=>{
