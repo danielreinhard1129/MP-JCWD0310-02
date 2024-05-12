@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useFormik } from 'formik';
 import validationSchema from './validationSchema';
 import useRegisterOrganizer from '@/app/hooks/api/auth/useRegister-Organizer';
-import {AuthenticationGuard} from '../hoc/AuthGuard'
+import {AuthenticationGuard} from '../../hoc/AuthGuard'
 
 const OrganizerRegister = () => {
   const { register } = useRegisterOrganizer();

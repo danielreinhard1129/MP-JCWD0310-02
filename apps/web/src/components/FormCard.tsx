@@ -38,7 +38,7 @@ export const FormCard = (formik: FormCard) => {
             </div>
           );
         })}
-        <button type='submit' className="bg-white w-20 h-10 rounded-full">
+        <button type="submit" className="bg-white w-20 h-10 rounded-full">
           {formik.button.buttonLabel}
         </button>
       </div>
