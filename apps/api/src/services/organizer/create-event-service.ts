@@ -9,7 +9,7 @@ interface createEventParams extends Omit<Event, 'locationId'> {
   country: string;
 }
 
-export const createEventService = async (params: createEventParams) => {
+export const createEventService = async (params: createEventParams, files : Express.Multer.File) => {
   try {
     const userId = Number(params.userId);
     const price = Number(params.price);
