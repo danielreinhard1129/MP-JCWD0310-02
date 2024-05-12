@@ -2,8 +2,8 @@
 import FormInput from '@/components/Forminput';
 import validationSchema from './validationSchema';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { useFormik } from 'formik';
-import React from 'react';
+import { Formik, useFormik } from 'formik';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { useAppSelector } from '@/app/redux/hook';
 import Dropzone from '@/components/Dropzone';
@@ -12,10 +12,14 @@ import FormTextArea from '@/components/FormTextArea';
 import { DatePicker } from '@/components/DatePicker';
 import useCreateEvent from '@/app/hooks/api/event/createEvent';
 import FormInputCurrency from '@/components/FormInputCurrency';
+import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
+import { Checkbox } from '@/components/ui/checkbox';
 
 const CreateEventPage = () => {
   const { userId } = useAppSelector((state) => state.user);
   const { createEvent } = useCreateEvent();
+
   const {
     handleSubmit,
     values,
@@ -31,9 +35,13 @@ const CreateEventPage = () => {
       thumbnail: [],
       startDate: '',
       endDate: '',
+      time: '',
+      isFree: ' ',
       price: '',
       userId: '',
+      address: '',
       city: '',
+      province: '',
       country: '',
       booked: '',
       limit: '',
@@ -41,8 +49,13 @@ const CreateEventPage = () => {
     },
     // validationSchema,
     onSubmit: (values) => {
+      
       // values.price =  Number(values.price);
       // values.userId = String(userId);
+      if (values.isFree) {
+        values.price = '0';
+      }
+      console.log(values);
       createEvent({ ...values, userId: String(1) });
     },
   });
@@ -96,13 +109,37 @@ const CreateEventPage = () => {
                   />
 
                   <FormInput
+                    name="address"
+                    type="text"
+                    label="Address"
+                    placeholder="Address"
+                    value={values.address}
+                    error={errors.address}
+                    isError={!!touched.address && !!errors.address}
+                    handleChange={handleChange}
+                    handleBlur={handleBlur}
+                  />
+
+                  <FormInput
                     name="city"
-                    type="city"
+                    type="text"
                     label="City"
-                    placeholder="city"
+                    placeholder="City"
                     value={values.city}
                     error={errors.city}
                     isError={!!touched.city && !!errors.city}
+                    handleChange={handleChange}
+                    handleBlur={handleBlur}
+                  />
+
+                  <FormInput
+                    name="province"
+                    type="text"
+                    label="Province"
+                    placeholder="Province"
+                    value={values.province}
+                    error={errors.province}
+                    isError={!!touched.province && !!errors.province}
                     handleChange={handleChange}
                     handleBlur={handleBlur}
                   />
@@ -178,6 +215,33 @@ const CreateEventPage = () => {
                     setFieldValue={setFieldValue}
                     handleBlur={handleBlur}
                   />
+
+                  <FormInput
+                    name="time"
+                    type="time"
+                    label="Time"
+                    placeholder="Time"
+                    value={values.time}
+                    error={errors.category}
+                    isError={!!touched.time && !!errors.time}
+                    handleChange={handleChange}
+                    handleBlur={handleBlur}
+                  />
+
+                  <div className="flex items-center space-x-2">
+                    <Checkbox
+                      id="isFree"
+                      name="isFree"
+                      checked={values.isFree ? true : false}
+                      onClick={() => setFieldValue('isFree', !values.isFree)}
+                    />
+                    <label
+                      htmlFor="terms"
+                      className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                    >
+                      Is this event free?
+                    </label>
+                  </div>
 
                   <PreviewImages
                     fileImages={values.thumbnail}

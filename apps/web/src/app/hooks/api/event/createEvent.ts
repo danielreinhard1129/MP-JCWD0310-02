@@ -1,6 +1,6 @@
 'use client';
 
-import { IFormCreateEvent ,Event} from '@/app/types/event.type';
+import { IFormCreateEvent, Event } from '@/app/types/event.type';
 import { axiosInstance } from '@/lib/axios';
 import { AxiosError } from 'axios';
 import { useRouter } from 'next/navigation';
@@ -23,26 +23,34 @@ const useCreateEvent = () => {
         booked,
         limit,
         category,
+        time,
+        address,
+        province,
+        isFree,
       } = payload;
 
       const createEventForm = new FormData();
 
-    //   for (const [key, value] of Object.entries(payload)) {
-    //     console.log('key', key);
-    //     console.log('value', value);
-    //   }
+      //   for (const [key, value] of Object.entries(payload)) {
+      //     console.log('key', key);
+      //     console.log('value', value);
+      //   }
 
       createEventForm.append('userId', String(userId));
       createEventForm.append('title', title);
       createEventForm.append('description', description);
       createEventForm.append('price', String(price));
+      createEventForm.append('address', address);
+      createEventForm.append('province', province);
       createEventForm.append('city', city);
       createEventForm.append('country', country);
       createEventForm.append('startDate', String(startDate));
       createEventForm.append('endDate', String(endDate));
+      createEventForm.append('time', String(time));
       createEventForm.append('limit', String(limit));
       createEventForm.append('booked', String(booked));
       createEventForm.append('category', category);
+      createEventForm.append('isFree', String(isFree));
 
       thumbnail.forEach((file: FileWithPath) => {
         createEventForm.append('thumbnail', file);

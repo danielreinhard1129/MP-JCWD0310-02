@@ -27,8 +27,12 @@ export interface IFormCreateEvent {
   thumbnail: File[];
   startDate: string;
   endDate: string;
+  time: string;
+  address: string;
   city : string;
+  province: string
   country : string;
   category : string;
+  isFree: string;
   userId?: string;
 }

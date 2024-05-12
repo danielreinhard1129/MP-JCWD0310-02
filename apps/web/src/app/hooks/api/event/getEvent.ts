@@ -1,5 +1,8 @@
 import { Event } from '@/app/types/event.type';
-import { IPaginationMeta, IPaginationQueries } from '@/app/types/pagination.type';
+import {
+  IPaginationMeta,
+  IPaginationQueries,
+} from '@/app/types/pagination.type';
 import { axiosInstance } from '@/lib/axios';
 import { AxiosError } from 'axios';
 import { useEffect, useState } from 'react';
@@ -39,7 +42,7 @@ const getEventAll = (queries: IGetBlogsQuery) => {
       setIsLoading(false);
     }
   };
-
+  return { getEvent };
   useEffect(() => {
     getEvent();
   }, []);
