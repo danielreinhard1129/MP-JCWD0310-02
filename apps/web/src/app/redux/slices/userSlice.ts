@@ -5,14 +5,21 @@ import { profile } from 'console';
 
 const initialState: Pick<
   User,
-  'id' | "token" | 'firstName' | 'profile' | 'lastName' | 'email' | 'detail' | 'role'
+  | 'userId'
+  | 'token'
+  | 'firstName'
+  | 'profile'
+  | 'lastName'
+  | 'email'
+  | 'detail'
+  | 'role'
 > = {
-  id: null,
+  userId: null,
   firstName: '',
   lastName: '',
   email: '',
   role: '',
-  token :"",
+  token: '',
   profile: '',
   detail: {
     bio: '',
@@ -24,7 +31,7 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     loginAction: (state, action: PayloadAction<User>) => {
-      state.id = action.payload.id;
+      state.userId = action.payload.userId;
       state.role = action.payload.role;
       state.firstName = action.payload.firstName;
       state.lastName = action.payload.lastName;
@@ -32,8 +39,8 @@ export const userSlice = createSlice({
       state.profile = action.payload.profile;
     },
     logoutAction: (state) => {
-      state.id = null;
-      state.role = "";
+      state.userId = null;
+      state.role = '';
       state.firstName = '';
       state.lastName = '';
       state.email = '';

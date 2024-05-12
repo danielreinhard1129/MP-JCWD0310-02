@@ -9,7 +9,7 @@ export class OrganizerController {
       if (!files?.length) {
         throw new Error('no file uploaded');
       }
-      const result = await createEventService(req.body, files[0]);
+      const result = await createEventService(req.body,files[0]);
 
       return res.status(200).send(result);
     } catch (error) {
