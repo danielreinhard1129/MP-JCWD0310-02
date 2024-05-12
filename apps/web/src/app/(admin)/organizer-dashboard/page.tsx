@@ -4,59 +4,88 @@ import Forminput from '@/components/Forminput';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useFormik } from 'formik';
+import Image from 'next/image';
 const OrganizerDashboardPage = () => {
-  const { values, errors, touched, handleChange, handleBlur, handleSubmit } =
-    useFormik({
-      initialValues: {
-        email: '',
-        password: '',
-      },
-      onSubmit: (values) => {
-      },
-    });
-
   return (
-      <main className="flex items-center justify-center">
-        <Card className="w-[450px]">
-          <CardHeader>
-            <CardTitle className="text-center text-3xl text-primary">
-              Login
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <form onSubmit={handleSubmit}>
-              <div className="grid w-full items-center gap-4">
-                <Forminput
-                  name="email"
-                  type="text"
-                  label="Email"
-                  placeholder="Email"
-                  value={values.email}
-                  error={errors.email}
-                  isError={!!touched.email && !!errors.email}
-                  handleChange={handleChange}
-                  handleBlur={handleBlur}
-                />
+    <main className="relative border-4 p-4 rounded-lg bg-gray-200 w-full h-full  overflow-scroll">
+      <div className="grid md:grid-cols-[repeat(4,minmax(max-content,100%))] md:grid-rows-[repeat(6,minmax(max-content,100%))] sm:grid-cols-1 sm:grid-rows-1  gap-4">
+        <div
+          id="statisticCashFlow"
+          className="bg-blue-400 rounded-xl md:col-span-2 md:row-span-2 sm:col-span-1 sm:row-span-1 "
+        >
+          <div className="justify-center flex flex-col text-center h-full w-full rounded-xl p-4">
+            <h1>Total Event Sold</h1>
+            <div className="w-full h-full flex justify-center">
+              <Image
+                src="/chartImage.jpg"
+                alt="chartImage"
+                className="w-full"
+                width={100}
+                height={100}
+              />
+            </div>
+          </div>
+        </div>
 
-                <Forminput
-                  name="password"
-                  type="password"
-                  label="Password"
-                  placeholder="Password"
-                  value={values.password}
-                  error={errors.password}
-                  isError={!!touched.password && !!errors.password}
-                  handleChange={handleChange}
-                  handleBlur={handleBlur}
-                />
-              </div>
-              <Button type="submit" className="mt-6 w-full">
-                Login
-              </Button>
-            </form>
-          </CardContent>
-        </Card>
-      </main>
+        <div
+          id="totalEventSold"
+          className="bg-red-400 rounded-xl md:col-span-2 sm:col-span-1 sm:row-span-1"
+        >
+          <div className="justify-center flex flex-col text-center h-full w-full rounded-xl p-4">
+            <h1>Total Event Sold</h1>
+            <div className="w-full h-full flex justify-center">
+              <Image
+                src="/chartImage.jpg"
+                alt="chartImage"
+                className="w-40"
+                width={100}
+                height={100}
+              />
+            </div>
+          </div>
+        </div>
+
+        <div
+          id="totalEventSuccess"
+          className="bg-blue-400 rounded-xl md:col-span-2 sm:col-span-1 sm:row-span-1"
+        >
+          <div className="justify-center flex flex-col text-center h-full w-full rounded-xl p-4">
+            <h1>Total Event Sold</h1>
+            <div className="w-full h-full flex justify-center">
+              <Image
+                src="/chartImage.jpg"
+                alt="chartImage"
+                className="w-40"
+                width={100}
+                height={100}
+              />
+            </div>
+          </div>
+        </div>
+
+        <div
+          id="statisticEvent"
+          className="bg-red-400 rounded-xl md:col-span-4 md:row-span-2 sm:col-span-1 sm:row-span-1"
+        >
+          <div className="justify-center flex flex-col text-center h-full w-full rounded-xl p-4">
+            <h1>Total Event Sold</h1>
+            <div className="w-full h-full flex justify-center">
+              <Image
+                src="/chartImage.jpg"
+                alt="chartImage"
+                className="w-full"
+                width={100}
+                height={100}
+              />
+            </div>
+          </div>
+        </div>
+        {/* <div className='bg-blue-400 rounded-xl'></div>
+        <div className='bg-red-400 rounded-xl'></div>
+        <div className='bg-blue-400 rounded-xl'></div>
+        <div className='bg-red-400 rounded-xl'></div> */}
+      </div>
+    </main>
   );
 };
 export default OrganizerDashboardPage;

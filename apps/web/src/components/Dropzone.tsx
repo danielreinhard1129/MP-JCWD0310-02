@@ -15,7 +15,7 @@ const Dropzone: FC<DropzoneProps> = ({ isError, label, onDrop }) => {
     accept: {
       'image/*': [],
     },
-    maxFiles: 1,
+    maxFiles: 10,
     onDrop: (acceptedFiles) => {
       onDrop(acceptedFiles);
     },

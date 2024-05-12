@@ -1,5 +1,5 @@
 export interface User {
-  id : number | null;
+  userId : number | null;
   firstName: string;
   lastName: string;
   referralCode: string;

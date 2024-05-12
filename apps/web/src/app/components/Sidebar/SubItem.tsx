@@ -1,6 +1,7 @@
 "use client";
 import { usePathname, useRouter } from "next/navigation";
 import React, { useMemo } from "react";
+import { color } from "./ColorSchemaSidebar";
 
 interface ISubItem {
   name: string;
@@ -20,8 +21,8 @@ const SubMenuItem = ({ item }: { item: ISubItem }) => {
 
   return (
     <div
-      className={`text-sm hover:text-sidebar-active hover:font-semibold cursor-pointer ${
-        isActive ? "text-sidebar-active font-semibold" : ""
+      className={`text-sm hover:text-white ${color.primaryText} transition-all duration-500 hover:font-semibold cursor-pointer ${
+        isActive ? "text-sidebar-active font-se0mibold" : ""
       }`}
       onClick={onClick}
     >

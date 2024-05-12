@@ -1,9 +1,10 @@
-"use client";
-import { useMemo, useState } from "react";
-import { ChevronDown, LucideIcon } from "lucide-react";
-import { usePathname, useRouter } from "next/navigation";
+'use client';
+import { useMemo, useState } from 'react';
+import { ChevronDown, LucideIcon } from 'lucide-react';
+import { usePathname, useRouter } from 'next/navigation';
 
-import SubMenuItem from "./SubItem";
+import SubMenuItem from './SubItem';
+import { color } from './ColorSchemaSidebar';
 
 interface ISidebarItem {
   name: string;
@@ -42,10 +43,10 @@ const SidebarItem = ({ item }: { item: ISidebarItem }) => {
   }, [items, path, pathname]);
 
   return (
-    <>
+    <div className='transition-all duration-500'>
       <div
-        className={`flex items-center p-3 rounded-lg hover:bg-sidebar-background cursor-pointer hover:text-sidebar-active justify-between
-     ${isActive && "text-sidebar-active bg-sidebar-background"}
+        className={`flex transition-all duration-500 items-center p-3 rounded-lg hover:bg-sidebar-background cursor-pointer ${color.primaryText} hover:text-white justify-between
+     ${isActive && 'text-sidebar-active bg-sidebar-background'}
     `}
         onClick={onClick}
       >
@@ -53,16 +54,35 @@ const SidebarItem = ({ item }: { item: ISidebarItem }) => {
           <Icon size={20} />
           <p className="text-sm font-semibold">{name} </p>
         </div>
-        {items && items.length > 0 && <ChevronDown size={18} />}
+        <div
+          className={`transition-all duration-500 ${
+            expanded ? 'rotate-180' : ''
+          }`}
+        >
+          {items && items.length > 0 && <ChevronDown size={18} />}
+        </div>
       </div>
-      {expanded && items && items.length > 0 && (
-        <div className="flex flex-col space-y-1 ml-10">
+
+      {/* Old Code Map SubItemMenu */}
+      {/* {expanded && items && items.length > 0 && (
+        <div className="flex transition-all duration-500 flex-col space-y-1 ml-10">
           {items.map((item) => (
             <SubMenuItem key={item.path} item={item} />
           ))}
         </div>
-      )}
-    </>
+      )} */}
+
+      {/* New Code Map SubItemMenu with Animation */}
+      <div className={`overflow-hidden transition-all duration-500 flex ${expanded ? `h-[calc(${30*item?.length}px)]` : "h-0"}`}>
+        <div
+          className={`flex relative transition-all duration-500 ${
+            expanded ? '' : 'translate-y-[-70px]'
+          } flex-col space-y-1 ml-10`}
+        >
+          {items?.map((item) => <SubMenuItem key={item.path} item={item} />)}
+        </div>
+      </div>
+    </div>
   );
 };
 

@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import SidebarItem from './Items';
 import { useState } from 'react';
+import {color} from "./ColorSchemaSidebar"
 
 interface ISidebarItem {
   name: string;
@@ -31,9 +32,19 @@ const items: ISidebarItem[] = [
     icon: LayoutDashboard,
   },
   {
-    name: 'Transaction',
-    path: '/organizer-dashboard',
+    name: 'Event',
+    path: '/organizer-dashboard/event',
     icon: BadgeDollarSign,
+    items : [
+      {
+        name : "Create Event",
+        path : "/organizer-dashboard/event/create-event"
+      },
+      {
+        name : "Manage Event",
+        path : "/organizer-dashboard/event/create-event"
+      },
+    ],
   },
   {
     name: 'Payment',
@@ -67,7 +78,7 @@ const items: ISidebarItem[] = [
 ];
 
 const Sidebar = () => {
-  const [collapse, setCollapse] = useState(false);
+  const [collapse, setCollapse] = useState(true);
 
   const handleCollapse = () => {
     setCollapse(!collapse);
@@ -77,30 +88,28 @@ const Sidebar = () => {
     <div
       className={`fixed top-0 left-0 transition-all duration-500 ${
         collapse ? 'ml-[-200px]' : ''
-      } h-screen w-64 bg-white shadow-lg z-10 p-4`}
+      } h-screen w-64 ${color.background} shadow-lg z-10 p-4`}
     >
       <div className="flex flex-col space-y-10 w-full">
+        <p className={`text-center ${color.primaryText} font-extrabold text-xl`}>TuneTix</p>
         <div className="w-full flex flex-row-reverse" onClick={handleCollapse}>
-          {/* {
-            collapse ? 
-            <CircleArrowRight/>
-            : 
-            <CircleArrowLeft />
-        } */}
           <div
-            className={`transition-all relative bg-red-500 border-red-500 rounded-tr-full rounded-br-full border-4 duration-500 ${
+            className={`transition-all relative ${color.primary} ${color.primaryBorder} rounded-tr-full rounded-br-full border-4 duration-500 ${
               collapse ? 'scale-x-[-1] left-4' : 'scale-x-[1] left-12'
-            }`}>
-            <div className=''>
-              <CircleArrowLeft />
+            }`}
+          >
+            <div className="">
+              <CircleArrowLeft className='w-8 h-8'/>
             </div>
           </div>
         </div>
-        <div className="flex flex-col space-y-2">
+
+        <div className="flex flex-col space-y-2 transition-all duration-500">
           {items.map((item, index) => (
-            <SidebarItem key={index} item={item} />
+            <SidebarItem key={index} item={item}/>
           ))}
         </div>
+
       </div>
     </div>
   );
