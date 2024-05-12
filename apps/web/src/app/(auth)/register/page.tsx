@@ -107,6 +107,7 @@ const Register = () => {
             </form>
           </CardContent>
         </Card>
+        </div>
     </main>
   );
 };
