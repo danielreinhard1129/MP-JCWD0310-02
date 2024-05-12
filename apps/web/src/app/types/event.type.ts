@@ -1,7 +1,7 @@
 import { User } from './user.type';
 
 export interface Event {
-  // id: number;
+  id: number;
   title: string;
   description: string;
   price: number;
@@ -10,8 +10,9 @@ export interface Event {
   thumbnail: string;
   startDate: Date;
   endDate: Date;
+  time: string;
   userId: number;
-  category : string;
+  category: string;
   createdAt: Date;
   updatedAt: Date;
 
@@ -29,10 +30,10 @@ export interface IFormCreateEvent {
   endDate: string;
   time: string;
   address: string;
-  city : string;
-  province: string
-  country : string;
-  category : string;
+  city: string;
+  province: string;
+  country: string;
+  category: string;
   isFree: string;
   userId?: string;
 }
