@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import getEventAll from '../hooks/api/event/getEvent';
+import getEventAll from '../../hooks/api/event/getEvent';
 
 const Event = () => {
   const [eventData, setEventData] = useState();
