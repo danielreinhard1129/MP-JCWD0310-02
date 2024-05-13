@@ -4,8 +4,9 @@ import Forminput from '@/components/Forminput';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useFormik } from 'formik';
-import validationSchema from "./validationSchema"
+import validationSchema from './validationSchema';
 import useRegister from '@/app/hooks/api/auth/useRegister';
+import { AuthenticationGuard } from '@/app/hoc/AuthGuard';
 
 const Register = () => {
   const { register } = useRegister();
@@ -97,7 +98,8 @@ const Register = () => {
                   value={formik.values.referralCode}
                   error={formik.errors.referralCode}
                   isError={
-                    !!formik.touched.referralCode && !!formik.errors.referralCode
+                    !!formik.touched.referralCode &&
+                    !!formik.errors.referralCode
                   }
                   handleChange={formik.handleChange}
                   handleBlur={formik.handleBlur}
@@ -107,9 +109,9 @@ const Register = () => {
             </form>
           </CardContent>
         </Card>
-        </div>
+      </div>
     </main>
   );
 };
 
-export default Register;
+export default AuthenticationGuard(Register);

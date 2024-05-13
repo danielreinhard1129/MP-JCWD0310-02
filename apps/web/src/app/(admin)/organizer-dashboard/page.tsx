@@ -1,9 +1,6 @@
 'use client';
 
-import Forminput from '@/components/Forminput';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { useFormik } from 'formik';
+import RoleGuard from '@/app/hoc/RoleGuard';
 import Image from 'next/image';
 const OrganizerDashboardPage = () => {
   return (
@@ -88,4 +85,4 @@ const OrganizerDashboardPage = () => {
     </main>
   );
 };
-export default OrganizerDashboardPage;
+export default RoleGuard(OrganizerDashboardPage);

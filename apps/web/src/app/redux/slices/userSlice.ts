@@ -31,7 +31,7 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     loginAction: (state, action: PayloadAction<User>) => {
-      state.userId = action.payload.userId;
+      state.userId = action.payload.id;
       state.role = action.payload.role;
       state.firstName = action.payload.firstName;
       state.lastName = action.payload.lastName;

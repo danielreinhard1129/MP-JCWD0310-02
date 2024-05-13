@@ -6,15 +6,21 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { Input } from './ui/input';
 import { SearchIcon } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 const Navbar = () => {
   const dispatch = useAppDispatch();
   const router = useRouter();
-  const { id, role } = useAppSelector((state) => state.user);
+  const user = useAppSelector((state) => state.user);
+
+  useEffect(() => {
+    
+  }, []);
 
   const logout = () => {
     localStorage.removeItem('token');
     dispatch(logoutAction());
+    router.refresh();
   };
 
   return (
@@ -36,10 +42,10 @@ const Navbar = () => {
             />
             <SearchIcon className="w-5 h-5 text-gray-800 dark:text-white" />
           </div>
-          {Boolean(id) ? (
+          {Boolean(user.userId) ? (
             <div className="flex items-center gap-8">
               <h3 onClick={() => router.push('/')}>Home</h3>
-              {role == 'organizer' ? (
+              {user.role == 'organizer' ? (
                 <h3 onClick={() => router.push('/organizer-dashboard')}>
                   Dashboard
                 </h3>
