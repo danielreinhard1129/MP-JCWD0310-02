@@ -1,5 +1,6 @@
 'use client';
 
+import RoleGuard from '@/app/hoc/RoleGuard';
 import Forminput from '@/components/Forminput';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -88,4 +89,4 @@ const OrganizerDashboardPage = () => {
     </main>
   );
 };
-export default OrganizerDashboardPage;
+export default RoleGuard(OrganizerDashboardPage);
