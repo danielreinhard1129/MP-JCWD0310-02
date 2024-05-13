@@ -231,7 +231,7 @@ model Event {
   thumbnail   String
   startDate   DateTime  @default(now())
   endDate     DateTime
-  time        DateTime  @default(now())
+  time        String
   isFree      Boolean
   createdAt   DateTime? @default(now())
   updatedAt   DateTime  @updatedAt
