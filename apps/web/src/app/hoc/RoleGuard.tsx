@@ -2,19 +2,25 @@
 
 import { useAppSelector } from '@/app/redux/hook';
 import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function RoleGuard(Component: any) {
   return function IsAuthorized(props: any) {
-    const router = useRouter()
-    const { role } = useAppSelector((state) => state.user);
+    const router = useRouter();
+    const user = useAppSelector((state) => state.user);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-      if (Boolean(!role)) {
-        router.push('/')
-      }
-    }, []);
-    return <Component {...props}/>
+      let token = localStorage.getItem('token');
+      setTimeout(() => {
+        if (!token || user.role === 'client') {
+          router.push('/');
+        }
+        setLoading(false);
+      }, 500);
+    }, [user]);
 
+    if (loading) return <div>Loading</div>;
+    if (!loading) return <Component {...props} />;
   };
 }

@@ -2,12 +2,28 @@ import { axiosInstance } from '@/app/lib/axios';
 import { useAppDispatch } from '@/app/redux/hook';
 import { loginAction } from '@/app/redux/slices/userSlice';
 import { User } from '@/app/types/user.type';
-import axios, { AxiosError } from 'axios';
+import { AxiosError } from 'axios';
 import { useRouter } from 'next/navigation';
 
 interface LoginResponse {
   message: string;
-  data: User;
+  data: {
+    id: number | null;
+    userId: number | null;
+    role: string;
+    firstName: string;
+    lastName: string;
+    password: string;
+    passwordHash: string;
+    token: string;
+    referralCode: string;
+    detail: {
+      // dateOfBirth: Date;
+      bio: string;
+    };
+    email: string;
+    profile: string;
+  };
   token: string;
 }
 

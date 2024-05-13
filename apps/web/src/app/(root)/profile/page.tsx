@@ -1,11 +1,9 @@
 'use client';
 import Image from 'next/image';
-import { AuthorizationGuard } from '../../hoc/AuthGuard';
+import { NeedAuthenticationGuard } from '../../hoc/AuthGuard';
 import { useAppDispatch, useAppSelector } from '../../redux/hook';
 const Profile = () => {
-  const dispatch = useAppDispatch();
   const userDetail = useAppSelector((state) => state.user);
-
   return (
     <div>
       <Image
@@ -25,4 +23,4 @@ const Profile = () => {
   );
 };
 
-export default AuthorizationGuard(Profile);
+export default NeedAuthenticationGuard(Profile);
