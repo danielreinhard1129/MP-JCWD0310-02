@@ -26,7 +26,7 @@ const PreviewImages: FC<PreviewImagesProps> = ({
   }, [fileImages, images]);
 
   return (
-    <div className="flex gap-4">
+    <div className="flex flex-col mx-auto gap-4">
       {imageResults?.map((image, index) => {
         return (
           <div

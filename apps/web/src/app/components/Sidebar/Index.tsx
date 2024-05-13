@@ -42,7 +42,7 @@ const items: ISidebarItem[] = [
       },
       {
         name : "Manage Event",
-        path : "/organizer-dashboard/event/create-event"
+        path : "/organizer-dashboard/event/manage-event"
       },
     ],
   },
@@ -106,7 +106,7 @@ const Sidebar = () => {
 
         <div className="flex flex-col space-y-2 transition-all duration-500">
           {items.map((item, index) => (
-            <SidebarItem key={index} item={item}/>
+            <SidebarItem key={index} collapse={handleCollapse} item={item}/>
           ))}
         </div>
 
