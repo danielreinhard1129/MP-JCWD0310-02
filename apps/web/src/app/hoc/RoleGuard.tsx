@@ -8,24 +8,19 @@ export default function RoleGuard(Component: any) {
   return function IsAuthorized(props: any) {
     const router = useRouter();
     const user = useAppSelector((state) => state.user);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
+
     useEffect(() => {
       let token = localStorage.getItem('token');
-      setLoading(true);
-        // if (!user.role) {
-        //   router.push('/');
-        // }
-        // if (!user.userId) {
-        //   router.push('/');
-        // }
-        if (!token) {
+      setTimeout(() => {
+        if (!token || user.role === 'client') {
           router.push('/');
         }
+        setLoading(false);
+      }, 500);
+    }, [user]);
 
-      setLoading(false);
-    }, []);
-
-    if (loading) return <div>Loading....</div>;
-    else return <Component {...props} />;
+    if (loading) return <div>Loading</div>;
+    if (!loading) return <Component {...props} />;
   };
 }
