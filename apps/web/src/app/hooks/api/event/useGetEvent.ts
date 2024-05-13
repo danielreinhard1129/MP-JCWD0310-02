@@ -12,7 +12,7 @@ const useGetEvent = (id: number) => {
 
   const getEvent = async () => {
     try {
-      const { data } = await axiosInstance.get(`/events/${id}`);
+      const { data } = await axiosInstance.get(`/event/${id}`);
       setData(data);
     } catch (error) {
       if (error instanceof AxiosError) {

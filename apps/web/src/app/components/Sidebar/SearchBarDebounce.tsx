@@ -19,7 +19,7 @@ const SearchBarDebounce: React.FC<SearchBarDebouncProps> = ({
   const [text, setText] = useState('');
   const debounced = useDebouncedCallback((value) => {
     callBack(value);
-  }, 1000);
+  }, 500);
 
   return (
     <>
@@ -29,10 +29,7 @@ const SearchBarDebounce: React.FC<SearchBarDebouncProps> = ({
           className,
         )}
       >
-        <SearchIcon
-          className="hover:cursor-pointer"
-          onClick={() => callBack(text)}
-        />
+        <SearchIcon/>
         <input
           type="text"
           className="w-full h-10 px-2 focus-visible:outline-none"

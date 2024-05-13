@@ -26,7 +26,7 @@ const ListEventCard = ({
   const router = useRouter();
 
   const handleOnClick = () => {
-    router.push(clickUrl);
+    router.push("/organizer-dashboard/event/manage-event/"+clickUrl);
   };
 
   const stringStartDate = format(startDate, 'yyyy.MM.dd');

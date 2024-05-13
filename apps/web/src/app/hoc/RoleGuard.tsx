@@ -13,7 +13,7 @@ export default function RoleGuard(Component: any) {
     useEffect(() => {
       let token = localStorage.getItem('token');
       setTimeout(() => {
-        if (!token || user.role === 'client') {
+        if (!token || user.role === 'client' || !user.userId) {
           router.push('/');
         }
         setLoading(false);

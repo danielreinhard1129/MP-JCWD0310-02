@@ -49,7 +49,6 @@ const CreateEventPage = () => {
     },
     // validationSchema,
     onSubmit: (values) => {
-      
       // values.price =  Number(values.price);
       // values.userId = String(userId);
       if (values.isFree) {

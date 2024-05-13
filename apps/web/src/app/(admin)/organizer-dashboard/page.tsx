@@ -1,6 +1,5 @@
 'use client';
 
-import RoleGuard from '@/app/hoc/RoleGuard';
 import Image from 'next/image';
 const OrganizerDashboardPage = () => {
   return (
@@ -85,4 +84,4 @@ const OrganizerDashboardPage = () => {
     </main>
   );
 };
-export default RoleGuard(OrganizerDashboardPage);
+export default OrganizerDashboardPage;

@@ -1,16 +1,29 @@
 'use client';
 import SearchBarDebounce from '@/app/components/Sidebar/SearchBarDebounce';
 import { Button } from '@/components/ui/button';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ListEventCard from '../components/ListEventCard';
+import { Event } from '@/app/types/event.type';
+import useGetEvents from '@/app/hooks/api/event/useGetEvents';
 
 const ManageEventPage = () => {
+  const [eventData, setEventData] = useState<Event[]>([]);
+  const [filteredData, setFilteredData] = useState<Event[]>([]);
+  const { data, isLoading, meta } = useGetEvents({});
+
+  useEffect(() => {
+    setEventData(data);
+    setFilteredData(data);
+  }, [isLoading]);
+  
   const handleSearchBar = (value: string) => {
-    // Logic fetching data with using debounce
+    const regexSearch = new RegExp("(" + value.toLowerCase() + ")", "g");;
+    const searchData = eventData.filter((val: Event) => val.title.toLowerCase().match(regexSearch));
+    setFilteredData(searchData)
   };
 
   const handleClickSearch = () => {
-    // Logic click search icon
+    // Logic click search
   };
 
   return (
@@ -24,7 +37,9 @@ const ManageEventPage = () => {
             callBack={(value) => handleSearchBar(value)}
           />
         </div>
-        <Button className="w-28 text-[#ffff00] bg-indigo-950 font-extrabold">
+        <Button
+          className="w-28 text-[#ffff00] bg-indigo-950 font-extrabold"
+        >
           Filter
         </Button>
       </div>
@@ -47,16 +62,26 @@ const ManageEventPage = () => {
 
       {/* Table List */}
 
-      <div className="w-full flex flex-col gap-8">
-        <ListEventCard
-          clickUrl='/1'
-          title="Jogja Festival by DWP"
-          thumbnail="/eventDwp.jpg"
-          location="Jln.Sultan Agung , Pakualaman , Sleman , Jogjakarta"
-          time={new Date()}
-          startDate={new Date()}
-          endDate={new Date()}
-        />
+      <div className="w-full min-h-[50vh] flex flex-col gap-8">
+        {!isLoading ? (
+          filteredData?.map((val, ind, arr) => {
+            return (
+              <ListEventCard
+                clickUrl={String(val.id)}
+                title={val.title}
+                thumbnail={val.thumbnail}
+                location={val.description}
+                time={new Date(val.time)}
+                startDate={new Date(val.startDate)}
+                endDate={new Date(val.endDate)}
+              />
+            );
+          })
+        ) : (
+          <div className="flex justify-center h-full items-center font-extrabold text-4xl text-indigo-950">
+            <p>Loading ...</p>
+          </div>
+        )}
       </div>
     </main>
   );

@@ -16,7 +16,7 @@ const useGetEvents = (queries: IGetEventsQuery) => {
 
   const getEvents = async () => {
     try {
-      const { data } = await axiosInstance.get('/events', {
+      const { data } = await axiosInstance.get('/event', {
         params: queries,
       });
 

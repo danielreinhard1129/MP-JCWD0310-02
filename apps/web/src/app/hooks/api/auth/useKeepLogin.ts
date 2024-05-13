@@ -1,9 +1,8 @@
 'use client';
 import { axiosInstance } from '@/app/lib/axios';
-import { useAppDispatch, useAppSelector } from '@/app/redux/hook';
-import { loginAction } from '@/app/redux/slices/userSlice';
+import { useAppDispatch } from '@/app/redux/hook';
+import { loginAction, logoutAction } from '@/app/redux/slices/userSlice';
 import { User } from '@/app/types/user.type';
-import { useEffect, useState } from 'react';
 
 interface KeepLoginResponseData extends User {
   id: number;
@@ -21,7 +20,8 @@ const useKeepLogin = () => {
         await axiosInstance.post<KeepLoginResponse>('/auth/keep-login');
       dispatch(loginAction(data.data));
     } catch (err) {
-      console.log(err);
+      localStorage.removeItem('token');
+      dispatch(logoutAction());
     }
   };
 
