@@ -134,7 +134,7 @@ const RegisterForm = () => {
           </Button>
         )}
         {/*  */}
-        <div className="flex flex-row justify-center items-center text-[#ffff00] gap-2">
+        <div className="flex md:flex-row md:pt-0 pt-4 flex-col text-center justify-center items-center text-[#ffff00] gap-2">
           <p className="w-full text-sm">Are you have an account?</p>
           <Button
             onClick={() => router.push('/login')}
@@ -143,7 +143,7 @@ const RegisterForm = () => {
             Login
           </Button>
         </div>
-        <div className="text-[#ffff00] flex flex-row gap-2 justify-center items-center">
+        <div className="text-[#ffff00] flex md:flex-row flex-col text-center gap-2 justify-center items-center">
           <p className="w-full text-sm">
             Are you interested to join as organzier?
           </p>

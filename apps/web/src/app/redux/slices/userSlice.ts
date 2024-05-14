@@ -8,17 +8,22 @@ const initialState: Pick<
   | 'token'
   | 'firstName'
   | 'lastName'
+  | 'pictureId'
   | 'email'
   | 'detail'
+  | 'points'
   | 'role'
+  | 'referralCode'
 > = {
   userId: null,
   firstName: '',
-  lastName: '', 
-  
+  lastName: '',
+  pictureId: '',
+  points : 0,
   email: '',
   role: '',
   token: '',
+  referralCode: '',
   detail: {
     bio: '',
   },
@@ -31,14 +36,20 @@ export const userSlice = createSlice({
     loginAction: (state, action: PayloadAction<User>) => {
       state.userId = action.payload.id;
       state.role = action.payload.role;
+      state.referralCode = action.payload.referralCode;
+      state.points = action.payload.points;
       state.firstName = action.payload.firstName;
+      state.pictureId = action.payload.pictureId;
       state.lastName = action.payload.lastName;
       state.email = action.payload.email;
     },
     logoutAction: (state) => {
       state.userId = null;
       state.role = '';
+      state.points = 0;
       state.firstName = '';
+      state.referralCode = '';
+      state.pictureId = '';
       state.lastName = '';
       state.email = '';
     },
