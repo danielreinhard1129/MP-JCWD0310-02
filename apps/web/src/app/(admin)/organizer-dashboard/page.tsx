@@ -1,7 +1,10 @@
 'use client';
 
+import { useAppSelector } from '@/app/redux/hook';
+import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 const OrganizerDashboardPage = () => {
+  const user = useAppSelector((state) => state.user);
   return (
     <main className="relative border-4 p-4 rounded-lg bg-gray-200 w-full h-full  overflow-scroll">
       <div className="grid md:grid-cols-[repeat(4,minmax(max-content,100%))] md:grid-rows-[repeat(6,minmax(max-content,100%))] sm:grid-cols-1 sm:grid-rows-1  gap-4">

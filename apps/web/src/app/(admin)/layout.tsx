@@ -1,6 +1,6 @@
 'use client';
 import Sidebar from '../components/Sidebar/Index';
-import RoleGuard from '@/app/hoc/RoleGuard';
+import RoleGuard from '../hoc/RoleGuard';
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (

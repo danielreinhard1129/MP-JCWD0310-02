@@ -39,7 +39,7 @@ const ListEventCard = ({
     >
       <div className="h-full p-2">
         <Image
-          src={thumbnail}
+          src={'/eventDwp.jpg'}
           alt="Event Images"
           width={100}
           height={100}
