@@ -29,7 +29,6 @@ export default function Home() {
       {/* <UpcomingEvents/>
       <SearchByCategory/>
       <SearchByLocation/> */}
-      <Autocomplete />
 
 <section className="grid grid-cols-3 gap-8">
   {events.map((event, index) => {
