@@ -14,7 +14,8 @@ const initialState: Pick<
 > = {
   userId: null,
   firstName: '',
-  lastName: '',
+  lastName: '', 
+  
   email: '',
   role: '',
   token: '',
