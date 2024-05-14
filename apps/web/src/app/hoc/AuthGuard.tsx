@@ -70,18 +70,25 @@ export const NeedAuthenticationGuard = (Component: any) => {
     const router = useRouter();
     const user = useAppSelector((state) => state.user);
     const [loading, setLoading] = useState(true);
+    let token = localStorage.getItem('token');
 
     useEffect(() => {
-      let token = localStorage.getItem('token');
       setTimeout(() => {
         if (!token) {
           router.push('/');
         }
         setLoading(false);
-      }, 500);
+      }, 700);
     }, [user]);
 
-    if (loading) return <div>Loading</div>;
+    if (loading)
+      return (
+        <div className="w-full flex flex-col justify-center border-t border-b border-[#ffff00] items-center h-[80vh] bg-indigo-950">
+          <div className=''>
+              <h1 className='text-3xl font-extrabold text-[#ffff00]'>Loading...</h1>
+          </div>
+        </div>
+      );
     if (!loading) return <Component {...props} />;
   };
 };

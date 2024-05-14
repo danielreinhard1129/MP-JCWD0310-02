@@ -66,7 +66,8 @@ const LoginForm = () => {
             </div>
           </div>
         </form>
-        <div className="flex justify-between gap-4">
+
+        <div className="flex md:flex-row flex-col justify-between gap-4">
           <Button
             onClick={() => router.push('/forget-password')}
             className="w-full bg-transparent duration-300 font-normal transition-all hover:bg-[#ffff00] hover:text-indigo-950 text-base h-10 text-[#ffff00] border-2 rounded-2xl border-[#ffff00]"
@@ -80,6 +81,7 @@ const LoginForm = () => {
             Register
           </Button>
         </div>
+
       </CardContent>
     </Card>
   );

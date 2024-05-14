@@ -4,8 +4,10 @@ export interface User {
   firstName: string;
   lastName: string;
   email: string;
+  points : number;
   password: string;
   passwordHash: string;
+  pictureId? : string;
   token: string;
   role: string;
   profile : string;
