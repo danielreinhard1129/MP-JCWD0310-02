@@ -9,7 +9,7 @@ export default function RootLayout({
     <>
       <div className="flex flex-row min-h-screen h-full w-full">
 
-        <div className="bg-indigo-950 w-[40%] md:block hidden  flex flex-col items-center gap-12 py-8 px-4">
+        <div className="bg-indigo-950 w-[40%] md:flex hidden flex-col items-center gap-12 py-8 px-4">
           {/* Logo */}
           <div className="flex flex-col text-center justify-center">
             <h1 className="font-extrabold text-[#ffff00] text-2xl">
