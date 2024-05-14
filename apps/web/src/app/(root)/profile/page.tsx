@@ -6,8 +6,10 @@ import { Pen, User } from 'lucide-react';
 import FormInputDarkMode from '@/components/FormInputDarkMode';
 import { useFormik } from 'formik';
 import { Button } from '@/components/ui/button';
+import { useRouter } from 'next/navigation';
 const Profile = () => {
   const userDetail = useAppSelector((state) => state.user);
+  const router = useRouter();
   const pointsFormat = new Intl.NumberFormat('en-IN', {
     maximumSignificantDigits: 3,
   });
@@ -42,15 +44,15 @@ const Profile = () => {
       </div>
 
       <div className="md:px-14 px-20 items-center flex flex-row justify-between w-full">
-        <Button className="bg-indigo-950 text-[#ffff00]">
+        <Button onClick={()=> {router.push('/profile/events')}} className="bg-indigo-950 text-[#ffff00]">
           Your Event List
         </Button>
 
-        <Button className="bg-indigo-950 text-[#ffff00]">
+        <Button onClick={()=> {router.push('/profile/transaction')}} className="bg-indigo-950 text-[#ffff00]">
           Your Transaction
         </Button>
 
-        <Button className="bg-indigo-950 text-[#ffff00]">Your Voucher</Button>
+        <Button onClick={()=> {router.push('/profile/voucher')}} className="bg-indigo-950 text-[#ffff00]">Your Voucher</Button>
       </div>
 
       <div className="h-full md:px-6 sm:px-2 w-full flex flex-col gap-4 py-2">
@@ -154,5 +156,5 @@ const Profile = () => {
   );
 };
 
-// export default NeedAuthenticationGuard(Profile);
-export default Profile;
+export default NeedAuthenticationGuard(Profile);
+// export default Profile;
