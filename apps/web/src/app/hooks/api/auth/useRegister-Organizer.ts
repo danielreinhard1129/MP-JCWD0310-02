@@ -4,10 +4,7 @@ import { AxiosError } from 'axios';
 import { useRouter } from 'next/navigation';
 
 interface RegisterOrganizerArg
-  extends Pick<
-    User,
-    'firstName' | 'lastName' | 'email' | 'referralCode' | 'role'
-  > {}
+  extends Pick<User, 'firstName' | 'lastName' | 'email' | 'role'> {}
 
 const useRegisterOrganizer = () => {
   const router = useRouter();

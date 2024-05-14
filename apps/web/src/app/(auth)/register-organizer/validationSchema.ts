@@ -4,7 +4,6 @@ const validationSchema = Yup.object().shape({
     lastName : Yup.string().required("please input your lastName"),
     email : Yup.string().required("please input your email").email(),
     password : Yup.string().required("please input your password").min(6),
-    referralCode : Yup.string(),
 });
 
 export default validationSchema;
