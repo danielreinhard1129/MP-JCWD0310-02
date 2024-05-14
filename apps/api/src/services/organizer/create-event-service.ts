@@ -47,7 +47,9 @@ import { create } from 'ts-node';
 interface createEventParams extends Omit<Event, 'locationId'> {
   userId: number;
   category: string;
+  address: string;
   city: string;
+  province: string;
   country: string;
 }
 
@@ -57,12 +59,16 @@ export const createEventService = async (params: createEventParams,file: Express
     const price = Number(params.price);
     const startDate = new Date(params.startDate);
     const endDate = new Date(params.endDate);
+    const isFree = Boolean(params.isFree);
     const booked = Number(params.booked);
     const limit = Number(params.limit);
     const {
       title,
       description,
+      address,
+      time,
       city,
+      province,
       country,
       category,
     } = params;
@@ -106,7 +112,9 @@ export const createEventService = async (params: createEventParams,file: Express
 
       const isLocationExist = await prisma.location.findFirst({
         where: {
+          address,
           city,
+          province,
           country,
         },
       });
@@ -115,7 +123,9 @@ export const createEventService = async (params: createEventParams,file: Express
         ? isLocationExist
         : await prisma.location.create({
             data: {
+              address,
               city,
+              province,
               country,
               createdAt: dateNow,
             },
@@ -127,9 +137,11 @@ export const createEventService = async (params: createEventParams,file: Express
           description,
           startDate,
           endDate,
+          time,
           price: price,
           limit: limit,
           booked,
+          isFree,
           thumbnail: `/images/${file.filename}`,
           createdAt: dateNow,
           updatedAt: dateNow,
@@ -139,7 +151,9 @@ export const createEventService = async (params: createEventParams,file: Express
                 id: locationData.id,
               },
               create: {
+                address,
                 city,
+                province,
                 country,
                 createdAt: dateNow,
               },
