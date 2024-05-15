@@ -1,4 +1,6 @@
 import { createEventService } from '@/services/organizer/create-event-service';
+import { createPromotionService } from '@/services/organizer/create-promotion.service';
+
 import { NextFunction, Request, Response } from 'express';
 
 export class OrganizerController {
@@ -9,13 +11,28 @@ export class OrganizerController {
       if (!files?.length) {
         throw new Error('no file uploaded');
       }
-      const result = await createEventService(req.body,files[0]);
+      const result = await createEventService(req.body, files[0]);
 
       return res.status(200).send(result);
     } catch (error) {
       next(error);
     }
   }
+
+  // async createPromotionOrganizer(
+  //   req: Request,
+  //   res: Response,
+  //   next: NextFunction,
+  // ) {
+  //   try {
+  //     const result = await createPromotionService(req.body);
+
+  //     return res.status(200).json(result);
+  //   } catch (error) {
+  //     next(error);
+  //   }
+  // }
+
   async testOrganizer(req: Request, res: Response, next: NextFunction) {
     try {
       // const result = await createEventService(req.body);

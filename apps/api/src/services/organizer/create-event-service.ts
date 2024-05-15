@@ -1,45 +1,3 @@
-// import prisma from '@/prisma';
-// import { Event } from '@prisma/client';
-// import { create } from 'ts-node';
-
-// interface CreateEventBody
-//   extends Omit<Event, 'id' | 'createdAt' | 'updatedAt' | 'thumbnail'> {}
-
-// export const createEventService = async (
-//   body: CreateEventBody,
-//   file: Express.Multer.File,
-// ) => {
-//   try {
-//     const { title, userId } = body;
-
-//     const existingTitle = await prisma.event.findFirst({
-//       where: { title },
-//     });
-
-//     if (existingTitle) {
-//       throw new Error('title already in use');
-//     }
-
-//     const user = await prisma.user.findFirst({ where: { id: Number(userId) } });
-
-//     if (!user) {
-//       throw new Error('user not found');
-//     }
-
-
-//     return {
-//       data: {
-//         ...body,
-//         thumbnail: `/images/${file.filename}`,
-//         userId: Number(userId),
-//       },
-//       message: 'success registrate event',
-//     };
-//   } catch (error) {
-//     throw error;
-//   }
-// };
-
 import prisma from '@/prisma';
 import { Event } from '@prisma/client';
 import { create } from 'ts-node';
@@ -59,14 +17,13 @@ export const createEventService = async (params: createEventParams,file: Express
     const price = Number(params.price);
     const startDate = new Date(params.startDate);
     const endDate = new Date(params.endDate);
-    const isFree = Boolean(params.isFree);
     const booked = Number(params.booked);
     const limit = Number(params.limit);
     const {
       title,
       description,
-      address,
       time,
+      address,
       city,
       province,
       country,
@@ -138,10 +95,10 @@ export const createEventService = async (params: createEventParams,file: Express
           startDate,
           endDate,
           time,
+          isFree: false,
           price: price,
           limit: limit,
           booked,
-          isFree,
           thumbnail: `/images/${file.filename}`,
           createdAt: dateNow,
           updatedAt: dateNow,

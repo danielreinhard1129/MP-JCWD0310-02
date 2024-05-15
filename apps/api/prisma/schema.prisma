@@ -205,14 +205,15 @@ model Review {
 
 model Discount {
   id         Int      @id @default(autoincrement())
-  percentage Int
-  isActive   Boolean
+  code       String   @unique
+  discount   Int
+  maxUses    Int
   startDate  DateTime
   endDate    DateTime
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
 
-  eventId Int
+  eventId    Int
 
   transactionDiscount TransactionDiscount[]
 
