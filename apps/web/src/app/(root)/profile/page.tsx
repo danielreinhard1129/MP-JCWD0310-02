@@ -29,10 +29,11 @@ const Profile = () => {
   const handleFormSubmit = () => {
     handleSubmit();
   };
+
   return (
-    <div className="flex flex-col gap-8 w-full py-4 items-center h-screen bg-[#fbfbf8]">
-      <div className="md:w-[95vw] sm:w-full border-b-2 py-2 md:px-6 sm:px-4 items-center flex flex-row justify-between border-gray-300">
-        <p className="font-semibold text-xl text-indigo-950 font-sans">
+    <div className="flex flex-col gap-8 w-full py-4 items-center min-h-[90vh] bg-[#fbfbf8]">
+      <div className="md:w-[95vw] sm:w-full border-b-2 py-2 md:px-6 px-4 items-center flex flex-row justify-between border-gray-300">
+        <p className="font-semibold md:text-xl text-lg text-indigo-950 font-sans">
           Your Account Information
         </p>
         <div className="max-w-[300px] w-[25%] rounded-3xl items-center justify-center flex flex-row gap-2 px-4 py-2 bg-indigo-950">
@@ -43,16 +44,33 @@ const Profile = () => {
         </div>
       </div>
 
-      <div className="md:px-14 px-20 items-center flex flex-row justify-between w-full">
-        <Button onClick={()=> {router.push('/profile/events')}} className="bg-indigo-950 text-[#ffff00]">
+      <div className="md:px-14 px-4 gap-4 items-center flex flex-row justify-between w-full">
+        <Button
+          onClick={() => {
+            router.push('/profile/events');
+          }}
+          className="bg-indigo-950 text-[#ffff00] md:text-base text-xs"
+        >
           Your Event List
         </Button>
 
-        <Button onClick={()=> {router.push('/profile/transaction')}} className="bg-indigo-950 text-[#ffff00]">
+        <Button
+          onClick={() => {
+            router.push('/profile/transaction');
+          }}
+          className="bg-indigo-950 text-[#ffff00] md:text-base text-xs"
+        >
           Your Transaction
         </Button>
 
-        <Button onClick={()=> {router.push('/profile/voucher')}} className="bg-indigo-950 text-[#ffff00]">Your Voucher</Button>
+        <Button
+          onClick={() => {
+            router.push('/profile/voucher');
+          }}
+          className="bg-indigo-950 text-[#ffff00] md:text-base text-xs"
+        >
+          Your Voucher
+        </Button>
       </div>
 
       <div className="h-full md:px-6 sm:px-2 w-full flex flex-col gap-4 py-2">
@@ -145,7 +163,10 @@ const Profile = () => {
             </div>
 
             <div className="flex w-full justify-end">
-              <Button onClick={handleFormSubmit} className="text-[#ffff00] bg-indigo-950 border border-[#ffff00]">
+              <Button
+                onClick={handleFormSubmit}
+                className="text-[#ffff00] bg-indigo-950 border border-[#ffff00]"
+              >
                 Save Changes
               </Button>
             </div>
