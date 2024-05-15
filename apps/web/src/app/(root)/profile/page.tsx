@@ -7,24 +7,34 @@ import FormInputDarkMode from '@/components/FormInputDarkMode';
 import { useFormik } from 'formik';
 import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
+import Dropzone from '@/components/Dropzone';
+import PreviewImages from '@/components/PreviewImages';
 const Profile = () => {
   const userDetail = useAppSelector((state) => state.user);
   const router = useRouter();
   const pointsFormat = new Intl.NumberFormat('en-IN', {
     maximumSignificantDigits: 3,
   });
-  const { values, errors, touched, handleChange, handleBlur, handleSubmit } =
-    useFormik({
-      initialValues: {
-        email: userDetail.email,
-        firstName: userDetail.firstName,
-        lastName: userDetail.lastName,
-      },
-      // validationSchema,
-      onSubmit: (values) => {
-        console.log(values);
-      },
-    });
+  const {
+    values,
+    errors,
+    touched,
+    handleChange,
+    handleBlur,
+    handleSubmit,
+    setFieldValue,
+  } = useFormik({
+    initialValues: {
+      email: userDetail.email,
+      firstName: userDetail.firstName,
+      lastName: userDetail.lastName,
+      thumbnail: [],
+    },
+    // validationSchema,
+    onSubmit: (values) => {
+      console.log(values);
+    },
+  });
 
   const handleFormSubmit = () => {
     handleSubmit();
@@ -85,19 +95,52 @@ const Profile = () => {
               </p>
 
               <div className="grid md:grid-flow-col sm:grid-flow-row gap-8">
-                <div className="overflow-hidden cursor-pointer border-2 group border-indigo-950 w-40 h-40 flex justify-center items-center rounded-full">
+                <div className="overflow-hidden cursor-pointer border-2 transition-all duration-300 group border-indigo-950 w-40 h-40 flex justify-center items-center rounded-full">
                   <Pen className="absolute w-12 h-12 text-red-950 hidden group-hover:block group-hover:opacity-100" />
-                  <Image
-                    src={
-                      !userDetail.pictureId
-                        ? '/defaultProfileImage.jpg'
-                        : userDetail.pictureId
-                    }
-                    className="h-full w-full group-hover:opacity-40"
-                    alt="profileImage"
-                    width={100}
-                    height={100}
-                  />
+
+                  {values.thumbnail.length ? (
+                    ''
+                  ) : (
+                    <Image
+                      src={
+                        !userDetail.pictureId
+                          ? '/defaultProfileImage.jpg'
+                          : userDetail.pictureId
+                      }
+                      className="w-40 h-40 z-30 group-hover:opacity-40 transition-all duration-300"
+                      alt="profileImage"
+                      width={100}
+                      height={100}
+                    />
+                  )}
+
+                  {values.thumbnail.length ? (
+                    <div className="group-hover:opacity-40 transition-all duration-300">
+                      <PreviewImages
+                        fileImages={values.thumbnail}
+                        onRemoveImage={(idx: number) =>
+                          setFieldValue(
+                            'thumbnail',
+                            values.thumbnail?.toSpliced(idx, 1),
+                          )
+                        }
+                      />
+                    </div>
+                  ) : (
+                    ''
+                  )}
+
+                  <div className="z-40 absolute opacity-0">
+                    <Dropzone
+                      isError={Boolean(errors.thumbnail)}
+                      label=""
+                      onDrop={(files) =>
+                        setFieldValue('thumbnail', [
+                          ...files.map((file) => file),
+                        ])
+                      }
+                    />
+                  </div>
                 </div>
 
                 <div className="h-full w-full flex flex-col justify-center gap-4">
