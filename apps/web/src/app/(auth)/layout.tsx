@@ -1,4 +1,5 @@
-// import { useParams, usePathname } from 'next/navigation';
+'use client';
+import ToastMessage from '../components/ToastMessage';
 
 export default function RootLayout({
   children,
@@ -8,7 +9,6 @@ export default function RootLayout({
   return (
     <>
       <div className="flex flex-row min-h-screen h-full w-full">
-
         <div className="bg-indigo-950 w-[40%] md:flex hidden flex-col items-center gap-12 py-8 px-4">
           {/* Logo */}
           <div className="flex flex-col text-center justify-center">
@@ -21,6 +21,10 @@ export default function RootLayout({
           {/* Description */}
 
           <div className="text-[#ffff00] flex justify-center items-center transition-all duration-300"></div>
+        </div>
+
+        <div className="absolute right-0">
+          <ToastMessage />
         </div>
 
         <div className="bg-[#fbfbf8] flex justify-center items-center min-h-screen h-full w-full md:p-20 p-4">

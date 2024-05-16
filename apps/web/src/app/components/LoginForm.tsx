@@ -1,11 +1,12 @@
 import FormInput from '@/components/Forminput';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useFormik } from 'formik';
 import React from 'react';
 import validationSchema from '../(auth)/login/validationSchema';
 import useLogin from '../hooks/api/auth/useLogin';
 import { useRouter } from 'next/navigation';
+import { toast } from 'react-toastify';
 
 const LoginForm = () => {
   const router = useRouter();
@@ -18,13 +19,12 @@ const LoginForm = () => {
       },
       validationSchema,
       onSubmit: (values) => {
-        console.log(values);
-
-        login(values);
+        const toastLoading = toast.loading('Submitting the form!');
+        login(values).finally(() => toast.done(toastLoading));
       },
     });
   return (
-    <div className='rounded-lg border bg-indigo-950 w-full bg-card text-card-foreground shadow-sm'>
+    <div className="rounded-lg border bg-indigo-950 w-full bg-card text-card-foreground shadow-sm">
       <CardHeader>
         <CardTitle className="text-center text-3xl text-[#ffff00]">
           Login your Account
@@ -44,7 +44,6 @@ const LoginForm = () => {
               handleChange={handleChange}
               handleBlur={handleBlur}
             />
-
             <FormInput
               name="password"
               type="password"
@@ -58,6 +57,10 @@ const LoginForm = () => {
             />
             <div className="flex flex-col gap-4">
               <Button
+                onClick={() => {
+                  if (errors.email) toast.error(errors.email);
+                  if (errors.password) toast.error(errors.password);
+                }}
                 type="submit"
                 className="w-full bg-transparent duration-300 transition-all hover:bg-[#ffff00] hover:text-indigo-950 text-xl h-14 text-[#ffff00] border-2 rounded-2xl border-[#ffff00]"
               >
@@ -81,9 +84,8 @@ const LoginForm = () => {
             Register
           </Button>
         </div>
-
       </CardContent>
-      </div>
+    </div>
   );
 };
 

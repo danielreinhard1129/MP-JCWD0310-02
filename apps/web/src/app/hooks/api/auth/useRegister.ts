@@ -1,6 +1,7 @@
 import { axiosInstance } from '@/app/lib/axios';
 import { User } from '@/app/types/user.type';
 import { AxiosError } from 'axios';
+import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
 
 interface RegisterArg
@@ -12,10 +13,13 @@ const useRegister = () => {
   const register = async (payload: RegisterArg) => {
     try {
       await axiosInstance.post('/auth/register', payload);
-      router.push('/login');
-    } catch (err) {
-      if (err instanceof AxiosError) {
-        alert(JSON.stringify(err?.response?.data));
+      toast.success('Success register')
+      setTimeout(()=> {
+        router.push('/login');
+      },1000)
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        toast.error('Something error with the server!');
       }
     }
   };

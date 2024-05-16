@@ -4,6 +4,7 @@ import { loginAction } from '@/app/redux/slices/userSlice';
 import { User } from '@/app/types/user.type';
 import { AxiosError } from 'axios';
 import { useRouter } from 'next/navigation';
+import { toast } from 'react-toastify';
 
 interface LoginResponse {
   message: string;
@@ -40,10 +41,13 @@ const useLogin = () => {
       );
       dispatch(loginAction(data.data));
       localStorage.setItem('token', data.token);
-      router.replace('/');
+      toast.success('Succes login!');
+      setTimeout(() => {
+        router.replace('/');
+      }, 1000);
     } catch (err) {
       if (err instanceof AxiosError) {
-        alert(JSON.stringify(err?.response?.data));
+        toast.error('Something error with the server');
       }
     }
   };
