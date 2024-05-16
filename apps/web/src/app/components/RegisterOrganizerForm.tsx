@@ -38,7 +38,7 @@ const RegisterOrganizerForm = () => {
     <Card className="w-full bg-indigo-950 rounded-3xl">
       <CardHeader>
         <CardTitle className="text-center text-3xl text-[#ffff00]">
-          Register Account
+          Register Account as Organizer
         </CardTitle>
       </CardHeader>
       <CardContent className="flex flex-col gap-4 transition-all duration-300">

@@ -6,31 +6,44 @@ import { Pen, User } from 'lucide-react';
 import FormInputDarkMode from '@/components/FormInputDarkMode';
 import { useFormik } from 'formik';
 import { Button } from '@/components/ui/button';
+import { useRouter } from 'next/navigation';
+import Dropzone from '@/components/Dropzone';
+import PreviewImages from '@/components/PreviewImages';
 const Profile = () => {
   const userDetail = useAppSelector((state) => state.user);
+  const router = useRouter();
   const pointsFormat = new Intl.NumberFormat('en-IN', {
     maximumSignificantDigits: 3,
   });
-  const { values, errors, touched, handleChange, handleBlur, handleSubmit } =
-    useFormik({
-      initialValues: {
-        email: userDetail.email,
-        firstName: userDetail.firstName,
-        lastName: userDetail.lastName,
-      },
-      // validationSchema,
-      onSubmit: (values) => {
-        console.log(values);
-      },
-    });
+  const {
+    values,
+    errors,
+    touched,
+    handleChange,
+    handleBlur,
+    handleSubmit,
+    setFieldValue,
+  } = useFormik({
+    initialValues: {
+      email: userDetail.email,
+      firstName: userDetail.firstName,
+      lastName: userDetail.lastName,
+      thumbnail: [],
+    },
+    // validationSchema,
+    onSubmit: (values) => {
+      console.log(values);
+    },
+  });
 
   const handleFormSubmit = () => {
     handleSubmit();
   };
+
   return (
-    <div className="flex flex-col gap-8 w-full py-4 items-center h-screen bg-[#fbfbf8]">
-      <div className="md:w-[95vw] sm:w-full border-b-2 py-2 md:px-6 sm:px-4 items-center flex flex-row justify-between border-gray-300">
-        <p className="font-semibold text-xl text-indigo-950 font-sans">
+    <div className="flex flex-col gap-8 w-full py-4 items-center min-h-[90vh] bg-[#fbfbf8]">
+      <div className="md:w-[95vw] sm:w-full border-b-2 py-2 md:px-6 px-4 items-center flex flex-row justify-between border-gray-300">
+        <p className="font-semibold md:text-xl text-lg text-indigo-950 font-sans">
           Your Account Information
         </p>
         <div className="max-w-[300px] w-[25%] rounded-3xl items-center justify-center flex flex-row gap-2 px-4 py-2 bg-indigo-950">
@@ -41,16 +54,33 @@ const Profile = () => {
         </div>
       </div>
 
-      <div className="md:px-14 px-20 items-center flex flex-row justify-between w-full">
-        <Button className="bg-indigo-950 text-[#ffff00]">
+      <div className="md:px-14 px-4 gap-4 items-center flex flex-row justify-between w-full">
+        <Button
+          onClick={() => {
+            router.push('/profile/events');
+          }}
+          className="bg-indigo-950 text-[#ffff00] md:text-base text-xs"
+        >
           Your Event List
         </Button>
 
-        <Button className="bg-indigo-950 text-[#ffff00]">
+        <Button
+          onClick={() => {
+            router.push('/profile/transaction');
+          }}
+          className="bg-indigo-950 text-[#ffff00] md:text-base text-xs"
+        >
           Your Transaction
         </Button>
 
-        <Button className="bg-indigo-950 text-[#ffff00]">Your Voucher</Button>
+        <Button
+          onClick={() => {
+            router.push('/profile/voucher');
+          }}
+          className="bg-indigo-950 text-[#ffff00] md:text-base text-xs"
+        >
+          Your Voucher
+        </Button>
       </div>
 
       <div className="h-full md:px-6 sm:px-2 w-full flex flex-col gap-4 py-2">
@@ -65,19 +95,52 @@ const Profile = () => {
               </p>
 
               <div className="grid md:grid-flow-col sm:grid-flow-row gap-8">
-                <div className="overflow-hidden cursor-pointer border-2 group border-indigo-950 w-40 h-40 flex justify-center items-center rounded-full">
+                <div className="overflow-hidden cursor-pointer border-2 transition-all duration-300 group border-indigo-950 w-40 h-40 flex justify-center items-center rounded-full">
                   <Pen className="absolute w-12 h-12 text-red-950 hidden group-hover:block group-hover:opacity-100" />
-                  <Image
-                    src={
-                      !userDetail.pictureId
-                        ? '/defaultProfileImage.jpg'
-                        : userDetail.pictureId
-                    }
-                    className="h-full w-full group-hover:opacity-40"
-                    alt="profileImage"
-                    width={100}
-                    height={100}
-                  />
+
+                  {values.thumbnail.length ? (
+                    ''
+                  ) : (
+                    <Image
+                      src={
+                        !userDetail.pictureId
+                          ? '/defaultProfileImage.jpg'
+                          : userDetail.pictureId
+                      }
+                      className="w-40 h-40 z-30 group-hover:opacity-40 transition-all duration-300"
+                      alt="profileImage"
+                      width={100}
+                      height={100}
+                    />
+                  )}
+
+                  {values.thumbnail.length ? (
+                    <div className="group-hover:opacity-40 transition-all duration-300">
+                      <PreviewImages
+                        fileImages={values.thumbnail}
+                        onRemoveImage={(idx: number) =>
+                          setFieldValue(
+                            'thumbnail',
+                            values.thumbnail?.toSpliced(idx, 1),
+                          )
+                        }
+                      />
+                    </div>
+                  ) : (
+                    ''
+                  )}
+
+                  <div className="z-40 absolute opacity-0">
+                    <Dropzone
+                      isError={Boolean(errors.thumbnail)}
+                      label=""
+                      onDrop={(files) =>
+                        setFieldValue('thumbnail', [
+                          ...files.map((file) => file),
+                        ])
+                      }
+                    />
+                  </div>
                 </div>
 
                 <div className="h-full w-full flex flex-col justify-center gap-4">
@@ -143,7 +206,10 @@ const Profile = () => {
             </div>
 
             <div className="flex w-full justify-end">
-              <Button onClick={handleFormSubmit} className="text-[#ffff00] bg-indigo-950 border border-[#ffff00]">
+              <Button
+                onClick={handleFormSubmit}
+                className="text-[#ffff00] bg-indigo-950 border border-[#ffff00]"
+              >
                 Save Changes
               </Button>
             </div>
@@ -154,5 +220,5 @@ const Profile = () => {
   );
 };
 
-// export default NeedAuthenticationGuard(Profile);
-export default Profile;
+export default NeedAuthenticationGuard(Profile);
+// export default Profile;

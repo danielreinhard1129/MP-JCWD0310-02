@@ -83,9 +83,9 @@ export const NeedAuthenticationGuard = (Component: any) => {
 
     if (loading)
       return (
-        <div className="w-full flex flex-col justify-center border-t border-b border-[#ffff00] items-center h-[80vh] bg-indigo-950">
+        <div className="w-full flex flex-col justify-center border-t border-b border-[#ffff00] items-center h-[80vh] bg-[#fbfbf8]">
           <div className=''>
-              <h1 className='text-3xl font-extrabold text-[#ffff00]'>Loading...</h1>
+              <h1 className='text-3xl font-extrabold text-indigo-950'>Loading...</h1>
           </div>
         </div>
       );

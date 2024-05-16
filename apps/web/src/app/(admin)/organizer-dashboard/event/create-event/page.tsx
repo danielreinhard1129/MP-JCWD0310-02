@@ -247,8 +247,7 @@ const CreateEventPage = () => {
                     onRemoveImage={(idx: number) =>
                       setFieldValue(
                         'thumbnail',
-                        values.thumbnail?.toSpliced(idx, 1),
-                      )
+                        values.thumbnail?.toSpliced(idx, 1))
                     }
                   />
 
@@ -264,7 +263,7 @@ const CreateEventPage = () => {
                   />
                 </div>
                 <Button type="submit" className="mt-6 w-full">
-                  Login
+                  Create Event
                 </Button>
               </form>
             </CardContent>

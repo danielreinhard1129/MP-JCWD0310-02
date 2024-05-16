@@ -1,13 +1,13 @@
 import { Request } from 'express';
-import multer, { FileFilterCallback } from 'multer';
+import multer, { FileFilterCallback, Options } from 'multer';
 import { join } from 'path';
 
 type DestinationCallback = (error: Error | null, destination: string) => void;
 type FilenameCallback = (error: Error | null, filename: string) => void;
 
 export const uploader = (
-  filePrefix: string,
-  folderName: string,
+  filePreFix: string,
+  foldername?: string,
   filelimit?: number,
 ) => {
   const defaultDir = join(__dirname, '../../public');
@@ -18,19 +18,19 @@ export const uploader = (
       file: Express.Multer.File,
       cb: DestinationCallback,
     ) => {
-      const destination = folderName ? defaultDir + folderName : defaultDir;
+      const destination = foldername ? defaultDir + foldername : defaultDir;
       cb(null, destination);
     },
     filename: (
       req: Request,
       file: Express.Multer.File,
-      callback: FilenameCallback,
+      cb: FilenameCallback,
     ) => {
-      const originalNameParts = file.originalname.split('.');
-      const fileExtension = originalNameParts[originalNameParts.length - 1];
-      const newFileName = filePrefix + Date.now() + '.' + fileExtension;
+      const originalnameParts = file.originalname.split('.');
+      const fileExtension = originalnameParts[originalnameParts.length - 1];
+      const newFileName = filePreFix + Date.now() + '.' + fileExtension;
 
-      callback(null, newFileName);
+      cb(null, newFileName);
     },
   });
 
@@ -44,13 +44,13 @@ export const uploader = (
     if (isExtMatch) {
       cb(null, true);
     } else {
-      const error = new Error('Your file extenstion is denied');
+      const error = new Error('Your file extension is denied');
       cb(null, false);
       cb(error);
     }
   };
 
-  const limits = { fileSize: filelimit || 2 * 1024 * 1024 }; //default 2mb
+  const limits = { fileSize: filelimit || 2 * 1024 * 1024 }; // default 2mb
 
   return multer({ storage, fileFilter, limits });
 };

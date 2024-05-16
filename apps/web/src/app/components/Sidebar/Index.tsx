@@ -44,6 +44,10 @@ const items: ISidebarItem[] = [
         name : "Manage Event",
         path : "/organizer-dashboard/event/manage-event"
       },
+      {
+        name : "Create Promotion",
+        path : "/organizer-dashboard/event/create-promotion"
+      },
     ],
   },
   {
