@@ -21,7 +21,7 @@ const VoucherCard = ({
   };
   return (
     <div className="container mx-auto">
-      <div className="bg-indigo-950 text-[#ffff00] text-center py-10 px-20 rounded-lg shadow-md relative">
+      <div className="bg-indigo-950 text-[#ffff00] md:w-full w-64 text-center py-10 px-20 rounded-lg shadow-md relative">
         <div className="w-20 mx-auto mb-4 rounded-lg"></div>
         <h3 className="text-2xl font-semibold mb-4">
           {percentage}% {description} <br></br> Maximum {maxUsage}K off
