@@ -41,7 +41,7 @@ const Autocomplete = () => {
   return (
     <Asyncselect
       placeholder="Search for events"
-      className="mx-auto md:mx-64"
+      className="mx-auto md:mx-64 text-black"
       loadOptions={debouncedLoadOptions}
       isLoading={isLoading}
       onChange={(event) => {

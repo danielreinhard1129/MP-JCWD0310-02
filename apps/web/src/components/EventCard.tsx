@@ -8,7 +8,7 @@ import { Card, CardContent, CardHeader } from './ui/card';
 interface EventCardProps {
   title: string;
   description: string;
-  price: string;
+  price: number;
   booked: string;
   limit: string;
   imageUrl: string;
@@ -32,11 +32,17 @@ const EventCard: FC<EventCardProps> = ({
   time,
   eventId,
 }) => {
+
+  const formattedPrice = new Intl.NumberFormat('id-ID', {
+    style: 'currency',
+    currency: 'IDR'
+  }).format(price);
+
   return (
     <Link href={`/${eventId}`}>
       <Card>
         <CardHeader>
-          <div className="relative h-[220px] w-full overflow-hidden rounded-md">
+          <div className="relative h-[100px] w-full overflow-hidden rounded-md">
             <Image
               src={imageUrl}
               alt="thumbnail"
@@ -46,17 +52,17 @@ const EventCard: FC<EventCardProps> = ({
           </div>
         </CardHeader>
         <CardContent>
-          <Badge variant="outline" className="rounded-sm bg-green-100">
-            {category}
-          </Badge>
-          <h2 className="line-clamp-2 text-lg font-semibold">{title}</h2>
+          {/* <Badge variant="outline" className="rounded-sm bg-green-100">
+            {title}
+          </Badge> */}
+          <h2 className="line-clamp-2 text-lg font-semibold text-center">{title}</h2>
+          <h2 className="line-clamp-2 text-lg font-semibold">{category}</h2>
           <p className="line-clamp-3">{description}</p>
           <p className="text-sm font-light italic">
-            {format(startDate, 'dd MMMM yyyy')} -{' '}
-            {format(endDate, 'dd MMMM yyyy')}
+            {`Date: ${format(startDate, 'dd MMMM yyyy')} - ${format(endDate, 'dd MMMM yyyy')}`}
           </p>
           <p className="text-sm font-light italic">{time}</p>
-          <p className="text-sm font-light italic">{price}</p>
+          <p className="text-sm font-light italic">{`Price: ${formattedPrice}`}</p>
           <p className="text-sm font-light italic">{booked}</p>
           <p className="text-sm font-light italic">{limit}</p>
         </CardContent>
