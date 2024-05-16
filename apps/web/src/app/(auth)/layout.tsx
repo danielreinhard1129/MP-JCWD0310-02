@@ -22,11 +22,9 @@ export default function RootLayout({
 
           <div className="text-[#ffff00] flex justify-center items-center transition-all duration-300"></div>
         </div>
-
         <div className="absolute right-0">
           <ToastMessage />
         </div>
-
         <div className="bg-[#fbfbf8] flex justify-center items-center min-h-screen h-full w-full md:p-20 p-4">
           {children}
         </div>
