@@ -35,27 +35,26 @@ const RegisterForm = () => {
     }
   };
   return (
-    <>
-      <div className="rounded-lg border bg-indigo-950 w-full bg-card text-card-foreground shadow-sm">
-        <CardHeader>
-          <CardTitle className="text-center text-3xl text-[#ffff00]">
-            Register Account
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="flex flex-col gap-4 transition-all duration-300">
-          <form onSubmit={handleSubmit} className="transition-all duration-300">
-            <div className="grid w-full items-center gap-10 transition-all duration-300">
-              <FormInput
-                name="email"
-                type="text"
-                label="Email"
-                placeholder="Email"
-                value={values.email}
-                error={errors.email}
-                isError={!!touched.email && !!errors.email}
-                handleChange={handleChange}
-                handleBlur={handleBlur}
-              />
+    <div className='rounded-lg border bg-indigo-950 w-full bg-card text-card-foreground shadow-sm'>
+      <CardHeader>
+        <CardTitle className="text-center text-3xl text-[#ffff00]">
+          Register Account
+        </CardTitle>
+      </CardHeader>
+      <CardContent className="flex flex-col gap-4 transition-all duration-300">
+        <form onSubmit={handleSubmit} className="transition-all duration-300">
+          <div className="grid w-full items-center gap-10 transition-all duration-300">
+            <FormInput
+              name="email"
+              type="text"
+              label="Email"
+              placeholder="Email"
+              value={values.email}
+              error={errors.email}
+              isError={!!touched.email && !!errors.email}
+              handleChange={handleChange}
+              handleBlur={handleBlur}
+            />
 
               {expanded ? (
                 <>
@@ -165,7 +164,6 @@ const RegisterForm = () => {
           {/*  */}
         </CardContent>
       </div>
-    </>
   );
 };
 
