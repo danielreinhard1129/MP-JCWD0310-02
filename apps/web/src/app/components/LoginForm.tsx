@@ -11,7 +11,7 @@ import useLogin from '../hooks/api/auth/useLogin';
 const RegisterForm = () => {
   const router = useRouter();
   const [expanded, setExpanded] = useState(false);
-  const { register } = useRegister();
+  const { login } = useLogin();
   const { values, errors, touched, handleChange, handleBlur, handleSubmit } =
     useFormik({
       initialValues: {
