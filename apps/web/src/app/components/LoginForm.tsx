@@ -24,7 +24,7 @@ const LoginForm = () => {
       },
     });
   return (
-    <Card className="w-full bg-indigo-950 rounded-3xl">
+    <div className='rounded-lg border bg-indigo-950 w-full bg-card text-card-foreground shadow-sm'>
       <CardHeader>
         <CardTitle className="text-center text-3xl text-[#ffff00]">
           Login your Account
@@ -83,7 +83,7 @@ const LoginForm = () => {
         </div>
 
       </CardContent>
-    </Card>
+      </div>
   );
 };
 

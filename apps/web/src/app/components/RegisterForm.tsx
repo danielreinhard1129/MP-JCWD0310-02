@@ -1,6 +1,6 @@
 import FormInput from '@/components/Forminput';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useFormik } from 'formik';
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -34,7 +34,7 @@ const RegisterForm = () => {
     }
   };
   return (
-    <Card className="w-full bg-indigo-950 rounded-3xl">
+    <div className='rounded-lg border bg-indigo-950 w-full bg-card text-card-foreground shadow-sm'>
       <CardHeader>
         <CardTitle className="text-center text-3xl text-[#ffff00]">
           Register Account
@@ -156,7 +156,7 @@ const RegisterForm = () => {
         </div>
         {/*  */}
       </CardContent>
-    </Card>
+    </div>
   );
 };
 
