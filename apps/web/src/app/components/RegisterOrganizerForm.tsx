@@ -6,6 +6,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import validationSchema from '../(auth)/register-organizer/validationSchema';
 import useRegisterOrganizer from '../hooks/api/auth/useRegister-Organizer';
+import { toast } from 'react-toastify';
 
 const RegisterOrganizerForm = () => {
   const router = useRouter();
@@ -22,16 +23,16 @@ const RegisterOrganizerForm = () => {
       },
       validationSchema,
       onSubmit: (values) => {
-        register(values);
+        const toastLoading = toast.loading('Submitting the form');
+        register(values).finally(() => toast.done(toastLoading));
       },
     });
   const handleExpandedRegisterForm = () => {
     if (!errors.email && values.email.length > 2) {
       setExpanded(!expanded);
     } else {
+      toast.error('please input your email');
       handleSubmit();
-      // Logic Toastify
-      alert(errors.email ? errors.email : 'please input your email');
     }
   };
   return (
@@ -100,6 +101,12 @@ const RegisterOrganizerForm = () => {
             <div className="flex flex-col gap-4">
               {expanded ? (
                 <Button
+                  onClick={() => {
+                    if (errors.email) toast.error(errors.email);
+                    if (errors.password) toast.error(errors.password);
+                    if (errors.firstName) toast.error(errors.firstName);
+                    if (errors.lastName) toast.error(errors.lastName);
+                  }}
                   type="submit"
                   className="w-full bg-transparent duration-300 transition-all hover:bg-[#ffff00] hover:text-indigo-950 text-xl h-14 text-[#ffff00] border-2 rounded-2xl border-[#ffff00]"
                 >

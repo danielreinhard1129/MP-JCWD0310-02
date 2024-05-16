@@ -4,18 +4,20 @@ import { loginAction } from '@/app/redux/slices/userSlice';
 import { User } from '@/app/types/user.type';
 import { AxiosError } from 'axios';
 import { useRouter } from 'next/navigation';
+import { toast } from 'react-toastify';
 
 interface LoginResponse {
   message: string;
   data: {
-    id: number | null;
-    userId: number | null;
+    id: number;
+    userId: number;
     role: string;
     firstName: string;
     lastName: string;
     password: string;
     passwordHash: string;
     token: string;
+    points: number;
     referralCode: string;
     detail: {
       // dateOfBirth: Date;
@@ -40,10 +42,13 @@ const useLogin = () => {
       );
       dispatch(loginAction(data.data));
       localStorage.setItem('token', data.token);
-      router.replace('/');
+      toast.success('Succes login!');
+      setTimeout(() => {
+        router.replace('/');
+      }, 1000);
     } catch (err) {
       if (err instanceof AxiosError) {
-        alert(JSON.stringify(err?.response?.data));
+        toast.error('Something error with the server');
       }
     }
   };
