@@ -1,5 +1,5 @@
 import { format, parse, parseISO } from 'date-fns';
-import { Calendar, LocateIcon } from 'lucide-react';
+import { Calendar, Clock, LocateIcon } from 'lucide-react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import React from 'react';
@@ -26,7 +26,7 @@ const ListEventCard = ({
   const router = useRouter();
 
   const handleOnClick = () => {
-    router.push("/organizer-dashboard/event/manage-event/"+clickUrl);
+    router.push('/organizer-dashboard/event/manage-event/' + clickUrl);
   };
 
   const stringStartDate = format(startDate, 'yyyy.MM.dd');
@@ -35,7 +35,7 @@ const ListEventCard = ({
   return (
     <div
       onClick={handleOnClick}
-      className="rounded-xl w-full h-44 flex flex-row items-center hover:cursor-pointer justify-between p-4 bg-indigo-950"
+      className="rounded-xl w-full h-44 flex flex-row items-center hover:cursor-pointer md:justify-around justify-between p-4 bg-indigo-950"
     >
       <div className="h-full p-2">
         <Image
@@ -57,6 +57,11 @@ const ListEventCard = ({
           <p>
             {stringStartDate} - {stringEndDate}
           </p>
+        </div>
+
+        <div className="flex flex-row gap-2 items-center font-medium text-sm">
+          <Clock />
+          <p>{time.toTimeString().slice(0, 12)}</p>
         </div>
 
         <div className="flex flex-row gap-2 items-center font-medium text-sm">
