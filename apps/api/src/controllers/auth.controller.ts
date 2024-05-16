@@ -1,3 +1,4 @@
+import { forgotPasswordService } from '@/services/auth/forgot-password.service';
 import { keepLoginService } from '@/services/auth/keep-login.service';
 import { loginService } from '@/services/auth/login.service';
 import { organizerRegisterService } from '@/services/auth/organizer-register.service';
@@ -39,6 +40,18 @@ export class AuthController {
   ) {
     try {
       const result = await organizerRegisterService(req.body);
+      res.status(200).send(result);
+    } catch (error) {
+      next(error);
+    }
+  }
+  async forgotPasswordController(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ) {
+    try {
+      const result = await forgotPasswordService(req.body);
       res.status(200).send(result);
     } catch (error) {
       next(error);

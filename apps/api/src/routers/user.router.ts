@@ -16,7 +16,6 @@ export class UserRouter {
       res.send({ message: 'oke' }).status(200);
     });
     this.router.post('/login:id', this.userController.getUserDetailController);
-    // this.router.post('/forgot-password' , verifyToken );
   }
 
   getRouter(): Router {
