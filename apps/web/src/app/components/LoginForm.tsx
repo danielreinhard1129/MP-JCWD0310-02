@@ -10,16 +10,12 @@ import useLogin from '../hooks/api/auth/useLogin';
 
 const RegisterForm = () => {
   const router = useRouter();
-  const [expanded, setExpanded] = useState(false);
   const { login } = useLogin();
   const { values, errors, touched, handleChange, handleBlur, handleSubmit } =
     useFormik({
       initialValues: {
-        firstName: '',
-        lastName: '',
         email: '',
         password: '',
-        referralCode: '',
       },
       validationSchema,
       onSubmit: (values) => {
@@ -28,9 +24,8 @@ const RegisterForm = () => {
       },
     });
   const handleExpandedRegisterForm = () => {
-    if (!errors.email && values.email.length > 2) {
-      setExpanded(!expanded);
-    } else {
+    if (errors.email && touched.email) {
+      handleSubmit();
       toast.error('Please input your email');
     }
   };
@@ -56,32 +51,21 @@ const RegisterForm = () => {
                 handleChange={handleChange}
                 handleBlur={handleBlur}
               />
-              <>
-                <FormInput
-                  name="password"
-                  type="password"
-                  label="Password"
-                  placeholder="Password"
-                  value={values.password}
-                  error={errors.password}
-                  isError={!!touched.password && !!errors.password}
-                  handleChange={handleChange}
-                  handleBlur={handleBlur}
-                />
-              </>
 
-              <div className="flex flex-col gap-4">
-                <Button
-                  onClick={() => {
-                    if (errors.email) toast.error(errors.email);
-                    if (errors.password) toast.error(errors.password);
-                  }}
-                  type="submit"
-                  className="w-full bg-transparent duration-300 transition-all hover:bg-[#ffff00] hover:text-indigo-950 text-xl h-14 text-[#ffff00] border-2 rounded-2xl border-[#ffff00]"
-                >
-                  Login
-                </Button>
-              </div>
+              <FormInput
+                name="password"
+                type="password"
+                label="Password"
+                placeholder="Password"
+                value={values.password}
+                error={errors.password}
+                isError={!!touched.password && !!errors.password}
+                handleChange={handleChange}
+                handleBlur={handleBlur}
+              />
+              <Button className="w-full bg-transparent duration-300 transition-all hover:bg-[#ffff00] hover:text-indigo-950 text-xl h-14 text-[#ffff00] border-2 rounded-2xl border-[#ffff00]">
+                Login
+              </Button>
             </div>
           </form>
           {/*  */}
