@@ -10,9 +10,11 @@ export interface Promotion {
 
   export interface IFormCreatePromotion {
     code: string;
-    discount: string;
+    discount: number;
     startDate: string;
     endDate: string;
-    maxUses: string;
-    eventId?: number
+    maxUses: number;
+    eventId: number
   }
+
+  

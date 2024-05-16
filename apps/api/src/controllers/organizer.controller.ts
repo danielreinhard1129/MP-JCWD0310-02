@@ -19,19 +19,6 @@ export class OrganizerController {
     }
   }
 
-  // async createPromotionOrganizer(
-  //   req: Request,
-  //   res: Response,
-  //   next: NextFunction,
-  // ) {
-  //   try {
-  //     const result = await createPromotionService(req.body);
-
-  //     return res.status(200).json(result);
-  //   } catch (error) {
-  //     next(error);
-  //   }
-  // }
 
   async testOrganizer(req: Request, res: Response, next: NextFunction) {
     try {

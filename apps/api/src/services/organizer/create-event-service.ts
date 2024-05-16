@@ -1,6 +1,5 @@
 import prisma from '@/prisma';
 import { Event } from '@prisma/client';
-import { create } from 'ts-node';
 
 interface createEventParams extends Omit<Event, 'locationId'> {
   userId: number;

@@ -1,35 +1,46 @@
 'use client';
 
-import useCreatePromotion from '@/app/hooks/api/event/useCreatePromotion';
-import { useAppSelector } from '@/app/redux/hook';
+import React, { useState } from 'react';
+import { useCreatePromotion } from '@/app/hooks/api/event/useCreatePromotion';
 import { IFormCreatePromotion } from '@/app/types/promotion.type';
-import { DatePicker } from '@/components/DatePicker';
-import FormInputCurrency from '@/components/FormInputCurrency';
-import FormInput from '@/components/Forminput';
-import { Button } from '@/components/ui/button';
 import { useFormik } from 'formik';
+import FormInput from '@/components/Forminput';
+import FormInputCurrency from '@/components/FormInputCurrency';
+import { DatePicker } from '@/components/DatePicker';
+import { Button } from '@/components/ui/button';
 
-const CreatePromotionPage = () => {
+const CreatePromotionPage: React.FC = () => {
+  const [formData, setFormData] = useState<IFormCreatePromotion>({
+    code: '',
+    discount: 0,
+    maxUses: 0,
+    startDate: '',
+    endDate: '',
+    eventId: 0,
+  });
+
   const { createPromotion } = useCreatePromotion();
-//   const { id } = useAppSelector((state) => state.user);
   const {
     handleSubmit,
-    handleBlur,
-    handleChange,
-    setFieldValue,
     values,
     errors,
+    handleBlur,
+    handleChange,
     touched,
-  } = useFormik<IFormCreatePromotion>({
+    setFieldValue,
+  } = useFormik({
     initialValues: {
-      code: '',
-      discount: '',
-      startDate: '',
-      endDate: '',
-      maxUses: '',
+    code: '',
+    discount: 0,
+    maxUses: 0,
+    startDate: '',
+    endDate: '',
+    eventId: 0,
     },
+    // validationSchema,
     onSubmit: (values) => {
-    //   createPromotion({ ...values, eventId: id });
+      console.log(values);
+      createPromotion({ ...values });
     },
   });
   return (
@@ -90,7 +101,7 @@ const CreatePromotionPage = () => {
             type="text"
             label="MaxUses"
             placeholder="MaxUses"
-            value={values.maxUses}
+            value={String(values.maxUses)}
             error={errors.maxUses}
             isError={!!touched.maxUses && !!errors.maxUses}
             handleChange={handleChange}
