@@ -9,14 +9,15 @@ import { toast } from 'react-toastify';
 interface LoginResponse {
   message: string;
   data: {
-    id: number | null;
-    userId: number | null;
+    id: number;
+    userId: number;
     role: string;
     firstName: string;
     lastName: string;
     password: string;
     passwordHash: string;
     token: string;
+    points: number;
     referralCode: string;
     detail: {
       // dateOfBirth: Date;
