@@ -7,7 +7,7 @@ interface ForgotPasswordParams extends Pick<User, 'email'> {
   newPassword: string;
 }
 
-export const forgotPassword = async (body: ForgotPasswordParams) => {
+export const forgotPasswordService = async (body: ForgotPasswordParams) => {
   try {
     const { email, resetCode, newPassword } = body;
 

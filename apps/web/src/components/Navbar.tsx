@@ -58,7 +58,7 @@ const Navbar = () => {
                   Dashboard
                 </h3>
               ) : (
-                <h3 onClick={() => router.push('/event')}>Event</h3>
+                <h3 onClick={() => router.push('/event/concert')}>Event</h3>
               )}
               <h3 onClick={() => router.push('/profile')}>Profile</h3>
               <h3 onClick={logout}>Logout</h3>
@@ -68,7 +68,7 @@ const Navbar = () => {
             <div className='hidden md:block'>
             <div className="flex items-center gap-8">
               <h3 onClick={() => router.push('/')}>Home</h3>
-              <h3 onClick={() => router.push('/event')}>Event</h3>
+              <h3 onClick={() => router.push('/event/concert')}>Event</h3>
               <h3 onClick={() => router.push('/login')}>Login</h3>
               <h3 onClick={() => router.push('/register')}>Register</h3>
             </div>
@@ -95,7 +95,7 @@ const Navbar = () => {
                       Dashboard
                     </DropdownMenuItem>
                   ) : (
-                    <DropdownMenuItem onClick={() => router.push('/event')}>
+                    <DropdownMenuItem onClick={() => router.push('event/concert')}>
                       Event
                     </DropdownMenuItem>
                   )}
@@ -107,7 +107,7 @@ const Navbar = () => {
               )}
               {!Boolean(user.userId) && (
                 <>
-                  <DropdownMenuItem onClick={() => router.push('/event')}>
+                  <DropdownMenuItem onClick={() => router.push('event/concert')}>
                     Event
                   </DropdownMenuItem>
                   <DropdownMenuItem onClick={() => router.push('/login')}>

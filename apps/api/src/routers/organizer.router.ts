@@ -20,11 +20,7 @@ export class OrganizerRouter {
       uploader('IMG', '/images').array('thumbnail', 1),
       this.organizerController.createEventOrganizer,
     );
-    // this.router.post(
-    //   '/',
-    //   verifyToken,
-    //   this.organizerController.createPromotionOrganizer,
-    // );
+    
     this.router.get('/event', this.organizerController.testOrganizer);
   }
 

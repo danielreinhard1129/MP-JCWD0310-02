@@ -36,6 +36,7 @@
     "embla-carousel-react": "^8.0.4",
     "formik": "^2.4.5",
     "grommet": "^2.37.0",
+    "input-otp": "^1.2.4",
     "lodash": "^4.17.21",
     "lucide-react": "^0.376.0",
     "next": "^14.2.3",

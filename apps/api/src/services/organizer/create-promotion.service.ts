@@ -1,41 +1,15 @@
-import prisma from '@/prisma';
-import { Discount } from '@prisma/client';
+import { IFormCreatePromotion } from '@/types/promotion.type';
+import { PrismaClient } from '@prisma/client';
 
-interface CreatePromotionParams {
-  code: string;
-  discount: number;
-  startDate: Date;
-  endDate: Date;
-  maxUses: number;
-}
+const prisma = new PrismaClient();
 
-export const createPromotionService = async (params: CreatePromotionParams) => {
+export const createPromotionService = async (formData: IFormCreatePromotion) => {
   try {
-    const { code, discount, startDate, endDate, maxUses } = params;
-
-    const dateNow = new Date();
-
-      const newPromotion: Discount = await prisma.discount.create({
-        data: {
-          code,
-          discount,
-          startDate,
-          endDate,
-          maxUses,
-          createdAt: dateNow,
-          updatedAt: dateNow,
-        },
-      });
-
-      // Add any additional logic if needed
-
-      return newPromotion;
+    const promotion = await prisma.discount.create({
+      data: formData,
     });
-
-    return {
-      message: 'Success creating promotion',
-    };
-  } catch (err) {
-    throw err;
+    return promotion;
+  } catch (error) {
+    throw new Error('Could not create promotion');
   }
 };
