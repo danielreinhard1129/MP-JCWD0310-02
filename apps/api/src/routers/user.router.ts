@@ -16,6 +16,13 @@ export class UserRouter {
       res.send({ message: 'oke' }).status(200);
     });
     this.router.post('/login:id', this.userController.getUserDetailController);
+    this.router.get('/voucher', this.userController.getUserVoucherController);
+    this.router.get('/reward', this.userController.getUserRewardController);
+    this.router.get(
+      '/transaction',
+      this.userController.getTransactionController,
+    );
+    this.router.get('/events', this.userController.getEventHistoryController);
   }
 
   getRouter(): Router {

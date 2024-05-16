@@ -3,10 +3,12 @@ import VoucherCard from '@/app/components/VoucherCard';
 import { Button } from '@/components/ui/button';
 import { List } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import React from 'react';
+import React, { useState } from 'react';
 
 const VoucherPage = () => {
   const router = useRouter();
+  const [voucher,setVoucher] = useState([]);
+
   return (
     <div className="flex flex-col md:px-8 px-2 md:gap-8 gap-2 md:py-8 items-center min-h-screen bg-[#fbfbf8]">
       <div className="w-full flex flex-col py-4 items-center justify-center border-b-2 border-slate-300">
