@@ -1,8 +1,8 @@
 import prisma from '@/prisma';
 
-export const getUserVoucherService = async (body: { userId: number }) => {
+export const getUserVoucherService = async (id: number ) => {
   try {
-    if (!body.userId) throw new Error('No userid!');
+    if (!id) throw new Error('No userid!');
     const userVoucher = await prisma.user.findMany({
       select: {
         userReward: {
@@ -23,7 +23,7 @@ export const getUserVoucherService = async (body: { userId: number }) => {
         },
       },
       where: {
-        id: body.userId,
+        id: id,
       },
     });
 

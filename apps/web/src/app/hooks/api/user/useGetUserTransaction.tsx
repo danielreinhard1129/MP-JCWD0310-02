@@ -1,11 +1,11 @@
-import { useAppDispatch } from '@/app/redux/hook';
+import { useAppDispatch, useAppSelector } from '@/app/redux/hook';
 import { axiosInstance } from '@/lib/axios';
 
 const useGetUserTransaction = () => {
-  const dispatch = useAppDispatch();
-  const getUserDetail = async (userId: number) => {
+  const { userId } = useAppSelector((state) => state.user);
+  const getUserDetail = async () => {
     try {
-      const { data } = await axiosInstance.get(`/user/${userId}`);
+      const { data } = await axiosInstance.get(`/user/transaction/${userId}`);
       // dispatch(getUserDetail());
       return data;
     } catch (err) {

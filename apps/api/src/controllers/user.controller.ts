@@ -28,7 +28,7 @@ export class UserController {
   }
   async getUserVoucherController(req: Request, res: Response, next: NextFunction) {
     try {
-      const result = await getUserVoucherService(req.body);
+      const result = await getUserVoucherService(Number(req.params.id));
       res.status(200).send(result);
     } catch (error) {
       next(error);
