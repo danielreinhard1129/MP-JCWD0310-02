@@ -1,4 +1,5 @@
 'use client';
+import EventCard from '@/components/EventCard';
 import {
   Card,
   CardContent,
@@ -14,49 +15,41 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
-import getEventAll from '../hooks/api/event/getEvent';
 import { useEffect, useState } from 'react';
+import useGetEvents from '../hooks/api/event/useGetEvents';
+import { appConfig } from '@/utils/config';
 
 const UpcomingEvents = () => {
-//   const { getEvent } = getEventAll();
-
-//   const [data, setData] = useState([{ title: '', description: '' }]);
-
-//   const fetchingData = async () => {
-//     try {
-//       const fetchData = await getEvent();
-//       console.log(fetchData?.data);
-//       setData(fetchData?.data.data);
-//     } catch (error) {
-//       return [];
-//     }
-//   };
-
-//   useEffect(() => {
-//     fetchingData();
-//   }, []);
-
+  const { data: events } = useGetEvents({});
   return (
     <div>
       <h1 className="m-10 justify-start font-bold">Upcoming Events</h1>
       <div className="m-10 gap-10">
         <Carousel>
           <CarouselContent>
-            {/* {data?.map((val, ind, arr) => {
-              return ( */}
-                <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-                  <Card>
-                    <CardHeader>
-                      {/* <CardTitle>{val.title}</CardTitle> */}
-                      {/* <CardDescription>{val.description}</CardDescription> */}
-                    </CardHeader>
-                    <CardContent></CardContent>
-                    <CardFooter></CardFooter>
-                  </Card>
-                </CarouselItem>
-              {/* );
-            })} */}
+              <CarouselItem className="grid grid-cols-4 gap-8">
+                {events.map((event, index) => {
+                  return (
+                    <EventCard 
+                      key={index}
+                      title={event.title}
+                      description={event.description}
+                      category={event.category}
+                      price={event.price}
+                      booked={`Booked: ${String(event.booked)}`}
+                      limit={`Available Seats: ${String(event.limit)}`}
+                      startDate={new Date(event.startDate)}
+                      endDate={new Date(event.endDate)}
+                      time={`Time: ${String(event.time)}`}
+                      imageUrl={appConfig.baseUrl + `/assets${event.thumbnail}`}
+                      eventId={event.id}
+                    />
+                  );
+                })}
+              </CarouselItem>
           </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
         </Carousel>
       </div>
     </div>

@@ -40,6 +40,9 @@ const EventDetail = ({ params }: { params: { id: string } }) => {
             <p className="text-sm font-light italic">
               {format(new Date(event.endDate), 'dd MMMM yyyy')} -{' '}
             </p>
+            <p className="text-sm font-light italic">
+              {format(new Date(event.endDate), 'dd MMMM yyyy')} -{' '}
+            </p>
             <p className="text-sm font-light italic"></p>
             <Button variant="outline" size="icon">
               <Share2 size="20px" />
