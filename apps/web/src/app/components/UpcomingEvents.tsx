@@ -18,19 +18,25 @@ import {
 import { useEffect, useState } from 'react';
 import useGetEvents from '../hooks/api/event/useGetEvents';
 import { appConfig } from '@/utils/config';
+import { Button } from '@/components/ui/button';
+import { useRouter } from 'next/navigation';
 
 const UpcomingEvents = () => {
   const { data: events } = useGetEvents({});
+  const router = useRouter();
   return (
-    <div>
-      <h1 className="m-10 justify-start font-bold">Upcoming Events</h1>
-      <div className="m-10 gap-10">
-        <Carousel>
-          <CarouselContent>
+    <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800">
+      <div className="container px-4 md:px-6">
+        <h2 className="text-3xl font-bold tracking-tighter text-center sm:text-4xl md:text-5xl">
+          Upcoming Events
+        </h2>
+        <div>
+          <Carousel className="grid gap-6 lg:grid-cols-3 lg:gap-12 mt-8">
+            <CarouselContent>
               <CarouselItem className="grid grid-cols-4 gap-8">
                 {events.map((event, index) => {
                   return (
-                    <EventCard 
+                    <EventCard
                       key={index}
                       title={event.title}
                       description={event.description}
@@ -47,12 +53,21 @@ const UpcomingEvents = () => {
                   );
                 })}
               </CarouselItem>
-          </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
-        </Carousel>
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+          <div className="mx-auto w-full max-w-sm space-y-2">
+            <Button
+              onClick={() => router.push('/concert')}
+              className="w-full"
+            >
+             See More Events
+            </Button>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

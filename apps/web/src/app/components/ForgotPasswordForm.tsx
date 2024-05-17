@@ -1,6 +1,13 @@
 import FormInput from '@/components/Forminput';
 import { Button } from '@/components/ui/button';
-import { CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 import { useFormik } from 'formik';
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -8,6 +15,9 @@ import validationSchema from '../(auth)/login/forgot-password/validationSchema';
 import { toast } from 'react-toastify';
 import { InputOtpCode } from './InputOtpCode';
 import useForgotPassword from '../hooks/api/auth/useForgotPassword';
+import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
+import Link from 'next/link';
 
 const ForgotPasswordForm = () => {
   const router = useRouter();
@@ -35,14 +45,14 @@ const ForgotPasswordForm = () => {
     },
   });
   return (
-    <>
-      <div className="rounded-lg border bg-indigo-950 w-full bg-card text-card-foreground shadow-sm">
-        <CardHeader>
-          <CardTitle className="text-center text-3xl text-[#ffff00]">
-            Forgot Password
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="flex flex-col gap-4 transition-all duration-300">
+    <Card className='w-[550px]'>
+      <CardHeader className="space-y-1">
+        <CardTitle className="text-2xl text-center">Reset Password</CardTitle>
+        <CardDescription className='text-center'>
+          Enter your email below to reset your password
+        </CardDescription>
+      </CardHeader>
+      <CardContent className="flex flex-col gap-4 transition-all duration-300">
           <form onSubmit={handleSubmit} className="transition-all duration-300">
             <div className="grid w-full items-center gap-10 transition-all duration-300">
               <FormInput
@@ -60,7 +70,7 @@ const ForgotPasswordForm = () => {
               {expanded ? (
                 <>
                   <div className="flex justify-between gap-4 items-center">
-                    <p className="text-[#ffff00] font-semibold">
+                    <p className="font-semibold">
                       Input your reset code
                     </p>
                     <InputOtpCode
@@ -109,26 +119,20 @@ const ForgotPasswordForm = () => {
                       setExpanded(true);
                   }}
                   type="submit"
-                  className="w-full bg-transparent duration-300 transition-all hover:bg-[#ffff00] hover:text-indigo-950 text-xl h-14 text-[#ffff00] border-2 rounded-2xl border-[#ffff00]"
+                  className="w-full"
                 >
                   {expanded ? 'Send Reset Password' : 'Get Code'}
                 </Button>
               </div>
             </div>
           </form>
-          <div className="flex md:flex-row md:pt-0 pt-4 flex-col text-center justify-center items-center text-[#ffff00] gap-2">
-            <p className="w-full text-sm">Are you have an account?</p>
-            <Button
-              onClick={() => router.push('/login')}
-              className="w-full bg-transparent duration-300 font-normal text-base transition-all hover:bg-[#ffff00] hover:text-indigo-950 h-10 text-[#ffff00] border-b-2 border-[#ffff00]"
-            >
-              Login
-            </Button>
+          <div className="mx-auto">
+            <Link href="/login" className="text-sm mx-auto">Already have an account?</Link>
           </div>
-          {/*  */}
-        </CardContent>
-      </div>
-    </>
+      </CardContent>
+      <CardFooter>
+      </CardFooter>
+    </Card>
   );
 };
 

@@ -1,11 +1,18 @@
 import FormInput from '@/components/Forminput';
 import { Button } from '@/components/ui/button';
-import { CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 import { useFormik } from 'formik';
-import React, { useState } from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import validationSchema from '../(auth)/login/validationSchema';
 import { toast } from 'react-toastify';
+import validationSchema from '../(auth)/login/validationSchema';
 import useLogin from '../hooks/api/auth/useLogin';
 
 const RegisterForm = () => {
@@ -31,65 +38,69 @@ const RegisterForm = () => {
   };
   return (
     <>
-      <div className="rounded-lg border bg-indigo-950 w-full bg-card text-card-foreground shadow-sm">
-        <CardHeader>
-          <CardTitle className="text-center text-3xl text-[#ffff00]">
-            Login Account
-          </CardTitle>
+      <Card className='w-[550px]'>
+        <CardHeader className="space-y-1">
+          <CardTitle className="text-2xl text-center">Login Account</CardTitle>
+          <CardDescription className='text-center'>
+            Enter your email below to login your account
+          </CardDescription>
         </CardHeader>
-        <CardContent className="flex flex-col gap-4 transition-all duration-300">
-          <form onSubmit={handleSubmit} className="transition-all duration-300">
-            <div className="grid w-full items-center gap-10 transition-all duration-300">
-              <FormInput
-                name="email"
-                type="text"
-                label="Email"
-                placeholder="Email"
-                value={values.email}
-                error={errors.email}
-                isError={!!touched.email && !!errors.email}
-                handleChange={handleChange}
-                handleBlur={handleBlur}
-              />
-
-              <FormInput
-                name="password"
-                type="password"
-                label="Password"
-                placeholder="Password"
-                value={values.password}
-                error={errors.password}
-                isError={!!touched.password && !!errors.password}
-                handleChange={handleChange}
-                handleBlur={handleBlur}
-              />
-              <Button className="w-full bg-transparent duration-300 transition-all hover:bg-[#ffff00] hover:text-indigo-950 text-xl h-14 text-[#ffff00] border-2 rounded-2xl border-[#ffff00]">
-                Login
-              </Button>
+        <CardContent className="grid gap-4">
+          <div className="grid grid-cols-2 gap-6"></div>
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <span className="w-full border-t" />
             </div>
-          </form>
-          {/*  */}
-          <div className="flex md:flex-row md:pt-0 pt-4 flex-col text-center justify-center items-center text-[#ffff00] gap-2">
-            <p className="w-full text-sm">Do you want to register?</p>
-            <Button
-              onClick={() => router.push('/register')}
-              className="w-full bg-transparent duration-300 font-normal text-base transition-all hover:bg-[#ffff00] hover:text-indigo-950 h-10 text-[#ffff00] border-b-2 border-[#ffff00]"
-            >
-              Register
-            </Button>
           </div>
-          <div className="text-[#ffff00] flex md:flex-row flex-col text-center gap-2 justify-center items-center">
-            <p className="w-full text-sm">Are you forgot your password?</p>
-            <Button
-              onClick={() => router.push('/login/forgot-password')}
-              className="w-full bg-transparent duration-300 font-normal text-base transition-all hover:bg-[#ffff00] hover:text-indigo-950 h-10 text-[#ffff00] border-b-2 border-[#ffff00]"
-            >
-              Forgot Password
-            </Button>
+          <div className="grid gap-2">
+            <FormInput
+              name="email"
+              type="text"
+              label="Email"
+              placeholder="Email"
+              value={values.email}
+              error={errors.email}
+              isError={!!touched.email && !!errors.email}
+              handleChange={handleChange}
+              handleBlur={handleBlur}
+            />
           </div>
-          {/*  */}
+          <div className="grid gap-2">
+            <FormInput
+              name="password"
+              type="password"
+              label="Password"
+              placeholder="Password"
+              value={values.password}
+              error={errors.password}
+              isError={!!touched.password && !!errors.password}
+              handleChange={handleChange}
+              handleBlur={handleBlur}
+            />
+          </div>
         </CardContent>
-      </div>
+        <CardFooter className="grid grid-cols-1 gap-3">
+          <Button className="w-full">Login</Button>
+          <Link href="/login/forgot-password" className="text-xs mx-auto text-center">
+            Forgot your password?
+          </Link>
+
+          <div className="relative">
+          <div className="absolute inset-0 flex items-center">
+            <span className="w-full border-t" />
+          </div>
+          <div className="relative flex justify-center text-xs uppercase">
+            <span className="bg-background px-2 text-muted-foreground">
+              Or
+            </span>
+          </div>
+          </div>
+
+          <Button onClick={() => router.push('/register')} className="w-full">
+            Create Your Account
+          </Button>
+        </CardFooter>
+      </Card>
     </>
   );
 };

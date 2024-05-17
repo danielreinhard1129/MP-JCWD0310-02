@@ -30,7 +30,7 @@ const FormInput: React.FC<FormInputProps> = ({
 }) => {
   return (
     <div className="flex flex-col space-y-3">
-      <Label htmlFor={name} className={isError ? 'text-red-500' : 'text-[#ffff00] text-base font-extrabold'}>
+      <Label htmlFor={name} className={isError ? 'text-red-500' : ' text-black text-base'}>
         {label}
       </Label>
       <Input
@@ -40,7 +40,7 @@ const FormInput: React.FC<FormInputProps> = ({
         onBlur={handleBlur}
         onChange={handleChange}
         value={value}
-        className={`bg-transparent border-0 transition-all duration-500 border-b-2 rounded-s border-[#ffff00] text-[#ffff00] focus-visible:ring-0 focus-visible:ring-[#ffff00] focus-visible:ring-offset-[#ffff00] ${isError ? 'border-red-500' : ''}`}
+        className={`bg-transparent border-0 transition-all duration-500 border-b-2 rounded-s text-black ${isError ? 'border-red-500' : ''}`}
       />
       {isError ? <div className="text-xs text-red-500">{error}</div> : null}
     </div>
