@@ -1,12 +1,15 @@
 import FormInput from '@/components/Forminput';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { useFormik } from 'formik';
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import validationSchema from '../(auth)/register-organizer/validationSchema';
 import useRegisterOrganizer from '../hooks/api/auth/useRegister-Organizer';
 import { toast } from 'react-toastify';
+import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
+import Link from 'next/link';
 
 const RegisterOrganizerForm = () => {
   const router = useRouter();
@@ -36,11 +39,12 @@ const RegisterOrganizerForm = () => {
     }
   };
   return (
-    <Card className="w-full bg-indigo-950 rounded-3xl">
-      <CardHeader>
-        <CardTitle className="text-center text-3xl text-[#ffff00]">
-          Register Account as Organizer
-        </CardTitle>
+    <Card className='w-[550px]'>
+      <CardHeader className="space-y-1">
+        <CardTitle className="text-2xl">Create an account as Organizer</CardTitle>
+        <CardDescription>
+          Enter your email below to create your account as Organizer
+        </CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col gap-4 transition-all duration-300">
         <form onSubmit={handleSubmit} className="transition-all duration-300">
@@ -108,7 +112,7 @@ const RegisterOrganizerForm = () => {
                     if (errors.lastName) toast.error(errors.lastName);
                   }}
                   type="submit"
-                  className="w-full bg-transparent duration-300 transition-all hover:bg-[#ffff00] hover:text-indigo-950 text-xl h-14 text-[#ffff00] border-2 rounded-2xl border-[#ffff00]"
+                  className="w-full"
                 >
                   Register
                 </Button>
@@ -124,20 +128,14 @@ const RegisterOrganizerForm = () => {
           <Button
             id="fakeRegisterButtonAKAexpandedButton"
             onClick={handleExpandedRegisterForm}
-            className="w-full bg-transparent duration-300 transition-all hover:bg-[#ffff00] hover:text-indigo-950 text-xl h-14 text-[#ffff00] border-2 rounded-2xl border-[#ffff00]"
+            className="w-full"
           >
             Register
           </Button>
         )}
         {/*  */}
-        <div className="flex flex-row justify-center items-center text-[#ffff00] gap-2">
-          <p className="w-full text-sm">Are you have an account?</p>
-          <Button
-            onClick={() => router.push('/login')}
-            className="w-full bg-transparent duration-300 font-normal text-base transition-all hover:bg-[#ffff00] hover:text-indigo-950 h-10 text-[#ffff00] border-b-2 border-[#ffff00]"
-          >
-            Login
-          </Button>
+        <div className="flex flex-row justify-center items-center gap-2">
+          <Link href="/login" className="text-center text-sm">Already have an account?</Link>
         </div>
         {/*  */}
       </CardContent>
