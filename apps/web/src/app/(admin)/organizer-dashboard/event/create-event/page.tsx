@@ -49,13 +49,11 @@ const CreateEventPage = () => {
     },
     // validationSchema,
     onSubmit: (values) => {
-      // values.price =  Number(values.price);
-      // values.userId = String(userId);
       if (values.isFree) {
         values.price = '0';
       }
       console.log(values);
-      createEvent({ ...values, userId: String(1) });
+      createEvent({ ...values, userId: String(userId) });
     },
   });
 
@@ -247,7 +245,8 @@ const CreateEventPage = () => {
                     onRemoveImage={(idx: number) =>
                       setFieldValue(
                         'thumbnail',
-                        values.thumbnail?.toSpliced(idx, 1))
+                        values.thumbnail?.toSpliced(idx, 1),
+                      )
                     }
                   />
 

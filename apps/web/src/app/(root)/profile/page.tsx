@@ -2,13 +2,18 @@
 import Image from 'next/image';
 import { NeedAuthenticationGuard } from '../../hoc/AuthGuard';
 import { useAppSelector } from '../../redux/hook';
-import { Pen, User } from 'lucide-react';
+import { BarChart2, Pen, Ticket, TicketSlash, User } from 'lucide-react';
 import FormInputDarkMode from '@/components/FormInputDarkMode';
 import { useFormik } from 'formik';
 import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
 import Dropzone from '@/components/Dropzone';
 import PreviewImages from '@/components/PreviewImages';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover';
 const Profile = () => {
   const userDetail = useAppSelector((state) => state.user);
   const router = useRouter();
@@ -42,25 +47,41 @@ const Profile = () => {
 
   return (
     <div className="flex flex-col gap-8 w-full py-4 items-center min-h-[90vh] bg-[#fbfbf8]">
-      <div className="md:w-[95vw] sm:w-full border-b-2 py-2 md:px-6 px-4 items-center flex flex-row justify-between border-gray-300">
+      <div className="md:w-[95vw] w-full border-b-2 py-2 md:px-6 px-4 items-center flex flex-row justify-between border-gray-300">
         <p className="font-semibold md:text-xl text-lg text-indigo-950 font-sans">
           Your Account Information
         </p>
-        <div className="max-w-[300px] w-[25%] rounded-3xl items-center justify-center flex flex-row gap-2 px-4 py-2 bg-indigo-950">
+
+        {/* <Popover>
+          <PopoverTrigger> */}
+        <div className="max-w-[300px] md:w-[200px] w-[150px] rounded-3xl items-center justify-center flex flex-row gap-2 px-4 py-2 bg-indigo-950">
           <div className="h-full flex flex-col items-center justify-center">
             <User className="text-[#ffff00]" />
           </div>
           <p className="truncate text-[#ffff00]">{userDetail.email}</p>
         </div>
+        {/* </PopoverTrigger>
+          <PopoverContent className='bg-indigo-950 p-2 flex flex-col gap-2'>
+            <div>
+              <ul className='text-[#ffff00]'>
+                <li>Menu</li>
+                <li>Dashboard</li>
+                <li>Profile</li>
+                <li>Menu</li>
+              </ul>
+            </div> */}
+        {/* </PopoverContent>
+        </Popover> */}
       </div>
 
-      <div className="md:px-14 px-4 gap-4 items-center flex flex-row justify-between w-full">
+      <div className="md:px-14 px-8 md:gap-4 gap-2 items-center flex flex-row justify-between w-full">
         <Button
           onClick={() => {
             router.push('/profile/events');
           }}
-          className="bg-indigo-950 text-[#ffff00] md:text-base text-xs"
+          className="bg-indigo-950 w-full md:h-20 h-16 flex flex-row gap-2 text-[#ffff00] md:text-xl text-xs"
         >
+          <Ticket className="w-[18px] h-[18px] md:w-[24px] md:h-[24px]" />
           Your Event List
         </Button>
 
@@ -68,8 +89,9 @@ const Profile = () => {
           onClick={() => {
             router.push('/profile/transaction');
           }}
-          className="bg-indigo-950 text-[#ffff00] md:text-base text-xs"
+          className="bg-indigo-950 w-full md:h-20 h-16 flex flex-row gap-2 text-[#ffff00] md:text-xl text-xs"
         >
+          <BarChart2 className="w-[18px] h-[18px] md:w-[24px] md:h-[24px]" />
           Your Transaction
         </Button>
 
@@ -77,14 +99,15 @@ const Profile = () => {
           onClick={() => {
             router.push('/profile/voucher');
           }}
-          className="bg-indigo-950 text-[#ffff00] md:text-base text-xs"
+          className="bg-indigo-950 w-full md:h-20 h-16 flex flex-row gap-2 text-[#ffff00] md:text-xl text-xs"
         >
+          <TicketSlash className="w-[18px] h-[18px] md:w-[24px] md:h-[24px]" />
           Your Voucher
         </Button>
       </div>
 
-      <div className="h-full md:px-6 sm:px-2 w-full flex flex-col gap-4 py-2">
-        <div className="px-16 w-full h-full">
+      <div className="h-full md:px-6 sm:px-2 w-full justify-center items-center flex flex-col gap-4 py-2">
+        <div className="px-16 h-full">
           <div className="flex flex-col gap-8 md:px-8 sm:px-2 md:py-8 sm:py-2 w-full h-full">
             <div className="flex flex-col gap-4">
               <p className="text-xl font-semibold text-indigo-950">
