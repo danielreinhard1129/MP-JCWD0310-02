@@ -40,7 +40,7 @@ const ChartBarStatistic = ({
   categoriesProps: string[];
 }) => {
   const chartConfigDefault: ChartConfigProps = {
-    type: 'bar',
+    type: 'line',
     height: 'auto',
     series: data,
     options: {

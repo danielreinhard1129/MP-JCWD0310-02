@@ -1,5 +1,6 @@
 'use client';
 
+import { useAppSelector } from '@/app/redux/hook';
 import { IFormCreateEvent, Event } from '@/app/types/event.type';
 import { axiosInstance } from '@/lib/axios';
 import { AxiosError } from 'axios';
@@ -8,6 +9,7 @@ import { FileWithPath } from 'react-dropzone';
 
 const useCreateEvent = () => {
   const router = useRouter();
+  const {userId} = useAppSelector((state) => state.user);
   const createEvent = async (payload: IFormCreateEvent) => {
     try {
       const {
@@ -17,7 +19,6 @@ const useCreateEvent = () => {
         startDate,
         endDate,
         price,
-        userId,
         city,
         country,
         booked,
