@@ -13,4 +13,6 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export default RoleGuard(RootLayout);
+export default 
+// RoleGuard
+(RootLayout);
