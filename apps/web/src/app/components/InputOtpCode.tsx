@@ -19,30 +19,30 @@ export function InputOtpCode({
       onChange={(e) => handleChange(e)}
       maxLength={6}
     >
-      <InputOTPGroup className="border-4 rounded-xl border-[#ffff00]">
+      <InputOTPGroup className="border-4 rounded-xl border-black">
         <InputOTPSlot
           index={0}
-          className="border-[#ffff00] text-[#ffff00] border-4"
+          className="border-black text-black border-4"
         />
         <InputOTPSlot
           index={1}
-          className="border-[#ffff00] text-[#ffff00] border-4"
+          className="border-black text-black border-4"
         />
         <InputOTPSlot
           index={2}
-          className="border-[#ffff00] text-[#ffff00] border-4"
+          className="border-black text-black border-4"
         />
         <InputOTPSlot
           index={3}
-          className="border-[#ffff00] text-[#ffff00] border-4"
+          className="border-black text-black border-4"
         />
         <InputOTPSlot
           index={4}
-          className="border-[#ffff00] text-[#ffff00] border-4"
+          className="border-black text-black border-4"
         />
         <InputOTPSlot
           index={5}
-          className="border-[#ffff00] text-[#ffff00] border-4"
+          className="border-black text-black border-4"
         />
       </InputOTPGroup>
     </InputOTP>

@@ -1,12 +1,13 @@
 import FormInput from '@/components/Forminput';
 import { Button } from '@/components/ui/button';
-import { CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useFormik } from 'formik';
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import validationSchema from '../(auth)/register/validationSchema';
 import useRegister from '../hooks/api/auth/useRegister';
 import { toast } from 'react-toastify';
+import Link from 'next/link';
 
 const RegisterForm = () => {
   const router = useRouter();
@@ -35,11 +36,12 @@ const RegisterForm = () => {
     }
   };
   return (
-    <div className='rounded-lg border bg-indigo-950 w-full bg-card text-card-foreground shadow-sm'>
-      <CardHeader>
-        <CardTitle className="text-center text-3xl text-[#ffff00]">
-          Register Account
-        </CardTitle>
+    <Card className='w-[550px]'>
+      <CardHeader className="space-y-1">
+        <CardTitle className="text-2xl">Create an account</CardTitle>
+        <CardDescription>
+          Enter your email below to create your account
+        </CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col gap-4 transition-all duration-300">
         <form onSubmit={handleSubmit} className="transition-all duration-300">
@@ -119,7 +121,7 @@ const RegisterForm = () => {
                       if (errors.lastName) toast.error(errors.lastName);
                     }}
                     type="submit"
-                    className="w-full bg-transparent duration-300 transition-all hover:bg-[#ffff00] hover:text-indigo-950 text-xl h-14 text-[#ffff00] border-2 rounded-2xl border-[#ffff00]"
+                    className="w-full"
                   >
                     Register
                   </Button>
@@ -135,35 +137,34 @@ const RegisterForm = () => {
             <Button
               id="fakeRegisterButtonAKAexpandedButton"
               onClick={handleExpandedRegisterForm}
-              className="w-full bg-transparent duration-300 transition-all hover:bg-[#ffff00] hover:text-indigo-950 text-xl h-14 text-[#ffff00] border-2 rounded-2xl border-[#ffff00]"
+              className="w-full"
             >
               Register
             </Button>
           )}
           {/*  */}
-          <div className="flex md:flex-row md:pt-0 pt-4 flex-col text-center justify-center items-center text-[#ffff00] gap-2">
-            <p className="w-full text-sm">Are you have an account?</p>
-            <Button
-              onClick={() => router.push('/login')}
-              className="w-full bg-transparent duration-300 font-normal text-base transition-all hover:bg-[#ffff00] hover:text-indigo-950 h-10 text-[#ffff00] border-b-2 border-[#ffff00]"
-            >
-              Login
-            </Button>
+          <div className="flex md:flex-row md:pt-0 pt-4 flex-col text-center justify-center items-center">
+          <Link href="/login" className="text-center text-sm">Already have an account?</Link>
           </div>
-          <div className="text-[#ffff00] flex md:flex-row flex-col text-center gap-2 justify-center items-center">
-            <p className="w-full text-sm">
-              Are you interested to join as organzier?
-            </p>
+          <div className="relative">
+          <div className="absolute inset-0 flex items-center">
+            <span className="w-full border-t" />
+          </div>
+          <div className="relative flex justify-center text-xs uppercase">
+            <span className="bg-background px-2 text-muted-foreground">
+              Or
+            </span>
+          </div>
+          </div>
+        
             <Button
               onClick={() => router.push('/register-organizer')}
-              className="w-full bg-transparent duration-300 font-normal text-base transition-all hover:bg-[#ffff00] hover:text-indigo-950 h-10 text-[#ffff00] border-b-2 border-[#ffff00]"
-            >
+              className="w-full">
               Join us as organizer
             </Button>
-          </div>
           {/*  */}
         </CardContent>
-      </div>
+    </Card>
   );
 };
 
