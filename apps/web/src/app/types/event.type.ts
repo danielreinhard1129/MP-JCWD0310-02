@@ -1,5 +1,31 @@
 import { User } from './user.type';
 
+interface Location {
+  id: number;
+  address : string;
+  city: string;
+  country: string;
+  province: string;
+}
+
+interface Category {
+  id : number;
+  title : string;
+  description : string;
+  isDeleted : boolean;
+  createdAt : Date;
+  updatedAt :Date;
+}
+
+interface EventCategory {
+  id : number;
+  createdAt : Date;
+  updatedAt : Date;
+  categoryId : number;
+  eventId : number;
+  category : Category;
+}
+
 export interface Event {
   id: number;
   title: string;
@@ -11,10 +37,12 @@ export interface Event {
   startDate: Date;
   endDate: Date;
   time: string;
+  eventCategory : EventCategory[];
   userId: number;
   category: string;
   createdAt: Date;
   updatedAt: Date;
+  location: Location;
 
   // user: User;
 }
@@ -22,18 +50,18 @@ export interface Event {
 export interface IFormCreateEvent {
   title: string;
   description: string;
-  price: string;
-  limit: string;
-  booked: string;
+  price: number;
+  limit: number;
+  booked: number;
   thumbnail: File[];
-  startDate: string;
-  endDate: string;
+  startDate: Date;
+  endDate: Date;
   time: string;
   address: string;
   city: string;
   province: string;
   country: string;
   category: string;
-  isFree: string;
-  userId?: string;
+  isFree: boolean;
+  userId?: number;
 }

@@ -26,12 +26,12 @@ const PreviewImages: FC<PreviewImagesProps> = ({
   }, [fileImages, images]);
 
   return (
-    <div className="flex flex-col mx-auto gap-4">
+    <div className="flex flex-col mx-auto">
       {imageResults?.map((image, index) => {
         return (
           <div
             key={index}
-            className="relative h-[200px] w-[300px] rounded-md border"
+            className="relative md:h-[320px] h-[200px] w-full rounded-md border"
           >
             <Image
               src={images ? `${appConfig.baseUrl}/${image}` : image}

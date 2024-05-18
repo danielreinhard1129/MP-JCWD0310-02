@@ -2,7 +2,7 @@ import prisma from '@/prisma';
 import { Event } from '@prisma/client';
 
 interface createEventParams extends Omit<Event, 'locationId'> {
-  userId: number;
+  // userId: number;
   category: string;
   address: string;
   city: string;
