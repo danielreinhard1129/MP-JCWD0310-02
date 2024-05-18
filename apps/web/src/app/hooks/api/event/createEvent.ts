@@ -31,10 +31,10 @@ const useCreateEvent = () => {
 
       const createEventForm = new FormData();
 
-      //   for (const [key, value] of Object.entries(payload)) {
-      //     console.log('key', key);
-      //     console.log('value', value);
-      //   }
+        // for (const [key, value] of Object.entries(payload)) {
+        //   console.log('key', key);
+        //   console.log('value', value);
+        // }
 
       createEventForm.append('userId', String(userId));
       createEventForm.append('title', title);
