@@ -1,15 +1,21 @@
 'use client';
-import Sidebar from '../components/Sidebar/Index';
+
+import Header from '@/components/Layout/Header';
 import RoleGuard from '../hoc/RoleGuard';
+import Sidebar from '@/components/SideBar';
+
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div>
-      <div className="flex w-full bg-gray-100">
-        <Sidebar />
-        <div className="flex flex-col w-full ml-16 p-8">{children}</div>
-      </div>
+    <>
+    <Header />
+    <div className="flex h-screen border-collapse overflow-hidden">
+        <Sidebar/>
+        <main className="flex-1 overflow-y-auto overflow-x-hidden pt-16 bg-secondary/10 pb-1">
+            {children}
+        </main>
     </div>
+</>
   );
 };
 
