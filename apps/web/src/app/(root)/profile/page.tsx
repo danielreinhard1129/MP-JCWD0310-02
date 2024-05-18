@@ -159,6 +159,7 @@ const Profile = () => {
                       label=""
                       onDrop={(files) =>
                         setFieldValue('thumbnail', [
+                          
                           ...files.map((file) => file),
                         ])
                       }
