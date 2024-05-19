@@ -2,28 +2,42 @@ import { User } from './user.type';
 
 interface Location {
   id: number;
-  address : string;
+  address: string;
   city: string;
   country: string;
   province: string;
 }
 
 interface Category {
-  id : number;
-  title : string;
-  description : string;
-  isDeleted : boolean;
-  createdAt : Date;
-  updatedAt :Date;
+  id: number;
+  title: string;
+  description: string;
+  isDeleted: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+interface Transaction {
+  id: number;
+  uuid: number;
+  status: string;
+  qty: number;
+  paymentProof: string;
+  total: number;
+  pointUsed: number;
+  createdAt: Date;
+  updatedAt: Date;
+  eventId: number;
+  userId: number;
 }
 
 interface EventCategory {
-  id : number;
-  createdAt : Date;
-  updatedAt : Date;
-  categoryId : number;
-  eventId : number;
-  category : Category;
+  id: number;
+  createdAt: Date;
+  updatedAt: Date;
+  categoryId: number;
+  eventId: number;
+  category: Category;
 }
 
 export interface Event {
@@ -36,10 +50,12 @@ export interface Event {
   thumbnail: string;
   startDate: Date;
   endDate: Date;
+  isFree: boolean;
   time: string;
-  eventCategory : EventCategory[];
+  eventCategory: EventCategory[];
   userId: number;
   category: string;
+  transaction: Transaction[];
   createdAt: Date;
   updatedAt: Date;
   location: Location;

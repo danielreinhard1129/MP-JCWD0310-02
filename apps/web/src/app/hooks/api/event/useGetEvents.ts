@@ -1,7 +1,10 @@
 'use client';
 
 import { Event } from '@/app/types/event.type';
-import { IPaginationMeta, IPaginationQueries } from '@/app/types/pagination.type';
+import {
+  IPaginationMeta,
+  IPaginationQueries,
+} from '@/app/types/pagination.type';
 import { axiosInstance } from '@/lib/axios';
 import { useEffect, useState } from 'react';
 
@@ -23,7 +26,6 @@ const useGetEvents = (queries: IGetEventsQuery) => {
       setData(data.data);
       setMeta(data.meta);
     } catch (error) {
-      console.log(error);
     } finally {
       setIsLoading(false);
     }

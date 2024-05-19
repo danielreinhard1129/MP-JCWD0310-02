@@ -19,6 +19,7 @@ import {
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
 import Link from 'next/link';
+import Autocomplete from '@/components/Autocomplete';
 
 const Concert = () => {
   const [page, setPage] = useState<number>(1);
@@ -36,14 +37,8 @@ const Concert = () => {
       <div className="w-full bg-gray-100 dark:bg-gray-950 py-6 px-4 md:px-6">
         <div className="container mx-auto flex items-center gap-4">
           <div className="flex-1 relative">
-            <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-500 dark:text-gray-400" />
-            <Input
-              className="w-full rounded-md border border-gray-200 bg-white px-10 py-2 text-sm focus:border-gray-300 focus:outline-none dark:border-gray-800 dark:bg-gray-900 dark:text-gray-50"
-              placeholder="Search for events"
-              type="search"
-            />
+            <Autocomplete />
           </div>
-          <Button className="shrink-0">Search</Button>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button className="shrink-0" variant="outline">
@@ -108,21 +103,19 @@ const Concert = () => {
         {events.map((event, index) => {
           return (
             <EventCard
-                        key={index}
-                        title={event.title}
-                        description={event.description}
-                        category={event.category}
-                        price={event.price}
-                        booked={`Booked: ${String(event.booked)}`}
-                        limit={`Available Seats: ${String(event.limit)}`}
-                        startDate={new Date(event.startDate)}
-                        endDate={new Date(event.endDate)}
-                        time={event.time}
-                        imageUrl={
-                          appConfig.baseUrl + `/assets${event.thumbnail}`
-                        }
-                        eventId={event.id}
-                      />
+              key={index}
+              title={event.title}
+              description={event.description}
+              category={event.eventCategory[0].category.title}
+              price={event.price}
+              booked={`Booked: ${String(event.booked)}`}
+              limit={`Available Seats: ${String(event.limit)}`}
+              startDate={new Date(event.startDate)}
+              endDate={new Date(event.endDate)}
+              time={event.time}
+              imageUrl={appConfig.baseUrl + `/assets${event.thumbnail}`}
+              eventId={event.id}
+            />
           );
         })}
       </div>

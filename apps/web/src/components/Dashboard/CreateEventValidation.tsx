@@ -4,6 +4,7 @@ export const CreateEventValidation = Yup.object().shape({
   description: Yup.string().required('Description event is required!'),
   price: Yup.number(),
   booked: Yup.number(),
+  isFree: Yup.boolean(),
   limit: Yup.number()
     .required('Limit event ticket sold is required')
     .min(1, 'Limit of event ticket at least 1 or more'),

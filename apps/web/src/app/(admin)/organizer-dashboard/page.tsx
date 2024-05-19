@@ -65,18 +65,19 @@ const OrganizerDashboardPage = () => {
       ],
     },
   ];
-  const user = useAppSelector((state) => state.user);
   return (
     <div className="flex h-full flex-col">
       <div className="flex-1 space-y-4 p-8 pt-6">
-        <div className="flex items-center justify-between space-y-2">
-          <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
+        <div className="flex items-center justify-between gap-4 space-y-2">
+          <h2 className="md:text-3xl text-2xl font-bold tracking-tight">
+            Dashboard
+          </h2>
           <div className="flex items-center space-x-2">
-            <CalendarDateRangePicker />
+            <CalendarDateRangePicker className="" />
           </div>
         </div>
         <Tabs defaultValue="overview" className="space-y-4">
-          <TabsList>
+          <TabsList className="w-full md:w-auto">
             <TabsTrigger value="overview">Overview</TabsTrigger>
             <TabsTrigger value="analytics" disabled>
               Analytics
@@ -88,6 +89,7 @@ const OrganizerDashboardPage = () => {
               Notifications
             </TabsTrigger>
           </TabsList>
+
           <TabsContent value="overview" className="space-y-4">
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
               <Card>
@@ -147,7 +149,7 @@ const OrganizerDashboardPage = () => {
                 </CardContent>
               </Card>
             </div>
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-8">
               <Card className="col-span-4">
                 <CardHeader>
                   <CardTitle>Total Ticket Sold in This Month</CardTitle>
@@ -157,7 +159,7 @@ const OrganizerDashboardPage = () => {
                   <Overview data={chartData} />
                 </CardContent>
               </Card>
-              <Card className="col-span-3">
+              <Card className="col-span-4">
                 <CardHeader>
                   <CardTitle>Recent Sales</CardTitle>
                   <CardDescription>

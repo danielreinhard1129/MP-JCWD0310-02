@@ -6,9 +6,7 @@ const useGetUserDetail = () => {
     try {
       const { data } = await axiosInstance.get(`/user/${userId}`);
       return data;
-    } catch (err) {
-      throw err;
-    }
+    } catch (err) {}
   };
   return { getUserDetail };
 };

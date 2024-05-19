@@ -34,7 +34,7 @@ const PreviewImages: FC<PreviewImagesProps> = ({
             className="relative md:h-[320px] h-[200px] w-full rounded-md border"
           >
             <Image
-              src={images ? `${appConfig.baseUrl}/${image}` : image}
+              src={images ? `${appConfig.baseUrl}/assets${images}` : image}
               alt="thumbnail"
               objectFit="contain"
               fill

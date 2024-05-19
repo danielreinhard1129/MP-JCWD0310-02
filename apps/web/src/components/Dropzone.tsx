@@ -1,6 +1,6 @@
 'use client';
 
-import { FC } from 'react';
+import { ElementRef, FC } from 'react';
 import { FileWithPath, useDropzone } from 'react-dropzone';
 import { Label } from './ui/label';
 
@@ -8,10 +8,11 @@ interface DropzoneProps {
   label: string;
   isError: boolean;
   onDrop: (files: FileWithPath[]) => void;
+  Ref? : any;
 }
 
-const Dropzone: FC<DropzoneProps> = ({ isError, label, onDrop }) => {
-  const { getRootProps, getInputProps } = useDropzone({
+const Dropzone: FC<DropzoneProps> = ({ isError, label, onDrop , Ref }) => {
+  const { getRootProps, getInputProps , inputRef } = useDropzone({
     accept: {
       'image/*': [],
     },
@@ -27,6 +28,7 @@ const Dropzone: FC<DropzoneProps> = ({ isError, label, onDrop }) => {
         {...getRootProps({
           className: 'p-10 border flex justify-center rounded-md',
         })}
+        ref={Ref}
       >
         <input {...getInputProps()} />
         <Label className="text-base">

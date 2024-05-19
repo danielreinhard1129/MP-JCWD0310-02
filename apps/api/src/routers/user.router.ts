@@ -1,4 +1,5 @@
 import { UserController } from '@/controllers/user.controller';
+import { uploader } from '@/lib/uploader';
 import { Router } from 'express';
 
 export class UserRouter {
@@ -16,6 +17,7 @@ export class UserRouter {
       res.send({ message: 'oke' }).status(200);
     });
     this.router.post('/login:id', this.userController.getUserDetailController);
+    this.router.post('/edit',uploader('IMG', '/images').array('thumbnail', 1), this.userController.postEditUserProfile);
     this.router.get('/voucher/:id', this.userController.getUserVoucherController);
     this.router.get('/reward', this.userController.getUserRewardController);
     this.router.get(

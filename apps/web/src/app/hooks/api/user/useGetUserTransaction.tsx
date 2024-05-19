@@ -8,9 +8,7 @@ const useGetUserTransaction = () => {
       const { data } = await axiosInstance.get(`/user/transaction/${userId}`);
       // dispatch(getUserDetail());
       return data;
-    } catch (err) {
-      throw err;
-    }
+    } catch (err) {}
   };
   return { getUserDetail };
 };

@@ -2,6 +2,7 @@ export interface IPaginationQueries {
     take?: number;
     page?: number;
     sortBy?: string;
+    status?: string;
     sortOrder?: 'asc' | 'desc';
   }
   
@@ -9,5 +10,6 @@ export interface IPaginationQueries {
     page: number;
     take: number;
     total: number;
+    status?: string;
   }
   

@@ -38,68 +38,68 @@ const RegisterForm = () => {
   };
   return (
     <>
-      <Card className='w-[550px]'>
+      <Card className="w-[550px]">
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl text-center">Login Account</CardTitle>
-          <CardDescription className='text-center'>
+          <CardDescription className="text-center">
             Enter your email below to login your account
           </CardDescription>
         </CardHeader>
-        <CardContent className="grid gap-4">
-          <div className="grid grid-cols-2 gap-6"></div>
-          <div className="relative">
-            <div className="absolute inset-0 flex items-center">
-              <span className="w-full border-t" />
+        <CardContent className="flex flex-col gap-4 transition-all duration-300">
+          <form onSubmit={handleSubmit} className="transition-all duration-300">
+            <div className="grid w-full items-center gap-10 transition-all duration-300">
+              <FormInput
+                name="email"
+                type="text"
+                label="Email"
+                placeholder="Email"
+                value={values.email}
+                error={errors.email}
+                isError={!!touched.email && !!errors.email}
+                handleChange={handleChange}
+                handleBlur={handleBlur}
+              />
+
+              <FormInput
+                name="password"
+                type="password"
+                label="Password"
+                placeholder="Password"
+                value={values.password}
+                error={errors.password}
+                isError={!!touched.password && !!errors.password}
+                handleChange={handleChange}
+                handleBlur={handleBlur}
+              />
+              <Button className="w-full">Login</Button>
             </div>
+          </form>
+          {/*  */}
+          <div className="grid grid-cols-1 gap-3">
+            <Link
+              href="/login/forgot-password"
+              className="text-xs mx-auto text-center"
+            >
+              Forgot your password?
+            </Link>
+
+            <div className="relative">
+              <div className="absolute inset-0 flex items-center">
+                <span className="w-full border-t" />
+              </div>
+              <div className="relative flex justify-center text-xs uppercase">
+                <span className="bg-background px-2 text-muted-foreground">
+                  Or
+                </span>
+              </div>
+            </div>
+
+            <Button onClick={() => router.push('/register')} className="w-full">
+              Create Your Account
+            </Button>
           </div>
-          <div className="grid gap-2">
-            <FormInput
-              name="email"
-              type="text"
-              label="Email"
-              placeholder="Email"
-              value={values.email}
-              error={errors.email}
-              isError={!!touched.email && !!errors.email}
-              handleChange={handleChange}
-              handleBlur={handleBlur}
-            />
-          </div>
-          <div className="grid gap-2">
-            <FormInput
-              name="password"
-              type="password"
-              label="Password"
-              placeholder="Password"
-              value={values.password}
-              error={errors.password}
-              isError={!!touched.password && !!errors.password}
-              handleChange={handleChange}
-              handleBlur={handleBlur}
-            />
-          </div>
+          {/*  */}
         </CardContent>
-        <CardFooter className="grid grid-cols-1 gap-3">
-          <Button className="w-full">Login</Button>
-          <Link href="/login/forgot-password" className="text-xs mx-auto text-center">
-            Forgot your password?
-          </Link>
-
-          <div className="relative">
-          <div className="absolute inset-0 flex items-center">
-            <span className="w-full border-t" />
-          </div>
-          <div className="relative flex justify-center text-xs uppercase">
-            <span className="bg-background px-2 text-muted-foreground">
-              Or
-            </span>
-          </div>
-          </div>
-
-          <Button onClick={() => router.push('/register')} className="w-full">
-            Create Your Account
-          </Button>
-        </CardFooter>
       </Card>
     </>
   );

@@ -4,51 +4,11 @@ import { NeedAuthenticationGuard } from '@/app/hoc/AuthGuard';
 import useGetUserVoucher from '@/app/hooks/api/user/useGetUserVoucher';
 import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
-
-interface VoucherResponse {
-  data: {
-    userReward: {}[];
-    userVoucher: {
-      id: number;
-      isUsed: boolean;
-      createdAt: Date;
-      updateAt: Date;
-      userId: number;
-      voucherId: number;
-      voucher: {
-        code: string;
-        endDate: Date;
-        eventId: number;
-        id: number;
-        nominal: number;
-        isClaim: boolean;
-        limit: number;
-        startDate: Date;
-        updateAt: Date;
-        userId: number;
-      };
-    }[];
-  }[];
-}
+import React from 'react';
 
 const VoucherPage = () => {
   const router = useRouter();
-  const [data, setData] = useState<VoucherResponse>();
-  const { getUserVoucher } = useGetUserVoucher();
-
-  const fetchVoucherData = async () => {
-    const voucher = await getUserVoucher();
-    return voucher;
-  };
-
-  useEffect(() => {
-    const dataVoucher = fetchVoucherData();
-    dataVoucher.then((data) => {
-      console.log(data);
-      setData(data);
-    });
-  }, []);
+  const { data , isLoading } = useGetUserVoucher();
 
   const formattedPrice = new Intl.NumberFormat('id-ID', {
     style: 'currency',
@@ -71,17 +31,23 @@ const VoucherPage = () => {
         </Button>
       </div>
       <div className="h-full bg-slate-200 flex flex-col gap-4 rounded-2xl md:p-8 p-2">
-        {data?.data[0].userVoucher.map((val, ind, arr) => {
-          return (
-            <VoucherCard
-              description={val.voucher.code}
-              endDate={val.voucher.endDate}
-              maxUsage={formattedPrice.format(val.voucher.limit)}
-              percentage={val.voucher.nominal}
-              voucherCode={val.voucher.code}
-            />
-          );
-        })}
+        {
+          !isLoading ? (
+            <>
+            {data?.data[0].userVoucher.map((val, ind, arr) => {
+              return (
+                <VoucherCard
+                description={val.voucher.code}
+                endDate={val.voucher.endDate}
+                maxUsage={formattedPrice.format(val.voucher.limit)}
+                percentage={val.voucher.nominal}
+                voucherCode={val.voucher.code}
+                />
+              );
+            })}
+            </>
+          ) : (<></>)
+        }
       </div>
     </div>
   );
