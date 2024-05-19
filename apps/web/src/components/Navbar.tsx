@@ -34,7 +34,7 @@ const Navbar = () => {
   return (
     <div className='flex flex-row justify-between m-6'>
         <Link className="flex items-center justify-center" href="#">
-          <MusicIcon className="h-6 w-6" />
+          <MusicIcon className="h-6 w-6" /><h1>TuneTix</h1>
           <span className="sr-only">TuneTix</span>
         </Link>
         <nav>
