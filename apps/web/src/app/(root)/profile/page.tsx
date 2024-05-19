@@ -14,6 +14,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover';
+import FormInput from '@/components/Forminput';
 const Profile = () => {
   const userDetail = useAppSelector((state) => state.user);
   const router = useRouter();
@@ -46,19 +47,19 @@ const Profile = () => {
   };
 
   return (
-    <div className="flex flex-col gap-8 w-full py-4 items-center min-h-[90vh] bg-[#fbfbf8]">
+    <div className="flex flex-col gap-8 w-full py-4 items-center min-h-[90vh] ">
       <div className="md:w-[95vw] w-full border-b-2 py-2 md:px-6 px-4 items-center flex flex-row justify-between border-gray-300">
-        <p className="font-semibold md:text-xl text-lg text-indigo-950 font-sans">
+        <p className="font-semibold md:text-xl text-lg font-sans">
           Your Account Information
         </p>
 
         {/* <Popover>
           <PopoverTrigger> */}
-        <div className="max-w-[300px] md:w-[200px] w-[150px] rounded-3xl items-center justify-center flex flex-row gap-2 px-4 py-2 bg-indigo-950">
+        <div className="max-w-[300px] md:w-[200px] w-[150px] rounded-3xl items-center justify-center flex flex-row gap-2 px-4 py-2">
           <div className="h-full flex flex-col items-center justify-center">
-            <User className="text-[#ffff00]" />
+            <User className="" />
           </div>
-          <p className="truncate text-[#ffff00]">{userDetail.email}</p>
+          <p className="truncate">{userDetail.email}</p>
         </div>
         {/* </PopoverTrigger>
           <PopoverContent className='bg-indigo-950 p-2 flex flex-col gap-2'>
@@ -79,7 +80,7 @@ const Profile = () => {
           onClick={() => {
             router.push('/profile/events');
           }}
-          className="bg-indigo-950 w-full md:h-20 h-16 flex flex-row gap-2 text-[#ffff00] md:text-xl text-xs"
+          className="w-full md:h-20 h-16 flex flex-row gap-2 md:text-xl text-xs"
         >
           <Ticket className="w-[18px] h-[18px] md:w-[24px] md:h-[24px]" />
           Your Event List
@@ -89,7 +90,7 @@ const Profile = () => {
           onClick={() => {
             router.push('/profile/transaction');
           }}
-          className="bg-indigo-950 w-full md:h-20 h-16 flex flex-row gap-2 text-[#ffff00] md:text-xl text-xs"
+          className="w-full md:h-20 h-16 flex flex-row gap-2 md:text-xl text-xs"
         >
           <BarChart2 className="w-[18px] h-[18px] md:w-[24px] md:h-[24px]" />
           Your Transaction
@@ -99,7 +100,7 @@ const Profile = () => {
           onClick={() => {
             router.push('/profile/voucher');
           }}
-          className="bg-indigo-950 w-full md:h-20 h-16 flex flex-row gap-2 text-[#ffff00] md:text-xl text-xs"
+          className="w-full md:h-20 h-16 flex flex-row gap-2 md:text-xl text-xs"
         >
           <TicketSlash className="w-[18px] h-[18px] md:w-[24px] md:h-[24px]" />
           Your Voucher
@@ -110,16 +111,16 @@ const Profile = () => {
         <div className="px-16 h-full">
           <div className="flex flex-col gap-8 md:px-8 sm:px-2 md:py-8 sm:py-2 w-full h-full">
             <div className="flex flex-col gap-4">
-              <p className="text-xl font-semibold text-indigo-950">
+              <p className="text-xl font-semibold">
                 Profile Image
               </p>
-              <p className="tracking-widest text-indigo-950">
+              <p className="tracking-widest">
                 You can change your profile now
               </p>
 
               <div className="grid md:grid-flow-col sm:grid-flow-row gap-8">
-                <div className="overflow-hidden cursor-pointer border-2 transition-all duration-300 group border-indigo-950 w-40 h-40 flex justify-center items-center rounded-full">
-                  <Pen className="absolute w-12 h-12 text-red-950 hidden group-hover:block group-hover:opacity-100" />
+                <div className="overflow-hidden cursor-pointer border-2 transition-all duration-300 group w-40 h-40 flex justify-center items-center rounded-full">
+                  <Pen className="absolute w-12 h-12hidden group-hover:block group-hover:opacity-100" />
 
                   {values.thumbnail.length ? (
                     ''
@@ -167,10 +168,10 @@ const Profile = () => {
                 </div>
 
                 <div className="h-full w-full flex flex-col justify-center gap-4">
-                  <h1 className="text-lg font-semibold text-indigo-950">
+                  <h1 className="text-lg font-semibold">
                     Avatar
                   </h1>
-                  <p className="tracking-wide text-indigo-950">
+                  <p className="tracking-wide">
                     Gunakan gambar persegi beresolusi tinggi maksimal 1MB
                   </p>
                 </div>
@@ -178,13 +179,13 @@ const Profile = () => {
             </div>
 
             <div className="flex flex-col gap-2 max-w-[600px]">
-              <div className="text-indigo-950 text-lg font-bold">
+              <div className="text-lg font-bold">
                 <h1>
                   Your Point Now : {pointsFormat.format(userDetail.points)}
                 </h1>
               </div>
 
-              <FormInputDarkMode
+              <FormInput
                 name="email"
                 type="text"
                 label="Email"
@@ -195,7 +196,7 @@ const Profile = () => {
                 handleChange={handleChange}
                 handleBlur={handleBlur}
               />
-              <FormInputDarkMode
+              <FormInput
                 name="firstName"
                 type="text"
                 label="First Name"
@@ -206,7 +207,7 @@ const Profile = () => {
                 handleChange={handleChange}
                 handleBlur={handleBlur}
               />
-              <FormInputDarkMode
+              <FormInput
                 name="lastName"
                 type="text"
                 label="Last Name"
@@ -219,10 +220,10 @@ const Profile = () => {
               />
 
               <div className="py-4 gap-12 flex flex-row">
-                <h1 className="text-lg text-indigo-950 font-semibold basis-auto text-nowrap">
+                <h1 className="text-lg font-semibold basis-auto text-nowrap">
                   Your Referral Code :
                 </h1>
-                <p className="text-xl font-bold text-indigo-950">
+                <p className="text-xl font-bold">
                   {userDetail.referralCode}
                 </p>
               </div>
@@ -231,7 +232,7 @@ const Profile = () => {
             <div className="flex w-full justify-end">
               <Button
                 onClick={handleFormSubmit}
-                className="text-[#ffff00] bg-indigo-950 border border-[#ffff00]"
+                className=""
               >
                 Save Changes
               </Button>
