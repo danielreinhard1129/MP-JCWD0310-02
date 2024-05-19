@@ -5,7 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { appConfig } from '@/utils/config';
 import { format } from 'date-fns';
-import { Share2 } from 'lucide-react';
+import { CalendarRangeIcon, Share2 } from 'lucide-react';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import SkeletonBlogDetail from './components/SkeletonEventDetail';
@@ -25,42 +25,117 @@ const EventDetail = ({ params }: { params: { id: string } }) => {
     return notFound();
   }
 
+  
   return (
-    <main className="container mx-auto px-4">
-      <section className="mb-4">
-        <div className="mb-4 space-y-1.5">
-          <Badge variant="outline" className="rounded-sm bg-green-100">
-            {event.category}
-          </Badge>
-          <h1 className="text-4xl font-semibold">{event.title}</h1>
-          <div className="flex mb-2 items-center justify-between">
-            <p className="text-sm font-light italic">
-              {format(new Date(event.startDate), 'dd MMMM yyyy')} -{' '}
-            </p>
-            <p className="text-sm font-light italic">
-              {format(new Date(event.endDate), 'dd MMMM yyyy')} -{' '}
-            </p>
-            <p className="text-sm font-light italic">
-              {format(new Date(event.endDate), 'dd MMMM yyyy')} -{' '}
-            </p>
-            <p className="text-sm font-light italic"></p>
-            <Button variant="outline" size="icon">
-              <Share2 size="20px" />
-            </Button>
+    <section className="w-full py-12 md:py-24 lg:py-32">
+      <div className="container px-4 md:px-6">
+        <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
+          <div className="flex flex-col justify-center space-y-4">
+            <div className="space-y-2">
+              <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
+                {event.title}
+              </h1>
+              <div className="flex items-center space-x-4">
+                <div className="inline-flex items-center space-x-2 text-gray-500 dark:text-gray-400">
+                  <CalendarRangeIcon className="h-5 w-5" />
+                  <span></span>
+                </div>
+                <div className="inline-flex items-center space-x-2 text-gray-500 dark:text-gray-400">
+                  <ClockIcon className="h-5 w-5" />
+                  <span>{event.time}</span>
+                </div>
+              </div>
+              <div className="inline-flex items-center space-x-2 text-gray-500 dark:text-gray-400">
+                <MapPinIcon className="h-5 w-5" />
+                <span>{event.category}</span>
+              </div>
+              <p className="max-w-[600px] text-gray-500 md:text-xl dark:text-gray-400">
+                {event.category}
+              </p>
+              <p className="max-w-[600px] text-gray-500 md:text-xl dark:text-gray-400">
+                {event.description}
+              </p>
+              <p className="max-w-[600px] text-gray-500 md:text-xl dark:text-gray-400">
+                {event.price}
+              </p>
+            </div>
+            <Button>Check out</Button>
           </div>
-        </div>
-
-        <div className="relative h-[400px]">
-          <Image
-            fill
-            src={`${appConfig.baseUrl}/assets${event.thumbnail}`}
-            alt="thumbnail image"
-            className="object-cover bg-slate-200"
+          <img
+            alt="Event"
+            className="mx-auto aspect-video overflow-hidden rounded-xl object-cover sm:w-full lg:order-last lg:aspect-square"
+            height="550"
+            src="/placeholder.svg"
+            width="550"
           />
         </div>
-      </section>
-    </main>
-  );
-};
+      </div>
+    </section>
+  )
+}
+
+function CalendarIcon(props:any) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M8 2v4" />
+      <path d="M16 2v4" />
+      <rect width="18" height="18" x="3" y="4" rx="2" />
+      <path d="M3 10h18" />
+    </svg>
+  )
+}
+
+
+function ClockIcon(props:any) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <circle cx="12" cy="12" r="10" />
+      <polyline points="12 6 12 12 16 14" />
+    </svg>
+  )
+}
+
+
+function MapPinIcon(props:any) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+      <circle cx="12" cy="10" r="3" />
+    </svg>
+  )
+}
 
 export default EventDetail;

@@ -30,10 +30,11 @@ const UpcomingEvents = () => {
         <h2 className="text-3xl font-bold tracking-tighter text-center sm:text-4xl md:text-5xl">
           Upcoming Events
         </h2>
-        <div>
-          <Carousel className="grid gap-6 lg:grid-cols-3 lg:gap-12 mt-8">
-            <CarouselContent>
-              <CarouselItem className="grid grid-cols-4 gap-8">
+
+        <Carousel>
+          <CarouselContent>
+            <CarouselItem>
+              <div className="container mx-auto grid grid-cols-1 gap-8 py-14 md:grid-cols-4">
                 {events.map((event, index) => {
                   return (
                     <EventCard
@@ -46,25 +47,21 @@ const UpcomingEvents = () => {
                       limit={`Available Seats: ${String(event.limit)}`}
                       startDate={new Date(event.startDate)}
                       endDate={new Date(event.endDate)}
-                      time={`Time: ${String(event.time)}`}
+                      time={event.time}
                       imageUrl={appConfig.baseUrl + `/assets${event.thumbnail}`}
                       eventId={event.id}
                     />
                   );
                 })}
-              </CarouselItem>
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-          </Carousel>
-          <div className="mx-auto w-full max-w-sm space-y-2">
-            <Button
-              onClick={() => router.push('/concert')}
-              className="w-full"
-            >
-             See More Events
-            </Button>
-          </div>
+              </div>
+            </CarouselItem>
+          </CarouselContent>
+        </Carousel>
+
+        <div className="mx-auto w-full max-w-sm space-y-2">
+          <Button onClick={() => router.push('/concert')} className="w-full">
+            See More Events
+          </Button>
         </div>
       </div>
     </section>
