@@ -28,6 +28,7 @@ import { useRouter } from 'next/navigation';
 import CreateEventValidation from '../Dashboard/CreateEventValidation';
 import { TimePicker } from '../Dashboard/TimePicker';
 import Image from 'next/image';
+import { appConfig } from '@/utils/config';
 
 const EventDetailManage = ({ eventData }: { eventData: Event }) => {
   const router = useRouter();
@@ -71,13 +72,13 @@ const EventDetailManage = ({ eventData }: { eventData: Event }) => {
     validationSchema: CreateEventValidation,
     onSubmit: (values) => {
       setProgress(true);
-        createEvent(values).finally(() => {
-          setProgress(false);
-          setSuccessModalOpen(true);
-          setTimeout(() => {
-            router.push('/organizer-dashboard');
-          }, 1000);
-        });
+      createEvent(values).finally(() => {
+        setProgress(false);
+        setSuccessModalOpen(true);
+        setTimeout(() => {
+          router.push('/organizer-dashboard');
+        }, 1000);
+      });
       console.log(values);
     },
   });
@@ -101,15 +102,30 @@ const EventDetailManage = ({ eventData }: { eventData: Event }) => {
               {/* Thumbnail Images Forms */}
               <div>
                 <Label>Events Thumbnail</Label>
-                <Image
-                  alt="thumbnail"
-                  src={eventData.thumbnail}
-                  width={100}
-                  height={100}
-                />
-                {values.thumbnail ? (
-                  ''
-                ) : (
+                <div className="relative">
+                  {values.thumbnail.length ? (
+                    <PreviewImages
+                      fileImages={values.thumbnail}
+                      onRemoveImage={(idx: number) => {
+                        setFieldValue('thumbnail', []);
+                        setFieldValue(
+                          'thumbnail',
+                          values.thumbnail?.toSpliced(idx, 1),
+                        );
+                      }}
+                      images={values.thumbnail[1]}
+                    />
+                  ) : (
+                    <Card className="overflow-hidden relative md:h-[320px] h-[200px]">
+                      <Image
+                        alt="thumbnail"
+                        objectFit="contain"
+                        fill
+                        src={`${appConfig.baseUrl}/assets${eventData.thumbnail}`}
+                        className="w-full"
+                      />
+                    </Card>
+                  )}
                   <Dropzone
                     isError={!!touched.thumbnail && !!errors.thumbnail}
                     label=""
@@ -117,7 +133,11 @@ const EventDetailManage = ({ eventData }: { eventData: Event }) => {
                       setFieldValue('thumbnail', [...files.map((file) => file)])
                     }
                   />
-                )}
+                </div>
+                {/* {values.thumbnail ? (
+                  ''
+                ) : (
+                )} */}
               </div>
               {/* Thumbnail Images Forms */}
 
