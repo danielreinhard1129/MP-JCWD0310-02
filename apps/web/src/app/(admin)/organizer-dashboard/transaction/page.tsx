@@ -216,55 +216,73 @@ const DashboardTransactionPage = () => {
   ];
 
   return (
-    <>
-      <div className="flex h-full flex-col">
-        <div className="flex-1 space-y-4 p-8 pt-6">
-          <div className="flex items-center justify-between space-y-2">
-            <h2 className="text-3xl font-bold tracking-tight">
-              Transaction History
-            </h2>
-            <div className="flex items-center space-x-2">
-              <MonthPicker
-                currentMonth={month}
-                onMonthChange={(e) => {
-                  setMonth(e);
-                }}
-              />
-            </div>
-          </div>
-          <Tabs defaultValue="overview" className="space-y-4">
-            <TabsList>
-              <TabsTrigger value="overview">Overview</TabsTrigger>
-              <TabsTrigger value="analytics">Analytics</TabsTrigger>
-            </TabsList>
-            <TabsContent value="overview" className="space-y-4">
-              <div className="flex flex-col">
-                <div className="flex-1 space-y-4 md:p-8">
-                  <TransactionList data={transactionData} />
+    <div className="flex h-full flex-col">
+      <div className="flex-1 space-y-4 p-8 pt-6">
+        <Tabs defaultValue="overview" className="space-y-4">
+          <TabsContent value="overview" className="space-y-4">
+            <div className="flex flex-col">
+              <div className="flex-1 space-y-4 md:p-8">
+                <div className="flex h-full flex-col">
+                  <div className="flex-1 space-y-4 ">
+                    <div className="flex items-center justify-between space-y-2">
+                      <h2 className="text-3xl font-bold tracking-tight">
+                        Transaction History
+                      </h2>
+                      <div className="flex items-center space-x-2">
+                        <MonthPicker
+                          currentMonth={month}
+                          onMonthChange={(e) => {
+                            setMonth(e);
+                          }}
+                        />
+                      </div>
+                    </div>
+                    <Tabs defaultValue="overview" className="space-y-4">
+                      <TabsList>
+                        <TabsTrigger value="overview">Overview</TabsTrigger>
+                        <TabsTrigger value="analytics">Analytics</TabsTrigger>
+                      </TabsList>
+                      <TabsContent value="overview" className="space-y-4">
+                        <div className="flex flex-col">
+                          <div className="flex-1 space-y-4">
+                            <TransactionList data={transactionData} />
+                          </div>
+                        </div>
+                      </TabsContent>
+                      <TabsContent value="analytics">
+                        <Card>
+                          <CardHeader></CardHeader>
+                          <CardContent className="flex flex-col gap-8">
+                            <div className="flex flex-col gap-4 w-full">
+                              <CardTitle>
+                                Analytic chart overall transaction
+                              </CardTitle>
+                              <Overview data={chartData} />
+                            </div>
+                          </CardContent>
+                        </Card>
+
+                        <Card className="mt-4">
+                          <CardHeader></CardHeader>
+                          <CardContent className="flex flex-col gap-8">
+                            <div className="flex flex-col gap-4 w-full">
+                              <CardTitle>
+                                Events attendance based on ticket type{' '}
+                              </CardTitle>
+                              <OverviewBar data={barData} />
+                            </div>
+                          </CardContent>
+                        </Card>
+                      </TabsContent>
+                    </Tabs>
+                  </div>
                 </div>
               </div>
-            </TabsContent>
-            <TabsContent value="analytics">
-              <Card>
-                <CardHeader></CardHeader>
-                <CardContent className="flex flex-col gap-8">
-                  <div className="flex flex-col gap-4 w-full">
-                    <CardTitle>Analytic chart overall transaction</CardTitle>
-                    <Overview data={chartData} />
-                  </div>
-                  <div className="flex flex-col gap-4 w-full">
-                    <CardTitle>
-                      Events attendance based on ticket type{' '}
-                    </CardTitle>
-                    <OverviewBar data={barData} />
-                  </div>
-                </CardContent>
-              </Card>
-            </TabsContent>
-          </Tabs>
-        </div>
+            </div>
+          </TabsContent>
+        </Tabs>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -38,10 +38,10 @@ const RegisterForm = () => {
   };
   return (
     <>
-      <Card className='w-[550px]'>
+      <Card className="w-[550px]">
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl text-center">Login Account</CardTitle>
-          <CardDescription className='text-center'>
+          <CardDescription className="text-center">
             Enter your email below to login your account
           </CardDescription>
         </CardHeader>
@@ -80,20 +80,25 @@ const RegisterForm = () => {
           </div>
         </CardContent>
         <CardFooter className="grid grid-cols-1 gap-3">
-          <Button className="w-full">Login</Button>
-          <Link href="/login/forgot-password" className="text-xs mx-auto text-center">
+          <Button onClick={() => handleSubmit()} className="w-full">
+            Login
+          </Button>
+          <Link
+            href="/login/forgot-password"
+            className="text-xs mx-auto text-center"
+          >
             Forgot your password?
           </Link>
 
           <div className="relative">
-          <div className="absolute inset-0 flex items-center">
-            <span className="w-full border-t" />
-          </div>
-          <div className="relative flex justify-center text-xs uppercase">
-            <span className="bg-background px-2 text-muted-foreground">
-              Or
-            </span>
-          </div>
+            <div className="absolute inset-0 flex items-center">
+              <span className="w-full border-t" />
+            </div>
+            <div className="relative flex justify-center text-xs uppercase">
+              <span className="bg-background px-2 text-muted-foreground">
+                Or
+              </span>
+            </div>
           </div>
 
           <Button onClick={() => router.push('/register')} className="w-full">

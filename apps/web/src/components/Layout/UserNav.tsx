@@ -1,7 +1,4 @@
 'use client';
-
-// import { signOut } from "next-auth/react";
-// import type { User } from "next-auth";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,18 +7,22 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Button } from '@/components/ui/button';
-import { LogOut } from 'lucide-react';
+import { Home, LogOut } from 'lucide-react';
 import { UserAvatar } from '@/components/Layout/UserAvatar';
+import { useRouter } from 'next/navigation';
+import useLogout from '@/app/hooks/api/auth/useLogout';
 
 type Props = {
   user: {
     name: string;
-    image: string;
+    image: string | undefined;
     email: string;
   };
 };
 
 export function UserNav({ user }: Props) {
+  const router = useRouter();
+  const { logout } = useLogout();
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
@@ -47,9 +48,16 @@ export function UserNav({ user }: Props) {
             variant="outline"
             className="w-full"
             onClick={() => {
-            // Sign Out Logic
+              router.push('/');
             }}
           >
+            <Home className="mr-2 h-4 w-4" aria-hidden="true" />
+            Home Page
+          </Button>
+        </DropdownMenuItem>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem asChild>
+          <Button variant="outline" className="w-full" onClick={() => logout()}>
             <LogOut className="mr-2 h-4 w-4" aria-hidden="true" />
             Log Out
           </Button>

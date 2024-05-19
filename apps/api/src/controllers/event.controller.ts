@@ -22,6 +22,7 @@ export class EventController {
         sortBy: (req.query.sortBy as string) || 'createdAt',
         sortOrder: (req.query.sortOrder as string) || 'desc',
         search: (req.query.search as string) || '',
+        filter: (req.query.filter as string) || '',
       };
       const result = await getEventsService(query);
 

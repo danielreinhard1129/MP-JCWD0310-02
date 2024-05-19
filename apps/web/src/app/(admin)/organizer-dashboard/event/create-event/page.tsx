@@ -1,7 +1,8 @@
 'use client';
 import React from 'react';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Tabs, TabsContent} from '@/components/ui/tabs';
 import CreateEvent from '@/components/PageComponent/CreateEvent';
+import RoleGuard from '@/app/hoc/RoleGuard';
 
 const CreateEventPage = () => {
   return (
@@ -21,4 +22,4 @@ const CreateEventPage = () => {
   );
 };
 
-export default CreateEventPage;
+export default RoleGuard(CreateEventPage);

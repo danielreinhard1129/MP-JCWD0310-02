@@ -4,6 +4,7 @@ import useGetEvents from '@/app/hooks/api/event/useGetEvents';
 import { Tabs, TabsContent} from '@/components/ui/tabs';
 import { EventList } from '@/components/PageComponent/EventList';
 import { TransactionList } from '@/components/PageComponent/TransactionList';
+import RoleGuard from '@/app/hoc/RoleGuard';
 
 const ManageEventPage = () => {
   const { data, isLoading, meta } = useGetEvents({});
@@ -42,4 +43,4 @@ const ManageEventPage = () => {
   );
 };
 
-export default ManageEventPage;
+export default RoleGuard(ManageEventPage);

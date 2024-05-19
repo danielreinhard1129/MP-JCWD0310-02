@@ -61,7 +61,7 @@ const useCreateEvent = () => {
 
       // Toast Success
 
-      router.push(`/organizer-dashboard`);
+      // router.push(`/organizer-dashboard`);
     } catch (err) {
       if (err instanceof AxiosError) {
         // replace log with toast
