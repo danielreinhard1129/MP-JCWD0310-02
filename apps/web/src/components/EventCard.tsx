@@ -57,11 +57,11 @@ const EventCard: FC<EventCardProps> = ({
       </div>
       <CardContent className="space-y-2 p-4">
         <div className="">
-          <div className="text-xs text-gray-500 dark:text-gray-400">{category}</div>
           <div className="text-xs text-gray-500 dark:text-gray-400">{description}</div>
           <div className="text-xs text-gray-500 dark:text-gray-400">{limit}</div>
           <div className="text-base font-bold text-right">{formattedPrice}</div>
         </div>
+        <div><Button>Buy</Button></div>
       </CardContent>
     </Card>
     </Link>
