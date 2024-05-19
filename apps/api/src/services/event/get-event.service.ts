@@ -4,7 +4,7 @@ export const getEventService = async (id: number) => {
   try {
     const event = await prisma.event.findFirst({
       where: { id },
-      include: { user: true },
+      include: { user: true, location: true },
     });
     if (!event) {
       throw new Error('event not found');
