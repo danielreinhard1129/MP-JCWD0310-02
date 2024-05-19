@@ -1,26 +1,48 @@
 import prisma from '@/prisma';
+import { PaginationQueryParams } from '@/types/pagination.type';
+interface GetEventsQuery extends PaginationQueryParams {
+  search: string;
+  filter: string;
+  userId: string;
+}
 
-export const getUserEventHistoryService = async function (body: { userId: number }) {
+export const getUserEventHistoryService = async function (
+  query: GetEventsQuery,
+) {
   try {
-    const userEventHistory = await prisma.user.findMany({
+    const userId = Number(query.userId);
+    const { page, sortBy, sortOrder, take, search, filter } = query;
+    const events = await prisma.event.findMany({
       where: {
-        id: body.userId,
-      },
-      select: {
+        title: {
+          contains: search,
+        },
+        userId,
         transaction: {
-          where: {
-            OR: [{ status: 'success' }, { status: 'progress' }],
+          some: {
+            status: {
+              contains: filter,
+            },
           },
         },
       },
+      skip: (page - 1) * take,
+      take: take,
+      orderBy: {
+        [sortBy]: sortOrder,
+      },
+      include: {
+        transaction: true,
+        location: true,
+      },
     });
 
-    if (!userEventHistory) throw new Error('No data found');
-
     return {
-      message: 'Data found',
-      data: userEventHistory,
+      data: events,
+      meta: { page, take, total: 1 },
     };
+
+    return events;
   } catch (error) {
     throw error;
   }

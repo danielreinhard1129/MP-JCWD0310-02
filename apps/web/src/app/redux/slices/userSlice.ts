@@ -14,6 +14,7 @@ const initialState: Pick<
   | 'points'
   | 'role'
   | 'referralCode'
+  | 'thumbnail'
 > = {
   userId: null,
   firstName: '',
@@ -23,6 +24,7 @@ const initialState: Pick<
   email: '',
   role: '',
   token: '',
+  thumbnail : [],
   referralCode: '',
   detail: {
     bio: '',
@@ -38,6 +40,7 @@ export const userSlice = createSlice({
       state.role = action.payload.role;
       state.referralCode = action.payload.referralCode;
       state.points = action.payload.points;
+      state.thumbnail = action.payload.thumbnail;
       state.firstName = action.payload.firstName;
       state.pictureId = action.payload.pictureId;
       state.lastName = action.payload.lastName;
@@ -48,6 +51,7 @@ export const userSlice = createSlice({
       state.role = '';
       state.points = 0;
       state.firstName = '';
+      state.thumbnail = [];
       state.referralCode = '';
       state.pictureId = '';
       state.lastName = '';

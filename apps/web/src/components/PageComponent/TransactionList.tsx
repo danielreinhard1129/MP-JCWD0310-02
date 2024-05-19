@@ -38,7 +38,7 @@ export const TransactionList = ({ data }: { data: [] }) => {
       accessorFn: (data) => {
         return data.quantity;
       },
-      filterFn : "inNumberRange",
+      filterFn: 'inNumberRange',
     },
     {
       header: 'Status',
@@ -59,7 +59,10 @@ export const TransactionList = ({ data }: { data: [] }) => {
   ];
   return (
     <>
+      <Separator />
+      <div>
         <DataTable columns={columns} data={data} />
+      </div>
     </>
   );
 };
