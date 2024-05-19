@@ -6,29 +6,6 @@ import { AxiosError } from 'axios';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
 
-interface LoginResponse {
-  message: string;
-  data: {
-    id: number;
-    userId: number;
-    role: string;
-    firstName: string;
-    lastName: string;
-    password: string;
-    passwordHash: string;
-    token: string;
-    points: number;
-    referralCode: string;
-    detail: {
-      // dateOfBirth: Date;
-      bio: string;
-    };
-    email: string;
-    profile: string;
-  };
-  token: string;
-}
-
 interface LoginPayloadArg extends Pick<User, 'email' | 'password'> {}
 
 const useLogin = () => {
@@ -36,7 +13,7 @@ const useLogin = () => {
   const dispatch = useAppDispatch();
   const login = async (payload: LoginPayloadArg) => {
     try {
-      const { data } = await axiosInstance.post<LoginResponse>(
+      const { data } = await axiosInstance.post(
         '/auth/login',
         payload,
       );

@@ -1,5 +1,5 @@
 'use client';
-import Image from 'next/image';
+
 import { NeedAuthenticationGuard } from '../../hoc/AuthGuard';
 import { useAppSelector } from '../../redux/hook';
 import { Check, CircleX, Settings } from 'lucide-react';
@@ -9,7 +9,6 @@ import ProfileComponent from '@/app/components/ProfileComponent';
 import { CardTitle } from '@/components/ui/card';
 import validationProfileChange from './validationProfileChange';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-
 import { useState } from 'react';
 import UserEventHistory from '@/app/components/UserEventHistory';
 import UserVoucherList from '@/app/components/UserVoucherList';
@@ -20,7 +19,7 @@ const Profile = () => {
   const userDetail = useAppSelector((state) => state.user);
   const [stateEdit, setStateEdit] = useState(false);
   const { EditUserAccount } = useEditUserAccount();
-  const { values, errors, handleChange, handleSubmit, setFieldValue } =
+  const { values, errors, handleSubmit, setFieldValue } =
     useFormik({
       initialValues: {
         firstName: userDetail.firstName,
@@ -111,5 +110,4 @@ const Profile = () => {
   );
 };
 
-// export default NeedAuthenticationGuard(Profile);
-export default Profile;
+export default NeedAuthenticationGuard(Profile);

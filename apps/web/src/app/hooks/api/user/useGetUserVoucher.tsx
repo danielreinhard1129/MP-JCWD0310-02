@@ -56,9 +56,7 @@ const useGetUserVoucher = () => {
         .then((e) => {
           setData(e.data);
         });
-    } catch (err) {
-      throw err;
-    }
+    } catch (err) {}
   };
   useEffect(() => {
     getUserVoucher();

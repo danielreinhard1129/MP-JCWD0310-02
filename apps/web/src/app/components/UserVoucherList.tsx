@@ -20,7 +20,7 @@ import useGetUserVoucher from '../hooks/api/user/useGetUserVoucher';
 
 const UserVoucherList = () => {
   const { data, isLoading } = useGetUserVoucher();
-  const [copy,setCopy] = useState(false);
+  const [copy, setCopy] = useState(false);
   const dataTable = () => {
     if (!isLoading && data) {
       const userVOucher = data.data.map((val) => {

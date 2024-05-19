@@ -1,19 +1,17 @@
 'use client';
 import useGetEvents from '@/app/hooks/api/event/useGetEvents';
-import { CalendarDateRangePicker } from '@/components/Dashboard/DateRangePicker';
 import { Overview } from '@/components/Dashboard/Overview';
 import { OverviewBar } from '@/components/Dashboard/OverviewBar';
 import MonthPicker from '@/components/MonthPicker';
 import { TransactionList } from '@/components/PageComponent/TransactionList';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Label } from '@/components/ui/label';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import React, { useState } from 'react';
 
 const DashboardTransactionPage = () => {
   const [month, setMonth] = useState(new Date());
-  const { data, isLoading, meta } = useGetEvents({});
-  const [analytics, setAnalytics] = useState(false);
+  // const { data, isLoading, meta } = useGetEvents({});
+  // const [analytics, setAnalytics] = useState(false);
   const transactionData = [
     {
       id: 1,

@@ -1,16 +1,19 @@
 'use client';
-import useGetEvents from '@/app/hooks/api/event/useGetEvents';
+import useGetUserEventHistory from '@/app/hooks/api/user/useGetUserEventHistory';
+import { useAppSelector } from '@/app/redux/hook';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { appConfig } from '@/utils/config';
 import { format } from 'date-fns';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { ResponsiveContainer } from 'recharts';
 
 export function RecentEvent() {
   const router = useRouter();
-  const { data, isLoading, meta } = useGetEvents({
+  const user = useAppSelector((state) => state.user);
+  const { data } = useGetUserEventHistory({
     search: '',
+    userId: Number(user.userId),
   });
   useEffect(() => {
     console.log(data);
@@ -25,7 +28,11 @@ export function RecentEvent() {
           return (
             <>
               <div
-                onClick={() => router.push(`/organizer-dashboard/event/manage-event/${value.id}`)}
+                onClick={() =>
+                  router.push(
+                    `/organizer-dashboard/event/manage-event/${value.id}`,
+                  )
+                }
                 className="flex items-center hover:bg-muted cursor-pointer p-4 rounded-xl"
               >
                 <Avatar className="h-9 w-9">

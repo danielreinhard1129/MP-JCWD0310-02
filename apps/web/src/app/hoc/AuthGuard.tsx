@@ -4,15 +4,26 @@ import { useAppSelector } from '@/app/redux/hook';
 import { Progress } from '@/components/ui/progress';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
+
+const getToken = () => {
+  try {
+    const token = localStorage.getItem('token');
+    if (!token) return 'token';
+    return token;
+  } catch (error) {
+    return 'token';
+  }
+};
+
 export const AuthorizationGuard = (Component: any) => {
   return function IsAuthorized(props: any) {
     const router = useRouter();
     const [progress, setProgress] = useState(0);
     const user = useAppSelector((state) => state.user);
     const [loading, setLoading] = useState(true);
+    const token = getToken();
 
     useEffect(() => {
-      let token = localStorage.getItem('token');
       setTimeout(() => {
         setProgress(30);
       }, 250);
@@ -49,9 +60,9 @@ export const NeedAuthorizationGuard = (Component: any) => {
     const router = useRouter();
     const user = useAppSelector((state) => state.user);
     const [loading, setLoading] = useState(true);
+    let token = getToken();
 
     useEffect(() => {
-      let token = localStorage.getItem('token');
       setTimeout(() => {
         setProgress(30);
       }, 250);
@@ -89,10 +100,10 @@ export const AuthenticationGuard = (Component: any) => {
     const [progress, setProgress] = useState(0);
     const user = useAppSelector((state) => state.user);
     const [loading, setLoading] = useState(true);
+    let token = getToken();
 
     useEffect(() => {
-      let token = localStorage.getItem('token');
-      if (token) {
+      if (token && token !== 'token') {
         router.push('/');
       }
       setTimeout(() => {
@@ -127,13 +138,14 @@ export const NeedAuthenticationGuard = (Component: any) => {
     const [progress, setProgress] = useState(0);
     const user = useAppSelector((state) => state.user);
     const [loading, setLoading] = useState(true);
-    let token = localStorage.getItem('token');
+    const token = getToken();
 
     useEffect(() => {
       setTimeout(() => {
         setProgress(30);
       }, 250);
       if (!token && !user.userId) {
+        setProgress(100);
         router.push('/');
       }
       setTimeout(() => {

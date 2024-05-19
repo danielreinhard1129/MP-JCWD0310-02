@@ -1,3 +1,4 @@
+'use client';
 import { useAppDispatch } from '@/app/redux/hook';
 import { logoutAction } from '@/app/redux/slices/userSlice';
 import { useRouter } from 'next/navigation';
@@ -8,15 +9,14 @@ const useLogout = () => {
   const dispatch = useAppDispatch();
   const logout = async () => {
     try {
-     
-      dispatch(logoutAction())
+      dispatch(logoutAction());
       localStorage.removeItem('token');
       toast.success('Succes log out!');
       setTimeout(() => {
         router.replace('/');
       }, 1000);
     } catch (err) {
-        toast.error('Something error');
+      toast.error('Something error');
     }
   };
   return { logout };

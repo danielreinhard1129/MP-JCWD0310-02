@@ -28,7 +28,6 @@ const useGetUserEventHistory = (queries: IGetEventHistoryQuery) => {
       setData(data.data);
       setMeta(data.meta);
     } catch (error) {
-      console.log(error);
     } finally {
       setIsLoading(false);
     }

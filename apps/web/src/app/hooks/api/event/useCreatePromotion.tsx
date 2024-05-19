@@ -11,7 +11,6 @@ export const useCreatePromotion = () => {
     } catch (error) {
         if (error instanceof AxiosError) {
           // replace log with toast
-          console.log(error);
       }
     }
   };
