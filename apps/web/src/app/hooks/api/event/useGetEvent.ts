@@ -17,7 +17,6 @@ const useGetEvent = (id: number) => {
     } catch (error) {
       if (error instanceof AxiosError) {
         // TODO: replace console.log with toast
-        console.log(error);
       }
     } finally {
       setIsLoading(false);

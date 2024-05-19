@@ -65,7 +65,6 @@ const useCreateEvent = () => {
     } catch (err) {
       if (err instanceof AxiosError) {
         // replace log with toast
-        console.log(err);
       }
     }
   };

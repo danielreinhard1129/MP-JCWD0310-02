@@ -4,12 +4,21 @@ import { useAppSelector } from '@/app/redux/hook';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { RootState } from '../redux/store';
-import { useSelector } from 'react-redux';
 import { Progress } from '@/components/ui/progress';
+
+const getToken = () => {
+  try {
+    const token = localStorage.getItem('token');
+    if (!token) return 'token';
+    return token;
+  } catch (error) {
+    return 'token';
+  }
+};
 
 export default function RoleGuard(Component: any) {
   return function IsAuthorized(props: any) {
-    let token = localStorage.getItem('token');
+    let token = getToken();
     const [progress, setProgress] = useState(0);
     const user = useAppSelector((state: RootState) => state.user);
     const [data, setData] = useState(0);

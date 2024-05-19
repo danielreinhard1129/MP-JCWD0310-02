@@ -24,11 +24,9 @@ const useGetUserTransactionHistory = (queries: IGetEventHistoryQuery) => {
       const { data } = await axiosInstance.get('/user/transaction', {
         params: queries,
       });
-
       setData(data.data);
       setMeta(data.meta);
     } catch (error) {
-      console.log(error);
     } finally {
       setIsLoading(false);
     }

@@ -37,9 +37,7 @@ const useEditUserAccount = () => {
         data: createEventForm,
         headers: { 'Content-Type': 'multipart/form-data' },
       });
-    } catch (error) {
-      throw error;
-    }
+    } catch (error) {}
   };
   return { EditUserAccount };
 };

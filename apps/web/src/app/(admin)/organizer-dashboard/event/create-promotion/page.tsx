@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { useCreatePromotion } from '@/app/hooks/api/event/useCreatePromotion';
-import { IFormCreatePromotion } from '@/app/types/promotion.type';
+// import { IFormCreatePromotion } from '@/app/types/promotion.type';
 import { useFormik } from 'formik';
 import FormInput from '@/components/Forminput';
 import FormInputCurrency from '@/components/FormInputCurrency';
@@ -10,14 +10,14 @@ import { DatePicker } from '@/components/DatePicker';
 import { Button } from '@/components/ui/button';
 
 const CreatePromotionPage: React.FC = () => {
-  const [formData, setFormData] = useState<IFormCreatePromotion>({
-    code: '',
-    discount: 0,
-    maxUses: 0,
-    startDate: '',
-    endDate: '',
-    eventId: 0,
-  });
+  // const [formData, setFormData] = useState<IFormCreatePromotion>({
+  //   code: '',
+  //   discount: 0,
+  //   maxUses: 0,
+  //   startDate: '',
+  //   endDate: '',
+  //   eventId: 0,
+  // });
 
   const { createPromotion } = useCreatePromotion();
   const {
@@ -30,12 +30,12 @@ const CreatePromotionPage: React.FC = () => {
     setFieldValue,
   } = useFormik({
     initialValues: {
-    code: '',
-    discount: 0,
-    maxUses: 0,
-    startDate: '',
-    endDate: '',
-    eventId: 0,
+      code: '',
+      discount: 0,
+      maxUses: 0,
+      startDate: '',
+      endDate: '',
+      eventId: 0,
     },
     // validationSchema,
     onSubmit: (values) => {

@@ -20,8 +20,11 @@ export class OrganizerRouter {
       uploader('IMG', '/images').array('thumbnail', 1),
       this.organizerController.createEventOrganizer,
     );
-    
-    this.router.get('/event', this.organizerController.testOrganizer);
+    this.router.get(
+      '/statistic/:id',
+      this.organizerController.getOrganizerDataStatistic,
+    );
+    // this.router.get('/event', this.organizerController.testOrganizer);
   }
 
   getRouter(): Router {

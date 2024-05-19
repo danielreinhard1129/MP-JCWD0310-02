@@ -29,7 +29,7 @@ const color = [
   { color: '#0ea5e9' },
 ];
 
-export function OverviewBar({ data }: { data: DataProps[] }) {
+export function OverviewBar({ data }: { data: any }) {
   return (
     <ResponsiveContainer width="100%" height={350}>
       <BarChart
