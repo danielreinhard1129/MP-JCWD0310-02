@@ -4,7 +4,19 @@ export const getEventService = async (id: number) => {
   try {
     const event = await prisma.event.findFirst({
       where: { id },
-      include: { user: true, location: true },
+      include: {
+        user: true,
+        location: true,
+        eventCategory: {
+          select: {
+            category: {
+              select: {
+                title: true,
+              },
+            },
+          },
+        },
+      },
     });
     if (!event) {
       throw new Error('event not found');
