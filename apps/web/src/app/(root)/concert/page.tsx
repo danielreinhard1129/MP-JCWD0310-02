@@ -108,19 +108,21 @@ const Concert = () => {
         {events.map((event, index) => {
           return (
             <EventCard
-              key={index}
-              title={event.title}
-              description={event.description}
-              category={event.category}
-              price={event.price}
-              booked={String(event.booked)}
-              limit={String(event.limit)}
-              startDate={new Date(event.startDate)}
-              endDate={new Date(event.endDate)}
-              time={event.time}
-              imageUrl={appConfig.baseUrl + `/assets${event.thumbnail}`}
-              eventId={event.id}
-            />
+                        key={index}
+                        title={event.title}
+                        description={event.description}
+                        category={event.category}
+                        price={event.price}
+                        booked={`Booked: ${String(event.booked)}`}
+                        limit={`Available Seats: ${String(event.limit)}`}
+                        startDate={new Date(event.startDate)}
+                        endDate={new Date(event.endDate)}
+                        time={event.time}
+                        imageUrl={
+                          appConfig.baseUrl + `/assets${event.thumbnail}`
+                        }
+                        eventId={event.id}
+                      />
           );
         })}
       </div>
