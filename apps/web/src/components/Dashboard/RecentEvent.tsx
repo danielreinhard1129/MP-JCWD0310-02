@@ -15,19 +15,18 @@ export function RecentEvent() {
     search: '',
     userId: Number(user.userId),
   });
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
+  useEffect(() => {}, [data]);
 
   const formatDate = (date: Date) => format(date, 'dd MMMM yyyy');
 
   return (
     <ResponsiveContainer width="100%">
       <div className="space-y-4">
-        {data?.map((value) => {
+        {data?.map((value , indx) => {
           return (
             <>
               <div
+                key={indx}
                 onClick={() =>
                   router.push(
                     `/organizer-dashboard/event/manage-event/${value.id}`,
