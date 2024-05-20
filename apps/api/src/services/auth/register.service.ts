@@ -1,13 +1,6 @@
 import prisma from '@/prisma';
 import { hashPassword } from '@/utils/bcrypt';
-import { Prisma, User } from '@prisma/client';
-
-interface RegisterServiceParams {
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
-}
+import { User } from '@prisma/client';
 
 export const registerService = async (body: User) => {
   try {
@@ -20,54 +13,50 @@ export const registerService = async (body: User) => {
     });
 
     if (userIsExist)
-      throw new Error('Your email is registered to another account');
+      throw new Error('Your email is registered to another account!');
 
     const passwordHash = await hashPassword(password);
     const newReferralCode = (await hashPassword(email)).toLowerCase();
 
     const referral = await prisma.$transaction(async (tx) => {
-      const newExpiredDate = new Date(
-        new Date().setMonth(new Date().getMonth() + 3),
-      );
+      try {
+        const newExpiredDate = new Date(
+          new Date().setMonth(new Date().getMonth() + 3),
+        );
 
-      const user = await prisma.user.create({
-        data: {
-          email,
-          firstName,
-          lastName,
-          password: passwordHash,
-          referralCode: newReferralCode.slice(15, 25),
-        },
-      });
-
-      if (referralCode) {
-        const addUserPoint = await prisma.user.update({
-          where: {
-            referralCode,
-          },
+        const user = await tx.user.create({
           data: {
-            points: {
-              increment: 10000,
+            email,
+            firstName,
+            lastName,
+            password: passwordHash,
+            referralCode: newReferralCode.slice(15, 25),
+          },
+        });
+
+        if (referralCode) {
+          const addUserPoint = await tx.user.findFirst({
+            where: {
+              referralCode,
             },
-            pointsExpired: newExpiredDate,
-          },
-        });
+          });
 
-        if (!addUserPoint)
-          throw new Error('Referral Code not Valid / not Exist');
-
-        const referralHistory = await prisma.referralHistory.create({
-          data: {
-            referralId: user.id,
-            referredId: addUserPoint.id,
-          },
-        });
+          if (!addUserPoint) {
+            throw new Error('Your referral code is invalid');
+          }
+          const referralHistory = await tx.referralHistory.create({
+            data: {
+              referralId: user.id,
+              referredId: addUserPoint.id,
+            },
+          });
+        }
 
         const expiredVoucher = new Date(
           new Date().setMonth(new Date().getMonth() + 12),
         );
 
-        const voucherDiscount = await prisma.reward.create({
+        const voucherDiscount = await tx.reward.create({
           data: {
             title: 'New User Voucher',
             description: '10% Discount on every transaction FOR YOU!!',
@@ -78,17 +67,18 @@ export const registerService = async (body: User) => {
           },
         });
 
-        const userReward = await prisma.userReward.create({
+        const userReward = await tx.userReward.create({
           data: {
             isUsed: false,
             userId: user.id,
             rewardId: voucherDiscount.id,
           },
         });
+        return user;
+      } catch (error) {
+        throw error;
       }
-      return user;
     });
-
     return {
       message: 'Success register new account',
       data: referral,
