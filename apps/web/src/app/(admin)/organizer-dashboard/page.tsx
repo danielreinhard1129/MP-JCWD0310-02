@@ -1,5 +1,4 @@
 'use client';
-import { useAppSelector } from '@/app/redux/hook';
 import {
   BadgeDollarSign,
   CalendarCheck2,
@@ -17,8 +16,15 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { CalendarDateRangePicker } from '@/components/Dashboard/DateRangePicker';
 import { Overview } from '@/components/Dashboard/Overview';
 import { RecentEvent } from '@/components/Dashboard/RecentEvent';
+import useGetOrganizerDataStatistic from '@/app/hooks/api/organizer/useGetOrganizerDataStatistic';
+import { useEffect } from 'react';
 
 const OrganizerDashboardPage = () => {
+  const { data, isLoading } = useGetOrganizerDataStatistic();
+  const priceFormat = new Intl.NumberFormat('id-ID', {
+    style: 'currency',
+    currency: 'IDR',
+  });
   const chartData = [
     {
       name: 'jan',
@@ -100,10 +106,9 @@ const OrganizerDashboardPage = () => {
                   <BadgeDollarSign />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">$45,231.89</div>
-                  <p className="text-xs text-muted-foreground">
-                    +20.1% from last month
-                  </p>
+                  <div className="text-2xl font-bold">
+                    {data.data.data.ticketRevenue._sum.total}
+                  </div>
                 </CardContent>
               </Card>
               <Card>
@@ -114,7 +119,11 @@ const OrganizerDashboardPage = () => {
                   <LineChart />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">$150,00</div>
+                  <div className="text-2xl font-bold">
+                    {priceFormat.format(
+                      data.data.data.averageTicketPrice._avg.price,
+                    )}
+                  </div>
                   <p className="text-xs text-muted-foreground">
                     +21% from last month
                   </p>
@@ -128,7 +137,9 @@ const OrganizerDashboardPage = () => {
                   <Ticket />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">+1,000</div>
+                  <div className="text-2xl font-bold">
+                    {data.data.data.ticketSoldOverall}
+                  </div>
                   <p className="text-xs text-muted-foreground">
                     +19% from last month
                   </p>
@@ -142,7 +153,9 @@ const OrganizerDashboardPage = () => {
                   <CalendarCheck2 />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">69</div>
+                  <div className="text-2xl font-bold">
+                    {data.data.data.totalEvents._all}
+                  </div>
                   <p className="text-xs text-muted-foreground">
                     5 events since this month
                   </p>

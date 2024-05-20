@@ -43,7 +43,7 @@ export const AuthorizationGuard = (Component: any) => {
 
     if (loading)
       return (
-        <div className="min-h-[calc(100vh-128px)] w-full flex justify-center items-center">
+        <div className="min-h-[calc(100vh-130px)] w-full flex justify-center items-center">
           <Progress
             value={progress}
             className="w-[40%] transition-all duration-300"
@@ -83,7 +83,7 @@ export const NeedAuthorizationGuard = (Component: any) => {
 
     if (loading)
       return (
-        <div className="min-h-[calc(100vh-128px)] w-full flex justify-center items-center">
+        <div className="min-h-[calc(100vh-130px)] w-full flex justify-center items-center">
           <Progress
             value={progress}
             className="w-[40%] transition-all duration-300"
@@ -122,7 +122,7 @@ export const AuthenticationGuard = (Component: any) => {
 
     if (loading)
       return (
-        <div className="min-h-[calc(100vh-128px)] w-full flex justify-center items-center">
+        <div className="min-h-[calc(100vh-130px)] w-full flex justify-center items-center">
           <Progress
             value={progress}
             className="w-[40%] transition-all duration-300"
@@ -161,7 +161,7 @@ export const NeedAuthenticationGuard = (Component: any) => {
 
     if (loading)
       return (
-        <div className="min-h-[calc(100vh-128px)] w-full flex justify-center items-center">
+        <div className="min-h-[calc(100vh-130px)] w-full flex justify-center items-center">
           <Progress
             value={progress}
             className="w-[40%] transition-all duration-300"

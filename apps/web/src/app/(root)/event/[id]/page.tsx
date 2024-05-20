@@ -1,14 +1,13 @@
 'use client';
 
 import useGetEvent from '@/app/hooks/api/event/useGetEvent';
-import { Button } from '@/components/ui/button';
 import { appConfig } from '@/utils/config';
 import { CalendarRangeIcon } from 'lucide-react';
 import { notFound } from 'next/navigation';
 import ReviewForm from './components/ReviewForm';
 import SkeletonBlogDetail from './components/SkeletonEventDetail';
 import { format } from 'date-fns';
-
+import CheckoutDialog from '@/components/CheckoutDialog';
 const EventDetail = ({ params }: { params: { id: string } }) => {
   const { event, isLoading } = useGetEvent(Number(params.id));
   const priceFormat = new Intl.NumberFormat('id-ID', {
@@ -23,12 +22,10 @@ const EventDetail = ({ params }: { params: { id: string } }) => {
       </div>
     );
   }
-
   if (!event) {
     return notFound();
   }
 
-  
   return (
     <section className="w-full py-12 md:py-24 lg:py-32">
       <div className="container px-4 md:px-6">
@@ -65,7 +62,7 @@ const EventDetail = ({ params }: { params: { id: string } }) => {
                 {priceFormat.format(event.price)}
               </p>
             </div>
-            <Button>Check out</Button>
+            <CheckoutDialog />
           </div>
           <img
             alt="Event"
@@ -84,8 +81,6 @@ const EventDetail = ({ params }: { params: { id: string } }) => {
           <ReviewForm />
         </div>
       </div>
-
-      
     </section>
   );
 };

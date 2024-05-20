@@ -29,6 +29,7 @@ export class OrganizerController {
       const result = await getOrganizerDataStatisticService(
         Number(req.params.id),
       );
+
       res.status(200).send({
         data: result,
       });
