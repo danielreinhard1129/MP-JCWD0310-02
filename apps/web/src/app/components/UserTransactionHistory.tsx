@@ -27,6 +27,7 @@ import { Filter, Search } from 'lucide-react';
 import { format } from 'date-fns';
 import { useDebouncedCallback } from 'use-debounce';
 import useGetUserTransactionHistory from '../hooks/api/user/useGetUserTransactionHistory';
+import { useAppSelector } from '../redux/hook';
 
 interface FilterValue {
   success: boolean;
@@ -35,6 +36,7 @@ interface FilterValue {
 }
 
 const UserTransactionHistory = () => {
+  const { userId } = useAppSelector((state) => state.user);
   const [page, setPage] = useState<number>(1);
   const priceFormat = new Intl.NumberFormat('id-ID', {
     currency: 'IDR',
@@ -51,7 +53,7 @@ const UserTransactionHistory = () => {
     take: 5,
     search,
     filter,
-    userId: 2,
+    userId: userId ? userId : 0,
   });
   const handleChangePaginate = ({ selected }: { selected: number }) => {
     setPage(selected + 1);

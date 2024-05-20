@@ -62,7 +62,7 @@ const EventDetail = ({ params }: { params: { id: string } }) => {
                 {priceFormat.format(event.price)}
               </p>
             </div>
-            <CheckoutDialog />
+            <CheckoutDialog eventData={event} />
           </div>
           <img
             alt="Event"

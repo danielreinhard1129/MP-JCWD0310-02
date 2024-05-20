@@ -19,13 +19,18 @@ import { notFound } from 'next/navigation';
 import { Card, CardContent } from './ui/card';
 import { ShoppingCart } from 'lucide-react';
 import { Separator } from './ui/separator';
+import { Event } from '@/app/types/event.type';
+import { useCreateTransactionEvent } from '@/app/hooks/api/user/useTransactionEvent';
+import { useAppSelector } from '@/app/redux/hook';
 
-const CheckoutDialog = () => {
+const CheckoutDialog = ({ eventData }: { eventData: Event }) => {
+  const { userId } = useAppSelector((state) => state.user);
   const { data } = useGetUserVoucher();
   const { event, isLoading } = useGetEvent(Number(1));
   const [qty, setQty] = useState<number>(0);
   const [seats, setSeats] = useState<number>(25);
-  const [voucher, setVoucher] = useState<number>();
+  const { createTransactionEvent } = useCreateTransactionEvent();
+  const [voucher, setVoucher] = useState<number>(0);
   const priceFormat = new Intl.NumberFormat('id-ID', {
     currency: 'IDR',
     style: 'currency',
@@ -39,7 +44,18 @@ const CheckoutDialog = () => {
     );
   }
 
-  const handleSubmit = () => {};
+  const handleSubmit = () => {
+    const data = {
+      eventId: eventData.id,
+      qty: 1,
+      total: 1,
+      uuid: '9966',
+      userId: 1,
+      paymentProof: '',
+      voucherId: 1,
+    };
+    const result = createTransactionEvent(data);
+  };
 
   if (!event) {
     return notFound();
@@ -59,11 +75,11 @@ const CheckoutDialog = () => {
             </DialogDescription>
           </DialogHeader>
           <div className="grid gap-4 py-4">
-            <Label htmlFor="name">Available Seats : {seats}</Label>
+            <Label htmlFor="name">Available Seats : {eventData.limit}</Label>
             <Separator />
             <div className="flex justify-between flex-row items-center">
               <Label htmlFor="name">
-                Early Bids : {qty} x {priceFormat.format(25000)}
+                Early Bids : {qty} x {priceFormat.format(eventData.price)}
               </Label>
               <div className="flex gap-4">
                 <Button
@@ -128,7 +144,7 @@ const CheckoutDialog = () => {
             <CardContent className="flex justify-center p-4">
               <div>
                 <Label className="text-xl">
-                  Total Price : {priceFormat.format(25000 * qty)}
+                  Total Price : {priceFormat.format(eventData.price * qty)}
                 </Label>
               </div>
             </CardContent>

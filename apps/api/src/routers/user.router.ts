@@ -25,6 +25,7 @@ export class UserRouter {
       this.userController.getTransactionController,
     );
     this.router.get('/events', this.userController.getEventHistoryController);
+    this.router.post('/event/:id', this.userController.createUserTransaction);
   }
 
   getRouter(): Router {

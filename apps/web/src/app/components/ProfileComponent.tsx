@@ -47,6 +47,7 @@ export default function ProfileComponent({
   isError: FormikErrors<any>;
 }) {
   const [stateEyeCurrent, setStateEyeCurrent] = useState(false);
+  const [profileImage, setProfileImage] = useState<File[]>();
   const [stateEyeNew, setStateEyeNew] = useState(false);
   const pointsFormat = new Intl.NumberFormat('en-IN', {
     maximumSignificantDigits: 3,
@@ -102,10 +103,10 @@ export default function ProfileComponent({
                         isError={!!isError.thumbnail && !!isError.thumbnail}
                         label=""
                         onDrop={(files) => {
+                          setProfileImage(files);
                           onChangeField('thumbnail', [
                             ...files.map((file) => file),
                           ]);
-                          console.log(files);
                         }}
                       />
                     </div>
