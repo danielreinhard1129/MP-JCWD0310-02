@@ -9,6 +9,7 @@ export interface User {
   passwordHash: string;
   pictureId? : string;
   token: string;
+  thumbnail : File[];
   role: string;
   profile : string;
   referralCode: string;

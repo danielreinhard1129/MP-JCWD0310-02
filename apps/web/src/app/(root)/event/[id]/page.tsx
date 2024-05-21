@@ -1,15 +1,27 @@
 'use client';
 
 import useGetEvent from '@/app/hooks/api/event/useGetEvent';
-import { Button } from '@/components/ui/button';
 import { appConfig } from '@/utils/config';
 import { CalendarRangeIcon } from 'lucide-react';
 import { notFound } from 'next/navigation';
 import ReviewForm from './components/ReviewForm';
 import SkeletonBlogDetail from './components/SkeletonEventDetail';
 import { format } from 'date-fns';
-
+import CheckoutDialog from '@/components/CheckoutDialog';
+import { useAppSelector } from '@/app/redux/hook';
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
+import { Button } from '@/components/ui/button';
+import { Label } from '@/components/ui/label';
 const EventDetail = ({ params }: { params: { id: string } }) => {
+  const { role } = useAppSelector((state) => state.user);
   const { event, isLoading } = useGetEvent(Number(params.id));
   const priceFormat = new Intl.NumberFormat('id-ID', {
     currency: 'IDR',
@@ -23,12 +35,10 @@ const EventDetail = ({ params }: { params: { id: string } }) => {
       </div>
     );
   }
-
   if (!event) {
     return notFound();
   }
 
-  
   return (
     <section className="w-full py-12 md:py-24 lg:py-32">
       <div className="container px-4 md:px-6">
@@ -65,7 +75,31 @@ const EventDetail = ({ params }: { params: { id: string } }) => {
                 {priceFormat.format(event.price)}
               </p>
             </div>
-            <Button>Check out</Button>
+            {role !== 'organizer' ? (
+              <CheckoutDialog eventData={event} />
+            ) : (
+              <Dialog>
+                <DialogTrigger className="w-full">
+                  <Button variant="outline" className="w-full">
+                    Checkout
+                  </Button>
+                </DialogTrigger>
+                <DialogContent>
+                  <DialogHeader>
+                    <DialogTitle>Warning</DialogTitle>
+                    <Label>You are signed as organizer.</Label>
+                  </DialogHeader>
+                  <Label className="text-base">
+                    As an organizer you are probihited to checkout an event!
+                  </Label>
+                  <DialogFooter>
+                    <DialogClose>
+                      <Button>Close</Button>
+                    </DialogClose>
+                  </DialogFooter>
+                </DialogContent>
+              </Dialog>
+            )}
           </div>
           <img
             alt="Event"
@@ -84,8 +118,6 @@ const EventDetail = ({ params }: { params: { id: string } }) => {
           <ReviewForm />
         </div>
       </div>
-
-      
     </section>
   );
 };

@@ -1,5 +1,8 @@
 'use client';
+import Navbar from '@/components/Navbar';
 import ToastMessage from '../components/ToastMessage';
+import Footer from '@/components/Footer';
+import { Card, CardContent, CardHeader } from '@/components/ui/card';
 
 export default function RootLayout({
   children,
@@ -8,27 +11,11 @@ export default function RootLayout({
 }) {
   return (
     <>
-      <div className="flex flex-row min-h-screen h-full w-full">
-        <div className="bg-indigo-950 w-[40%] md:flex hidden flex-col items-center gap-12 py-8 px-4">
-          {/* Logo */}
-          <div className="flex flex-col text-center justify-center">
-            <h1 className="font-extrabold text-[#ffff00] text-2xl">
-              Welcome to
-            </h1>
-            <h1 className="font-extrabold text-[#ffff00] text-4xl">TuneTix</h1>
-          </div>
-
-          {/* Description */}
-
-          <div className="text-[#ffff00] flex justify-center items-center transition-all duration-300"></div>
-        </div>
-        <div className="absolute right-0">
-          <ToastMessage />
-        </div>
-        <div className="bg-[#fbfbf8] flex justify-center items-center min-h-screen h-full w-full md:p-20 p-4">
-          {children}
-        </div>
+      <div>
+        <Navbar />
+        <main className="min-h-[calc(100vh-130px)] h-full w-full flex justify-center items-center">{children}</main>
       </div>
+      <Footer />
     </>
   );
 }

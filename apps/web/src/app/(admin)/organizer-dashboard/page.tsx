@@ -1,5 +1,4 @@
 'use client';
-import { useAppSelector } from '@/app/redux/hook';
 import {
   BadgeDollarSign,
   CalendarCheck2,
@@ -17,8 +16,15 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { CalendarDateRangePicker } from '@/components/Dashboard/DateRangePicker';
 import { Overview } from '@/components/Dashboard/Overview';
 import { RecentEvent } from '@/components/Dashboard/RecentEvent';
+import useGetOrganizerDataStatistic from '@/app/hooks/api/organizer/useGetOrganizerDataStatistic';
+import { useEffect } from 'react';
 
 const OrganizerDashboardPage = () => {
+  const { data, isLoading } = useGetOrganizerDataStatistic();
+  const priceFormat = new Intl.NumberFormat('id-ID', {
+    style: 'currency',
+    currency: 'IDR',
+  });
   const chartData = [
     {
       name: 'jan',
@@ -65,18 +71,19 @@ const OrganizerDashboardPage = () => {
       ],
     },
   ];
-  const user = useAppSelector((state) => state.user);
   return (
     <div className="flex h-full flex-col">
       <div className="flex-1 space-y-4 p-8 pt-6">
-        <div className="flex items-center justify-between space-y-2">
-          <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
+        <div className="flex items-center justify-between gap-4 space-y-2">
+          <h2 className="md:text-3xl text-2xl font-bold tracking-tight">
+            Dashboard
+          </h2>
           <div className="flex items-center space-x-2">
-            <CalendarDateRangePicker />
+            <CalendarDateRangePicker className="" />
           </div>
         </div>
         <Tabs defaultValue="overview" className="space-y-4">
-          <TabsList>
+          <TabsList className="w-full md:w-auto">
             <TabsTrigger value="overview">Overview</TabsTrigger>
             <TabsTrigger value="analytics" disabled>
               Analytics
@@ -88,6 +95,7 @@ const OrganizerDashboardPage = () => {
               Notifications
             </TabsTrigger>
           </TabsList>
+
           <TabsContent value="overview" className="space-y-4">
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
               <Card>
@@ -98,10 +106,13 @@ const OrganizerDashboardPage = () => {
                   <BadgeDollarSign />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">$45,231.89</div>
-                  <p className="text-xs text-muted-foreground">
-                    +20.1% from last month
-                  </p>
+                  <div className="text-2xl font-bold">
+                    {data.data.data.ticketRevenue._sum.total
+                      ? priceFormat.format(
+                          data.data.data.ticketRevenue._sum.total,
+                        )
+                      : '0'}
+                  </div>
                 </CardContent>
               </Card>
               <Card>
@@ -112,7 +123,11 @@ const OrganizerDashboardPage = () => {
                   <LineChart />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">$150,00</div>
+                  <div className="text-2xl font-bold">
+                    {priceFormat.format(
+                      data.data.data.averageTicketPrice._avg.price,
+                    )}
+                  </div>
                   <p className="text-xs text-muted-foreground">
                     +21% from last month
                   </p>
@@ -126,7 +141,9 @@ const OrganizerDashboardPage = () => {
                   <Ticket />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">+1,000</div>
+                  <div className="text-2xl font-bold">
+                    {data.data.data.ticketSoldOverall}
+                  </div>
                   <p className="text-xs text-muted-foreground">
                     +19% from last month
                   </p>
@@ -140,14 +157,16 @@ const OrganizerDashboardPage = () => {
                   <CalendarCheck2 />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">69</div>
+                  <div className="text-2xl font-bold">
+                    {data.data.data.totalEvents._all}
+                  </div>
                   <p className="text-xs text-muted-foreground">
                     5 events since this month
                   </p>
                 </CardContent>
               </Card>
             </div>
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-8">
               <Card className="col-span-4">
                 <CardHeader>
                   <CardTitle>Total Ticket Sold in This Month</CardTitle>
@@ -157,7 +176,7 @@ const OrganizerDashboardPage = () => {
                   <Overview data={chartData} />
                 </CardContent>
               </Card>
-              <Card className="col-span-3">
+              <Card className="col-span-4">
                 <CardHeader>
                   <CardTitle>Recent Sales</CardTitle>
                   <CardDescription>

@@ -45,7 +45,7 @@ const Autocomplete = () => {
       loadOptions={debouncedLoadOptions}
       isLoading={isLoading}
       onChange={(event) => {
-        router.push(appConfig.baseUrlNext + `/${event?.value}`);
+        router.push(appConfig.baseUrlNext + `/event/${event?.value}`);
       }}
     />
   );

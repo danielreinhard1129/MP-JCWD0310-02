@@ -1,5 +1,6 @@
 import { createEventService } from '@/services/organizer/create-event-service';
 import { createPromotionService } from '@/services/organizer/create-promotion.service';
+import { getOrganizerDataStatisticService } from '@/services/organizer/get-organizer-data-statistic';
 
 import { NextFunction, Request, Response } from 'express';
 
@@ -19,12 +20,18 @@ export class OrganizerController {
     }
   }
 
-
-  async testOrganizer(req: Request, res: Response, next: NextFunction) {
+  async getOrganizerDataStatistic(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ) {
     try {
-      // const result = await createEventService(req.body);
+      const result = await getOrganizerDataStatisticService(
+        Number(req.params.id),
+      );
+
       res.status(200).send({
-        message: 'success',
+        data: result,
       });
     } catch (error) {
       next(error);

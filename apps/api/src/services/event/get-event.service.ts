@@ -8,12 +8,8 @@ export const getEventService = async (id: number) => {
         user: true,
         location: true,
         eventCategory: {
-          select: {
-            category: {
-              select: {
-                title: true,
-              },
-            },
+          include: {
+            category: true,
           },
         },
       },

@@ -20,9 +20,14 @@ import CreateEventFormValidation from './CreateEventValidation';
 import useCreateEvent from '@/app/hooks/api/event/createEvent';
 import { Checkbox } from '../ui/checkbox';
 import { ConfirmModal } from '../Common/ConfirmModal';
+import { DialogAlert } from '../Common/DialogAlert';
+import { useRouter } from 'next/navigation';
 
 const CreateEventForm = () => {
+  const router = useRouter();
   const [alertModalOpen, setAlertModalOpen] = useState(false);
+  const [successModalOpen, setSuccessModalOpen] = useState(false);
+  const [confirmModalOpen, setConfirmModalOpen] = useState(false);
   const [progress, setProgress] = useState(false);
   const { createEvent } = useCreateEvent();
   const {
@@ -54,7 +59,13 @@ const CreateEventForm = () => {
     validationSchema: CreateEventFormValidation,
     onSubmit: (values) => {
       setProgress(true);
-      createEvent(values).finally(() => setProgress(false));
+      createEvent(values).finally(() => {
+        setProgress(false);
+        setSuccessModalOpen(true);
+        setTimeout(() => {
+          router.push('/organizer-dashboard')
+        }, 1000);
+      });
       console.log(values);
     },
   });
@@ -178,7 +189,7 @@ const CreateEventForm = () => {
           {/* Limit Ticket Forms */}
 
           {/* Booked Forms */}
-          <div className="max-w-[300px]">
+          {/* <div className="max-w-[300px]">
             <Label>Booked</Label>
             <Input
               name="booked"
@@ -189,7 +200,7 @@ const CreateEventForm = () => {
               }}
               placeholder="Input a booked value if your event has a manual ticket sold"
             />
-          </div>
+          </div> */}
           <div>
             {/* Booked Forms */}
 
@@ -296,17 +307,38 @@ const CreateEventForm = () => {
         </CardContent>
         <CardFooter className="flex flex-row justify-between">
           <Label>*Please check your forms before submit the forms</Label>
-          <Button onClick={() => (!errors ? setAlertModalOpen(true) : '')}>
+          <Button
+            onClick={() => {
+              console.log(errors);
+              !Object.keys(errors).length
+                ? setConfirmModalOpen(true)
+                : setAlertModalOpen(true);
+            }}
+          >
             Submit
           </Button>
         </CardFooter>
       </Card>
+      <DialogAlert
+        title="Errors"
+        description={`Please Input Forms Correctly!`}
+        name={values.title}
+        isOpen={alertModalOpen}
+        onClose={() => setAlertModalOpen(false)}
+      />
+      <DialogAlert
+        title="Success"
+        description={`Success Create Events,Wait a second you will be redirect to dashboard`}
+        // name={values.title}
+        isOpen={successModalOpen}
+        onClose={() => setSuccessModalOpen(false)}
+      />
       <ConfirmModal
         title="Create Events"
         description="Please be sure to check the form before continue."
         name={values.title}
-        isOpen={alertModalOpen}
-        onClose={() => setAlertModalOpen(false)}
+        isOpen={confirmModalOpen}
+        onClose={() => setConfirmModalOpen(false)}
         onConfirm={() => handleSubmit()}
         loading={progress}
       />
