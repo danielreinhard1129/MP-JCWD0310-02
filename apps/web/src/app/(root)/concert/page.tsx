@@ -109,7 +109,7 @@ const Concert = () => {
               category={event.eventCategory[0].category.title}
               price={event.price}
               booked={`Booked: ${String(event.booked)}`}
-              limit={`Available Seats: ${String(event.limit)}`}
+              limit={`Available Seats: ${String(event.limit-event.booked)}`}
               startDate={new Date(event.startDate)}
               endDate={new Date(event.endDate)}
               time={event.time}

@@ -12,19 +12,15 @@ export const getUserTransactionHistoryService = async function (
   try {
     const userId = Number(query.userId);
     const { page, sortBy, sortOrder, take, search, filter } = query;
-    const events = await prisma.event.findMany({
+    const events = await prisma.transaction.findMany({
       where: {
-        title: {
-          contains: search,
-        },
-        userId,
-        transaction: {
-          some: {
-            status: {
-              contains: filter,
-            },
+        event: {
+          title: {
+            contains: search,
           },
         },
+        userId,
+        status : filter || undefined ,
       },
       skip: (page - 1) * take,
       take: take,
@@ -32,8 +28,7 @@ export const getUserTransactionHistoryService = async function (
         [sortBy]: sortOrder,
       },
       include: {
-        transaction: true,
-        location: true,
+        event: true,
       },
     });
 

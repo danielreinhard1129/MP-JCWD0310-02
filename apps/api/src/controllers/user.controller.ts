@@ -3,10 +3,24 @@ import { getUserEventHistoryService } from '@/services/user/get-user-event-histo
 import { getUserRewardService } from '@/services/user/get-user-reward-service';
 import { getUserTransactionHistoryService } from '@/services/user/get-user-transaction-service';
 import { getUserVoucherService } from '@/services/user/get-user-voucher-service';
+import { createUserTransactionService } from '@/services/user/create-user-transaction';
 import { postUserEditProfileService } from '@/services/user/post-user-edit-profile';
 import { NextFunction, Request, Response } from 'express';
 
 export class UserController {
+  async createUserTransaction(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ) {
+    try {
+      const result = await createUserTransactionService(req.body);
+      res.status(200).send(result);
+    } catch (error) {
+      next(error);
+    }
+  }
+
   async getUserDetailController(
     req: Request,
     res: Response,

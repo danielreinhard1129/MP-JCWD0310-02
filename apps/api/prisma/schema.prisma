@@ -123,10 +123,10 @@ model UserVoucher {
 
 model Transaction {
   id           Int      @id @default(autoincrement())
-  uuid         Int      @unique
+  uuid         String      @unique
   status       String
   qty          Int
-  paymentProof String
+  paymentProof String?
   total        Int
   pointUsed    Int      @default(0)
   createdAt    DateTime @default(now())

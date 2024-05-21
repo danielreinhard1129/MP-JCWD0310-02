@@ -8,10 +8,10 @@ import { useEffect, useState } from 'react';
 const getToken = () => {
   try {
     const token = localStorage.getItem('token');
-    if (!token) return 'token';
+    if (!token) return
     return token;
   } catch (error) {
-    return 'token';
+    return;
   }
 };
 
@@ -69,17 +69,17 @@ export const NeedAuthorizationGuard = (Component: any) => {
       setTimeout(() => {
         setProgress(66);
       }, 400);
-      if (token && user.userId) {
-        router.push('/');
-      }
       setLoading(false);
       setTimeout(() => {
         setProgress(100);
       }, 700);
       setTimeout(() => {
+        if (token && user.userId) {
+          router.push('/');
+        }
         setLoading(false);
       }, 800);
-    }, [user]);
+    }, []);
 
     if (loading)
       return (
@@ -144,12 +144,11 @@ export const NeedAuthenticationGuard = (Component: any) => {
       setTimeout(() => {
         setProgress(30);
       }, 250);
-      if (!token && !user.userId) {
-        setProgress(100);
-        router.push('/');
-      }
       setTimeout(() => {
         setProgress(66);
+        if (!token) {
+          router.push('/');
+        }
       }, 400);
       setTimeout(() => {
         setProgress(100);
@@ -168,6 +167,8 @@ export const NeedAuthenticationGuard = (Component: any) => {
           />
         </div>
       );
-    if (!loading) return <Component {...props} />;
+    if (!loading) {
+      return <Component {...props} />;
+    }
   };
 };

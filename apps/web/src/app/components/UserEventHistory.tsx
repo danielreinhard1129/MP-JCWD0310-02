@@ -27,6 +27,7 @@ import { Filter, Search } from 'lucide-react';
 import useGetUserEventHistory from '../hooks/api/user/useGetUserEventHistory';
 import { format } from 'date-fns';
 import { useDebouncedCallback } from 'use-debounce';
+import { useAppSelector } from '../redux/hook';
 
 interface FilterValue {
   success: boolean;
@@ -36,6 +37,7 @@ interface FilterValue {
 
 const UserEventHistory = () => {
   const [page, setPage] = useState<number>(1);
+  const { userId } = useAppSelector((state) => state.user);
   const priceFormat = new Intl.NumberFormat('id-ID', {
     currency: 'IDR',
   });
@@ -46,15 +48,12 @@ const UserEventHistory = () => {
     cancel: false,
     pending: false,
   });
-  const {
-    data: events,
-    meta,
-  } = useGetUserEventHistory({
+  const { data: events, meta } = useGetUserEventHistory({
     page,
     take: 5,
     search,
     filter,
-    userId: 2,
+    userId: userId ? userId : 0,
   });
   const handleChangePaginate = ({ selected }: { selected: number }) => {
     setPage(selected + 1);
