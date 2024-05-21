@@ -7,6 +7,8 @@ import { DataTable } from '@/components/ui/DataTable/DataTable/DataTable';
 import { type ColumnDef } from '@tanstack/react-table';
 import { format } from 'date-fns';
 import { Label } from '../ui/label';
+import { CellAction } from './CellAction';
+import { CellActionApproval } from './CellActionApproval';
 
 interface Transaction {}
 
@@ -40,6 +42,11 @@ export const TransactionList = ({ data }: { data: any }) => {
       accessorFn: (data) => {
         return format(data.date, 'yyyy.MM.dd');
       },
+    },
+    {
+      id: 'actions',
+      enableSorting: false,
+      cell: ({ row }) => <CellActionApproval data={row.original} />,
     },
   ];
   return (
