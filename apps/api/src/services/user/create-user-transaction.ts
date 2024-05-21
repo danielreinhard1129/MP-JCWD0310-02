@@ -8,6 +8,7 @@ interface CreateUserTransaction {
   voucherId: number;
   rewardId: number;
   userId: number;
+  isUsePoint: boolean;
 }
 
 const functionDiscount = (
@@ -47,10 +48,12 @@ export const createUserTransactionService = async function (
           },
         });
         if (!event) throw new Error('Event is not valid');
-        if (event.booked >= event.limit) throw new Error('Event ticket is sold out');
-        if (body.qty > (event.limit - event.booked)) throw new Error('Event ticket is not enough');
+        if (event.booked >= event.limit)
+          throw new Error('Event ticket is sold out');
+        if (body.qty > event.limit - event.booked)
+          throw new Error('Event ticket is not enough');
 
-        const voucherCard = await tx.voucher.findFirst({
+        const voucherCard = await prisma.voucher.findFirst({
           where: {
             id: body.voucherId,
             userId: body.userId,
@@ -63,7 +66,7 @@ export const createUserTransactionService = async function (
           },
         });
 
-        const userReward = await tx.userReward.findFirst({
+        const userReward = await prisma.userReward.findFirst({
           where: {
             userId: user.id,
           },
@@ -95,6 +98,7 @@ export const createUserTransactionService = async function (
             qty: body.qty,
             status: 'pending',
             total: priceTotalVoucher || priceTotalReward,
+            pointUsed: body.isUsePoint ? user.points : 0,
             userId: user.id,
             uuid: randomstring.generate(20).toLowerCase(),
           },
@@ -166,7 +170,7 @@ export const createUserTransactionService = async function (
             },
           });
 
-          const updateUserVoucherHistory = await tx.userVoucher.update({
+          const updateUserVoucherHistory = await tx.userReward.update({
             where: {
               id: userRewardTransaction.id,
             },
