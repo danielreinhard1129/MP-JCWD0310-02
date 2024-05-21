@@ -14,16 +14,39 @@ interface IGetEventHistoryQuery extends IPaginationQueries {
   userId: number;
 }
 
+interface Transaction {
+  id: number;
+  uuid: string;
+  status: string;
+  qty: number | null;
+  paymentProof: number;
+  total: number;
+  pointUsed: number;
+  createdAt: Date;
+  updatedAt: Date;
+  eventId: number;
+  userId: number;
+  event: Event;
+}
+
+interface TransactionResponse {
+  data: Transaction[];
+  meta: IPaginationMeta;
+}
+
 const useGetUserTransactionHistory = (queries: IGetEventHistoryQuery) => {
-  const [data, setData] = useState<Event[]>([]);
+  const [data, setData] = useState<Transaction[]>([]);
   const [meta, setMeta] = useState<IPaginationMeta | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const getUserEventHistory = async () => {
     try {
-      const { data } = await axiosInstance.get('/user/transaction', {
-        params: queries,
-      });
+      const { data } = await axiosInstance.get<TransactionResponse>(
+        '/user/transaction',
+        {
+          params: queries,
+        },
+      );
       setData(data.data);
       setMeta(data.meta);
     } catch (error) {

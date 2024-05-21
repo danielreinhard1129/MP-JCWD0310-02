@@ -8,7 +8,20 @@ import ReviewForm from './components/ReviewForm';
 import SkeletonBlogDetail from './components/SkeletonEventDetail';
 import { format } from 'date-fns';
 import CheckoutDialog from '@/components/CheckoutDialog';
+import { useAppSelector } from '@/app/redux/hook';
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
+import { Button } from '@/components/ui/button';
+import { Label } from '@/components/ui/label';
 const EventDetail = ({ params }: { params: { id: string } }) => {
+  const { role } = useAppSelector((state) => state.user);
   const { event, isLoading } = useGetEvent(Number(params.id));
   const priceFormat = new Intl.NumberFormat('id-ID', {
     currency: 'IDR',
@@ -62,7 +75,31 @@ const EventDetail = ({ params }: { params: { id: string } }) => {
                 {priceFormat.format(event.price)}
               </p>
             </div>
-            <CheckoutDialog />
+            {role !== 'organizer' ? (
+              <CheckoutDialog eventData={event} />
+            ) : (
+              <Dialog>
+                <DialogTrigger className="w-full">
+                  <Button variant="outline" className="w-full">
+                    Checkout
+                  </Button>
+                </DialogTrigger>
+                <DialogContent>
+                  <DialogHeader>
+                    <DialogTitle>Warning</DialogTitle>
+                    <Label>You are signed as organizer.</Label>
+                  </DialogHeader>
+                  <Label className="text-base">
+                    As an organizer you are probihited to checkout an event!
+                  </Label>
+                  <DialogFooter>
+                    <DialogClose>
+                      <Button>Close</Button>
+                    </DialogClose>
+                  </DialogFooter>
+                </DialogContent>
+              </Dialog>
+            )}
           </div>
           <img
             alt="Event"

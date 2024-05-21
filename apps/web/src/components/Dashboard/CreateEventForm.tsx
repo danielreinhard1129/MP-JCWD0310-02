@@ -189,7 +189,7 @@ const CreateEventForm = () => {
           {/* Limit Ticket Forms */}
 
           {/* Booked Forms */}
-          <div className="max-w-[300px]">
+          {/* <div className="max-w-[300px]">
             <Label>Booked</Label>
             <Input
               name="booked"
@@ -200,7 +200,7 @@ const CreateEventForm = () => {
               }}
               placeholder="Input a booked value if your event has a manual ticket sold"
             />
-          </div>
+          </div> */}
           <div>
             {/* Booked Forms */}
 

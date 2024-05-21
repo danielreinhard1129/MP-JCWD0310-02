@@ -107,7 +107,11 @@ const OrganizerDashboardPage = () => {
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold">
-                    {data.data.data.ticketRevenue._sum.total}
+                    {data.data.data.ticketRevenue._sum.total
+                      ? priceFormat.format(
+                          data.data.data.ticketRevenue._sum.total,
+                        )
+                      : '0'}
                   </div>
                 </CardContent>
               </Card>
