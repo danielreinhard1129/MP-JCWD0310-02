@@ -13,7 +13,7 @@ const useLogout = () => {
       localStorage.removeItem('token');
       toast.success('Succes log out!');
       setTimeout(() => {
-        router.replace('/');
+        router.push('/');
       }, 1000);
     } catch (err) {
       toast.error('Something error');

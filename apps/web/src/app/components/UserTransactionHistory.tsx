@@ -28,18 +28,22 @@ import { format } from 'date-fns';
 import { useDebouncedCallback } from 'use-debounce';
 import useGetUserTransactionHistory from '../hooks/api/user/useGetUserTransactionHistory';
 import { useAppSelector } from '../redux/hook';
+import { useRouter } from 'next/navigation';
 
 interface FilterValue {
   success: boolean;
   cancel: boolean;
   pending: boolean;
+  all: boolean;
 }
 
 const UserTransactionHistory = () => {
   const { userId } = useAppSelector((state) => state.user);
+  const router = useRouter();
   const [page, setPage] = useState<number>(1);
   const priceFormat = new Intl.NumberFormat('id-ID', {
     currency: 'IDR',
+    style: 'currency',
   });
   const [search, setSearch] = useState<string>('');
   const [filter, setFilter] = useState<string>('');
@@ -47,13 +51,14 @@ const UserTransactionHistory = () => {
     success: false,
     cancel: false,
     pending: false,
+    all: true,
   });
-  const { data: events, meta } = useGetUserTransactionHistory({
+  const { data: transaction, meta } = useGetUserTransactionHistory({
     page,
     take: 5,
     search,
     filter,
-    userId: userId ? userId : 0,
+    userId: userId ? userId : 3,
   });
   const handleChangePaginate = ({ selected }: { selected: number }) => {
     setPage(selected + 1);
@@ -64,15 +69,16 @@ const UserTransactionHistory = () => {
   const debounceFilter = useDebouncedCallback((value) => {
     setFilter(value);
   }, 700);
-  const handleFilter = (value: 'cancel' | 'pending' | 'success') => {
+  const handleFilter = (value: 'cancel' | 'pending' | 'success' | 'all') => {
     setSearch('');
     setFilterCheckBox({
       success: false,
       cancel: false,
       pending: false,
+      all: false,
       [value]: !filterCheckBox[value],
     });
-    debounceFilter(value);
+    debounceFilter(value == 'all' ? '' : value);
   };
 
   return (
@@ -106,6 +112,17 @@ const UserTransactionHistory = () => {
                 <Label className="flex items-center gap-2" htmlFor="Jakarta">
                   <Checkbox
                     onClick={() => {
+                      handleFilter('all');
+                    }}
+                    checked={filterCheckBox.all}
+                  />
+                  All
+                </Label>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Label className="flex items-center gap-2" htmlFor="Jakarta">
+                  <Checkbox
+                    onClick={() => {
                       handleFilter('success');
                     }}
                     checked={filterCheckBox.success}
@@ -121,7 +138,7 @@ const UserTransactionHistory = () => {
                     }}
                     checked={filterCheckBox.pending}
                   />
-                  Waiting for Payment
+                  Pending
                 </Label>
               </DropdownMenuItem>
               <DropdownMenuItem>
@@ -147,31 +164,29 @@ const UserTransactionHistory = () => {
           <TableRow>
             <TableHead className="w-[100px]">Event</TableHead>
             <TableHead>Status</TableHead>
-            <TableHead>Date</TableHead>
+            <TableHead>Event Date</TableHead>
             <TableHead>Location</TableHead>
             <TableHead className="text-right">Amount</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {events.map((val, indx, arr) => {
+          {transaction.map((val, indx) => {
             return (
-              <TableRow>
-                <TableCell className="font-medium">{val.title}</TableCell>
-                <TableCell>
-                  {val.transaction.length
-                    ? val.transaction[0].status.toUpperCase()
-                    : 'Undefined'}
-                </TableCell>
-                <TableCell>{format(val.startDate, 'dd-MM-yyyy')}</TableCell>
-                <TableCell className="truncate max-w-[400px]">
-                  {val.location
-                    ? `${val.location.address},${val.location.city},${val.location.province},${val.location.country}`
-                    : ''}
-                </TableCell>
-                <TableCell className="text-right">
-                  {priceFormat.format(val.price)}
-                </TableCell>
-              </TableRow>
+              <>
+                <TableRow onClick={()=> router.push(`/profile/transaction/${val.uuid}`)} key={indx} className="cursor-pointer">
+                  <TableCell className="font-medium">
+                    {val.event.title}
+                  </TableCell>
+                  <TableCell>{val.status}</TableCell>
+                  <TableCell>
+                    {format(val.event.startDate, 'dd-MM-yyyy')}
+                  </TableCell>
+                  <TableCell className="truncate max-w-[400px]">{}</TableCell>
+                  <TableCell className="text-right">
+                    {priceFormat.format(val.total)}
+                  </TableCell>
+                </TableRow>
+              </>
             );
           })}
         </TableBody>

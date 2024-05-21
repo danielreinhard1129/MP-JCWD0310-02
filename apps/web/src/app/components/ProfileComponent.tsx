@@ -10,6 +10,7 @@ import { useRef, useState } from 'react';
 import PreviewImages from '@/components/PreviewImages';
 import { Eye, EyeOff } from 'lucide-react';
 import { appConfig } from '@/utils/config';
+import Image from 'next/image';
 
 interface UserDetailProps
   extends Pick<
@@ -61,28 +62,41 @@ export default function ProfileComponent({
         <CardHeader className="flex flex-col md:items-start items-center">
           <header className="space-y-2">
             <div className="flex items-center space-x-3">
-              {/* <Image
-                src={
-                  userData.thumbnail && userData.thumbnail.length
-                    ? userData.thumbnail[0].webkitRelativePath
-                    : '/defaultProfileImage.jpg'
-                }
-                height={96}
-                width={96}
-                alt="Avatar"
-                className="rounded-full aspect-[96/96] object-cover"
-              /> */}
               <div className="w-24 h-24 flex justify-center items-center rounded-full overflow-hidden">
                 <div className="w-full">
-                  <PreviewImages
-                    onRemoveImage={(idx: number) =>
-                      onChangeField(
-                        'thumbnail',
-                        values.thumbnail?.toSpliced(idx, 1),
-                      )
-                    }
-                    images={[`${userData.pictureId}`]}
-                  />
+                  {profileImage ? (
+                    <PreviewImages
+                      onRemoveImage={(idx: number) =>
+                        onChangeField(
+                          'thumbnail',
+                          values.thumbnail?.toSpliced(idx, 1),
+                        )
+                      }
+                      fileImages={profileImage}
+                    />
+                  ) : (
+                    <>
+                      {userData.pictureId && !stateEdit ? (
+                        <PreviewImages
+                          onRemoveImage={(idx: number) =>
+                            onChangeField(
+                              'thumbnail',
+                              values.thumbnail?.toSpliced(idx, 1),
+                            )
+                          }
+                          images={[`${userData.pictureId}`]}
+                        />
+                      ) : (
+                        <Image
+                          src={'/defaultProfileImage.jpg'}
+                          height={96}
+                          width={96}
+                          alt="Avatar"
+                          className="rounded-full aspect-[96/96] object-cover"
+                        />
+                      )}
+                    </>
+                  )}
                 </div>
               </div>
               <div className="space-y-1">

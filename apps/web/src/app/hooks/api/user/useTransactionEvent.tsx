@@ -3,19 +3,17 @@ import { AxiosError } from 'axios';
 
 interface CreateUserTransaction {
   eventId: number;
-  uuid: string;
   qty: number;
-  total: number;
-  paymentProof: string;
-  voucherId: number;
-  userId: number;
+  voucherId: number | null;
+  rewardId: number | null;
+  userId: number | null;
 }
 
 export const useCreateTransactionEvent = () => {
   const createTransactionEvent = async (body: CreateUserTransaction) => {
     try {
       const response = await axiosInstance.post(
-        `/user/event/${body.eventId}`,
+        `/user/event/transaction`,
         body,
       );
       return response.data;

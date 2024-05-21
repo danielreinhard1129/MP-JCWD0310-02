@@ -1,6 +1,6 @@
 'use client';
 
-import { NeedAuthenticationGuard } from '../../hoc/AuthGuard';
+import { AuthenticationGuard, NeedAuthenticationGuard, NeedAuthorizationGuard } from '../../hoc/AuthGuard';
 import { useAppSelector } from '../../redux/hook';
 import { Check, CircleX, Settings } from 'lucide-react';
 import { useFormik } from 'formik';
@@ -44,7 +44,7 @@ const Profile = () => {
           <CardTitle>Your Profile</CardTitle>
           <TabsList>
             <TabsTrigger value="profile">Profile</TabsTrigger>
-            <TabsTrigger value="event">Events</TabsTrigger>
+            {/* <TabsTrigger value="event">Events</TabsTrigger> */}
             <TabsTrigger value="transaction">Transactions</TabsTrigger>
             <TabsTrigger value="voucher">Voucher</TabsTrigger>
           </TabsList>

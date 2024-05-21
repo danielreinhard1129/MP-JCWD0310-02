@@ -39,7 +39,7 @@ const UserVoucherList = () => {
                 <Label>{!value.isUsed ? 'No Used' : 'Used'}</Label>
               </TableCell>
               <TableCell>
-                <Label>{format(value.voucher.endDate, 'dd-MMM-yyyy')}</Label>
+                <Label>{format(value.voucher.endDate, 'dd-MM-yyyy')}</Label>
               </TableCell>
               <TableCell>
                 <Label>{value.voucher.nominal}% off in all transaction</Label>
@@ -62,47 +62,49 @@ const UserVoucherList = () => {
           );
         });
       });
-      const userReward = data.data.map((val) => {
-        return val.userReward.map((value) => {
-          return value.userReward.map((valueReward) => {
-            return (
-              <TableRow>
-                <TableCell>
-                  <Image
-                    src={'/coupon.png'}
-                    alt="coupon"
-                    width={100}
-                    height={100}
-                  />
-                </TableCell>
-                <TableCell>
-                  <Label>{valueReward.title}</Label>
-                </TableCell>
-                <TableCell>
-                  <Label>{format(valueReward.endDate, 'dd-MM-yyyy')}</Label>
-                </TableCell>
-                <TableCell>
-                  <Label>
-                    {valueReward.percentage}% off in all transaction
-                  </Label>
-                </TableCell>
-                <TableCell>
-                  <Card className="flex shadow-none flex-row justify-around border-0 items-center gap-4">
-                    <Label>{valueReward.description}</Label>
-                    <Button
-                      onClick={() => {
-                        navigator.clipboard.writeText('TampanKu');
-                      }}
-                      className="flex flex-row gap-1 p-4 h-2"
-                    >
-                      <Clipboard width={15} />
-                      Copy
-                    </Button>
-                  </Card>
-                </TableCell>
-              </TableRow>
-            );
-          });
+      const userReward = data.data.map((val, indx) => {
+        return val.userReward.map((valueReward) => {
+          return (
+            <TableRow>
+              <TableCell>
+                <Image
+                  src={'/coupon.png'}
+                  alt="coupon"
+                  width={100}
+                  height={100}
+                />
+              </TableCell>
+              <TableCell>
+                <Label>
+                  {val.userReward[indx].isUsed ? 'Used' : 'Not used'}
+                </Label>
+              </TableCell>
+              <TableCell>
+                <Label>
+                  {format(valueReward.reward.endDate, 'dd-MM-yyyy')}
+                </Label>
+              </TableCell>
+              <TableCell>
+                <Label>
+                  {valueReward.reward.percentage}% off in all transaction
+                </Label>
+              </TableCell>
+              <TableCell>
+                <Card className="flex shadow-none flex-row justify-around border-0 items-center gap-4">
+                  <Label>No code for this voucher</Label>
+                  {/* <Button
+                    onClick={() => {
+                      navigator.clipboard.writeText('TampanKu');
+                    }}
+                    className="flex flex-row gap-1 p-4 h-2"
+                  >
+                    <Clipboard width={15} />
+                    Copy
+                  </Button> */}
+                </Card>
+              </TableCell>
+            </TableRow>
+          );
         });
       });
       return (
@@ -117,7 +119,7 @@ const UserVoucherList = () => {
   return (
     <Tabs className="flex flex-col gap-4">
       <Table>
-        <TableCaption>History of your events.</TableCaption>
+        <TableCaption>Your voucher list.</TableCaption>
         <TableHeader>
           <TableRow>
             <TableHead>Event</TableHead>
@@ -136,7 +138,7 @@ const UserVoucherList = () => {
       )}
       {!isLoading && !data ? (
         <div className="mt-8 flex flex-row justify-center">
-          <Label className="text-3xl text-red-500">No data found!</Label>
+          <Label className="text-3xl">No data found!</Label>
         </div>
       ) : (
         ''

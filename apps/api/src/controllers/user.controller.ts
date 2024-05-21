@@ -14,8 +14,8 @@ export class UserController {
     next: NextFunction,
   ) {
     try {
-      // const result = await createUserTransactionService(Number(req.params.id),req.body);
-      // res.status(200).send(result);
+      const result = await createUserTransactionService(req.body);
+      res.status(200).send(result);
     } catch (error) {
       next(error);
     }

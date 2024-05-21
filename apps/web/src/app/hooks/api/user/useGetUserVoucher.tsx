@@ -11,7 +11,7 @@ interface VoucherResponse {
       updateAt: Date;
       rewardId: number;
       userId: number;
-      userReward: {
+      reward: {
         id: number;
         title: string;
         description: string;
@@ -21,7 +21,7 @@ interface VoucherResponse {
         endDate: Date;
         createdAt: Date;
         updateAt: Date;
-      }[];
+      };
     }[];
     userVoucher: {
       id: number;
