@@ -6,13 +6,11 @@ import { getUserVoucherService } from '@/services/user/get-user-voucher-service'
 import { createUserTransactionService } from '@/services/user/create-user-transaction';
 import { postUserEditProfileService } from '@/services/user/post-user-edit-profile';
 import { NextFunction, Request, Response } from 'express';
+import { getUserTransactionDetailService } from '@/services/user/get-user-transaction-detail-service';
+import { postUserTransactionProofService } from '@/services/user/post-user-transaction-proof';
 
 export class UserController {
-  async createUserTransaction(
-    req: Request,
-    res: Response,
-    next: NextFunction,
-  ) {
+  async createUserTransaction(req: Request, res: Response, next: NextFunction) {
     try {
       const result = await createUserTransactionService(req.body);
       res.status(200).send(result);
@@ -90,6 +88,18 @@ export class UserController {
       next(error);
     }
   }
+  async postUserTransactionProof(req: Request, res: Response, next: NextFunction) {
+    try {
+      const files = req.files as Express.Multer.File[];
+      const result = await postUserTransactionProofService(req.body, files[0]);
+      res.status(200).send({
+        messages: 'ok',
+        data: result,
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
   async getTransactionController(
     req: Request,
     res: Response,
@@ -107,6 +117,21 @@ export class UserController {
       };
       const result = await getUserTransactionHistoryService(query);
       res.status(200).send(result);
+    } catch (error) {
+      next(error);
+    }
+  }
+  async getTransactionUserDetailController(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ) {
+    try {
+      const result = await getUserTransactionDetailService(req.params.uuid);
+      res.status(200).send({
+        messages: 'ok',
+        data: result,
+      });
     } catch (error) {
       next(error);
     }

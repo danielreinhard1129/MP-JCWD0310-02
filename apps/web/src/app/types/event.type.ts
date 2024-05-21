@@ -1,6 +1,6 @@
 import { User } from './user.type';
 
-interface Location {
+export interface Location {
   id: number;
   address: string;
   city: string;
@@ -8,7 +8,7 @@ interface Location {
   province: string;
 }
 
-interface Category {
+export interface Category {
   id: number;
   title: string;
   description: string;
@@ -17,21 +17,52 @@ interface Category {
   updatedAt: Date;
 }
 
-interface Transaction {
+export interface Transaction {
   id: number;
-  uuid: number;
+  uuid: string;
   status: string;
   qty: number;
-  paymentProof: string;
+  paymentProof: string | null;
   total: number;
   pointUsed: number;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: string;
+  updatedAt: string;
   eventId: number;
   userId: number;
 }
 
-interface EventCategory {
+export interface TransactionUserReward {
+  id: number;
+  createdAt: Date;
+  updatedAt: Date;
+  userRewardId: number;
+  transactionId: number;
+  userReward : UserReward; 
+}
+
+export interface UserReward {
+  id: number;
+  isUsed: true;
+  createdAt: Date;
+  updateAt: Date;
+  rewardId: number;
+  userId: number;
+  reward: Reward;
+}
+
+export interface Reward {
+  id: number;
+  title: number;
+  description: number;
+  percentage: number;
+  max_nominal: number;
+  startDate: Date;
+  endDate: Date;
+  createdAt: Date;
+  updateAt: Date;
+}
+
+export interface EventCategory {
   id: number;
   createdAt: Date;
   updatedAt: Date;
@@ -48,8 +79,8 @@ export interface Event {
   limit: number;
   booked: number;
   thumbnail: string;
-  startDate: Date;
-  endDate: Date;
+  startDate: string;
+  endDate: string;
   isFree: boolean;
   time: string;
   eventCategory: EventCategory[];

@@ -24,8 +24,13 @@ export class UserRouter {
       '/transaction',
       this.userController.getTransactionController,
     );
+    this.router.get(
+      '/transaction/:uuid',
+      this.userController.getTransactionUserDetailController,
+    );
     this.router.get('/events', this.userController.getEventHistoryController);
     this.router.post('/event/transaction', this.userController.createUserTransaction);
+    this.router.post('/event/transaction/proof',uploader('IMG','/images').array('thumbnail',1), this.userController.postUserTransactionProof);
   }
 
   getRouter(): Router {

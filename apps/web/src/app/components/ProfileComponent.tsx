@@ -141,6 +141,10 @@ export default function ProfileComponent({
             <Label>Email : </Label>
             <Label>{userData.email}</Label>
           </div>
+          <div className="">
+            <Label>Referral Code : </Label>
+            <Label>{userData.referralCode}</Label>
+          </div>
           <div className="space-y-2 pt-4 flex flex-col gap-4">
             {stateEdit ? (
               <>
