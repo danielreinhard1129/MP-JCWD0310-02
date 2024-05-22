@@ -24,7 +24,8 @@ export class OrganizerRouter {
       '/statistic/:id',
       this.organizerController.getOrganizerDataStatistic,
     );
-    // this.router.get('/event', this.organizerController.testOrganizer);
+    this.router.get('/transaction/:id', this.organizerController.getOrganizerTransaction);
+    this.router.post('/transaction/approval', this.organizerController.postOrganizerTransactionApproval);
   }
 
   getRouter(): Router {
