@@ -1,127 +1,33 @@
 'use client';
-import useGetEvents from '@/app/hooks/api/event/useGetEvents';
+import useApprovalAction from '@/app/hooks/api/organizer/useApprovalAction';
+import useGetTransactionApproval from '@/app/hooks/api/organizer/useGetTransactionApproval';
 import { Overview } from '@/components/Dashboard/Overview';
 import { OverviewBar } from '@/components/Dashboard/OverviewBar';
 import MonthPicker from '@/components/MonthPicker';
-import { TransactionList } from '@/components/PageComponent/TransactionList';
+import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Separator } from '@/components/ui/separator';
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableFooter,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import React, { useState } from 'react';
+import { format } from 'date-fns';
+import { Check, X } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
 
 const DashboardTransactionPage = () => {
+  const router = useRouter();
   const [month, setMonth] = useState(new Date());
-  // const { data, isLoading, meta } = useGetEvents({});
-  // const [analytics, setAnalytics] = useState(false);
-  const transactionData = [
-    {
-      id: 1,
-      event: 'DWP',
-      amounts: '20000',
-      quantity: '2',
-      status: 'progress',
-      user: 'muksal',
-      date: new Date(),
-    },
-    {
-      id: 2,
-      event: 'DWP',
-      amounts: '10000',
-      quantity: '1',
-      status: 'done',
-      user: 'muksil',
-      date: new Date(),
-    },
-    {
-      id: 3,
-      event: 'DWP',
-      amounts: '10000',
-      quantity: '1',
-      status: 'failed',
-      user: 'muklis',
-      date: new Date(),
-    },
-    {
-      id: 4,
-      event: 'DWP',
-      amounts: '10000',
-      quantity: '1',
-      status: 'failed',
-      user: 'muklis',
-      date: new Date(),
-    },
-    {
-      id: 5,
-      event: 'DWP',
-      amounts: '10000',
-      quantity: '1',
-      status: 'failed',
-      user: 'muklis',
-      date: new Date(),
-    },
-    {
-      id: 6,
-      event: 'DWP',
-      amounts: '10000',
-      quantity: '1',
-      status: 'failed',
-      user: 'muklis',
-      date: new Date(),
-    },
-    {
-      id: 7,
-      event: 'DWP',
-      amounts: '10000',
-      quantity: '1',
-      status: 'failed',
-      user: 'muklis',
-      date: new Date(),
-    },
-    {
-      id: 8,
-      event: 'DWP',
-      amounts: '10000',
-      quantity: '1',
-      status: 'failed',
-      user: 'muklis',
-      date: new Date(),
-    },
-    {
-      id: 9,
-      event: 'DWP',
-      amounts: '10000',
-      quantity: '1',
-      status: 'failed',
-      user: 'muklis',
-      date: new Date(),
-    },
-    {
-      id: 10,
-      event: 'DWP',
-      amounts: '10000',
-      quantity: '1',
-      status: 'failed',
-      user: 'muklis',
-      date: new Date(),
-    },
-    {
-      id: 11,
-      event: 'DWP',
-      amounts: '10000',
-      quantity: '1',
-      status: 'failed',
-      user: 'muklis',
-      date: new Date(),
-    },
-    {
-      id: 12,
-      event: 'DWP',
-      amounts: '10000',
-      quantity: '1',
-      status: 'failed',
-      user: 'muklis',
-      date: new Date(),
-    },
-  ];
+  const { data, isLoading } = useGetTransactionApproval();
+  const { approvalAction } = useApprovalAction();
   const chartData = [
     {
       name: 'jan',
@@ -213,75 +119,225 @@ const DashboardTransactionPage = () => {
     },
   ];
 
-  return (
-    <div className="flex h-full flex-col">
-      <div className="flex-1 space-y-4 p-8 pt-6">
-        <Tabs defaultValue="overview" className="space-y-4">
-          <TabsContent value="overview" className="space-y-4">
-            <div className="flex flex-col">
-              <div className="flex-1 space-y-4 md:p-8">
-                <div className="flex h-full flex-col">
-                  <div className="flex-1 space-y-4 ">
-                    <div className="flex items-center justify-between space-y-2">
-                      <h2 className="text-3xl font-bold tracking-tight">
-                        Transaction History
-                      </h2>
-                      <div className="flex items-center space-x-2">
-                        <MonthPicker
-                          currentMonth={month}
-                          onMonthChange={(e) => {
-                            setMonth(e);
-                          }}
-                        />
-                      </div>
-                    </div>
-                    <Tabs defaultValue="overview" className="space-y-4">
-                      <TabsList>
-                        <TabsTrigger value="overview">Overview</TabsTrigger>
-                        <TabsTrigger value="analytics">Analytics</TabsTrigger>
-                      </TabsList>
-                      <TabsContent value="overview" className="space-y-4">
-                        <div className="flex flex-col">
-                          <div className="flex-1 space-y-4">
-                            <TransactionList data={transactionData} />
-                          </div>
-                        </div>
-                      </TabsContent>
-                      <TabsContent value="analytics">
-                        <Card>
-                          <CardHeader></CardHeader>
-                          <CardContent className="flex flex-col gap-8">
-                            <div className="flex flex-col gap-4 w-full">
-                              <CardTitle>
-                                Analytic chart overall transaction
-                              </CardTitle>
-                              <Overview data={chartData} />
-                            </div>
-                          </CardContent>
-                        </Card>
+  const handleActionApprove = async (uuid: string) => {
+    try {
+      const approve = approvalAction({ uuid, status: 'success' });
+      approve
+        .finally(() => {
+          router.replace('/organizer-dashboard/transaction');
+        })
+        .then(() => {
+          router.replace('/organizer-dashboard/transaction');
+        });
+    } catch (error) {}
+  };
+  const handleActionDiscard = async (uuid: string) => {
+    try {
+      const discard = approvalAction({ uuid, status: 'cancelled' });
 
-                        <Card className="mt-4">
-                          <CardHeader></CardHeader>
-                          <CardContent className="flex flex-col gap-8">
-                            <div className="flex flex-col gap-4 w-full">
-                              <CardTitle>
-                                Events attendance based on ticket type{' '}
-                              </CardTitle>
-                              <OverviewBar data={barData} />
+      discard
+        .finally(() => {
+          router.replace('/organizer-dashboard/transaction');
+        })
+        .then(() => {
+          router.replace('/organizer-dashboard/transaction');
+        });
+    } catch (error) {}
+  };
+
+  const priceFormat = new Intl.NumberFormat('id-ID', {
+    style: 'currency',
+    currency: 'IDR',
+  });
+
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  } else if (!isLoading && data)
+    return (
+      <div className="flex h-full flex-col">
+        <div className="flex-1 space-y-4 p-8 pt-6">
+          <Tabs defaultValue="overview" className="space-y-4">
+            <TabsContent value="overview" className="space-y-4">
+              <div className="flex flex-col">
+                <div className="flex-1 space-y-4 md:p-8">
+                  <div className="flex h-full flex-col">
+                    <div className="flex-1 space-y-4 ">
+                      <div className="flex items-center justify-between space-y-2">
+                        <h2 className="text-3xl font-bold tracking-tight">
+                          Transaction History
+                        </h2>
+                        <div className="flex items-center space-x-2">
+                          <MonthPicker
+                            currentMonth={month}
+                            onMonthChange={(e) => {
+                              setMonth(e);
+                            }}
+                          />
+                        </div>
+                      </div>
+                      <Tabs defaultValue="overview" className="space-y-4">
+                        <TabsList>
+                          <TabsTrigger value="overview">Overview</TabsTrigger>
+                          <TabsTrigger value="analytics">Analytics</TabsTrigger>
+                        </TabsList>
+                        <TabsContent value="overview" className="space-y-4">
+                          <div className="flex flex-col">
+                            <div className="flex-1 space-y-4">
+                              {/* <TransactionList data={transactionData} /> */}
+                              <Separator />
+                              <Table>
+                                <TableCaption>
+                                  A list of your recent invoices.
+                                </TableCaption>
+                                <TableHeader>
+                                  <TableRow>
+                                    <TableHead className="w-[100px]">
+                                      Event
+                                    </TableHead>
+                                    <TableHead>UUID</TableHead>
+                                    <TableHead>Status</TableHead>
+                                    <TableHead>Transaction Date</TableHead>
+                                    <TableHead className="text-right">
+                                      Total Amount
+                                    </TableHead>
+                                    <TableHead>Acc</TableHead>
+                                    <TableHead>Discard</TableHead>
+                                  </TableRow>
+                                </TableHeader>
+                                <TableBody>
+                                  {data.map((val) => {
+                                    return val.transaction.map((values) => {
+                                      return (
+                                        <>
+                                          <TableRow key={values.uuid}>
+                                            <TableCell className="font-medium">
+                                              {val.title}
+                                            </TableCell>
+                                            <TableCell className="font-medium">
+                                              {values.uuid}
+                                            </TableCell>
+                                            <TableCell>
+                                              {values.status}
+                                            </TableCell>
+                                            <TableCell>
+                                              {format(
+                                                values.createdAt,
+                                                'dd-MM-yyyy',
+                                              )}
+                                            </TableCell>
+                                            <TableCell>
+                                              {priceFormat.format(values.total)}
+                                            </TableCell>
+                                            {values.status !== 'pending' ? (
+                                              <>
+                                                <TableCell>
+                                                  <Button
+                                                    disabled
+                                                    className="p-4"
+                                                  >
+                                                    <Check
+                                                      width={18}
+                                                      height={18}
+                                                    />
+                                                  </Button>
+                                                </TableCell>
+                                                <TableCell>
+                                                  <Button
+                                                    disabled
+                                                    className="p-4"
+                                                  >
+                                                    <X width={18} height={18} />
+                                                  </Button>
+                                                </TableCell>
+                                              </>
+                                            ) : (
+                                              <>
+                                                <TableCell>
+                                                  <Button
+                                                    onClick={() =>
+                                                      handleActionApprove(
+                                                        values.uuid,
+                                                      )
+                                                    }
+                                                    className="p-4 bg-green-500"
+                                                  >
+                                                    <Check
+                                                      width={18}
+                                                      height={18}
+                                                    />
+                                                  </Button>
+                                                </TableCell>
+                                                <TableCell>
+                                                  <Button
+                                                    onClick={() =>
+                                                      handleActionDiscard(
+                                                        values.uuid,
+                                                      )
+                                                    }
+                                                    className="p-4 bg-red-500"
+                                                  >
+                                                    <X width={18} height={18} />
+                                                  </Button>
+                                                </TableCell>
+                                              </>
+                                            )}
+                                          </TableRow>
+                                        </>
+                                      );
+                                    });
+                                  })}
+                                </TableBody>
+                                <TableFooter>
+                                  <TableRow>
+                                    <TableCell colSpan={3}>Total</TableCell>
+                                    <TableCell className="text-right">
+                                      $2,500.00
+                                    </TableCell>
+                                  </TableRow>
+                                </TableFooter>
+                              </Table>
                             </div>
-                          </CardContent>
-                        </Card>
-                      </TabsContent>
-                    </Tabs>
+                          </div>
+                        </TabsContent>
+                        <TabsContent value="analytics">
+                          <Card>
+                            <CardHeader></CardHeader>
+                            <CardContent className="flex flex-col gap-8">
+                              <div className="flex flex-col gap-4 w-full">
+                                <CardTitle>
+                                  Analytic chart overall transaction
+                                </CardTitle>
+                                <Overview data={chartData} />
+                              </div>
+                            </CardContent>
+                          </Card>
+
+                          <Card className="mt-4">
+                            <CardHeader></CardHeader>
+                            <CardContent className="flex flex-col gap-8">
+                              <div className="flex flex-col gap-4 w-full">
+                                <CardTitle>
+                                  Events attendance based on ticket type{' '}
+                                </CardTitle>
+                                <OverviewBar data={barData} />
+                              </div>
+                            </CardContent>
+                          </Card>
+                        </TabsContent>
+                      </Tabs>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </TabsContent>
-        </Tabs>
+            </TabsContent>
+          </Tabs>
+        </div>
       </div>
-    </div>
-  );
+    );
 };
 
 export default DashboardTransactionPage;
